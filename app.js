@@ -795,6 +795,11 @@ window.speakVietnamese = function(text) {
   }
 };
 
+const ACTIVE_TAB_KEY = "phu_quoc_active_tab_v1";
+const ACTIVE_DAY_KEY = "phu_quoc_selected_day_v1";
+const DAY_BAR_SCROLL_KEY = "phu_quoc_day_bar_scroll_v1";
+const CUSTOM_RATE_KEY = "phu_quoc_custom_rate_v1";
+
 // ==========================================
 // 6. TAB NAVIGATION
 // ==========================================
@@ -803,12 +808,28 @@ function initTabs() {
   const bottomTabs = document.querySelectorAll(".bottom-nav-item");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  function switchTab(tabId) {
+  function switchTab(tabId, shouldScrollTop = true) {
     topTabs.forEach(t => t.classList.toggle("active", t.dataset.tab === tabId));
     bottomTabs.forEach(b => b.classList.toggle("active", b.dataset.tab === tabId));
     tabContents.forEach(content => content.classList.toggle("active", content.id === `tab-${tabId}`));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    
+    // Save active tab
+    try {
+      localStorage.setItem(ACTIVE_TAB_KEY, tabId);
+    } catch (e) {}
+
+    if (shouldScrollTop) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
+
+  // Restore saved tab on load
+  try {
+    const savedTab = localStorage.getItem(ACTIVE_TAB_KEY);
+    if (savedTab && document.getElementById(`tab-${savedTab}`)) {
+      switchTab(savedTab, false);
+    }
+  } catch (e) {}
 
   topTabs.forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
   bottomTabs.forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tab)));
@@ -817,14 +838,12 @@ function initTabs() {
   document.getElementById("btnSurvivalKit")?.addEventListener("click", () => switchTab("emergency"));
 }
 
-const ACTIVE_DAY_KEY = "phu_quoc_selected_day_v1";
-const CUSTOM_RATE_KEY = "phu_quoc_custom_rate_v1";
-
 function initDayFilters() {
+  const dayPillsContainer = document.querySelector(".day-pills");
   const dayPills = document.querySelectorAll(".day-pill");
   const allPill = document.querySelector('.day-pill[data-day="all"]');
 
-  // Restore saved day filter from localStorage
+  // 1. Restore saved day filter from localStorage
   try {
     const savedDay = localStorage.getItem(ACTIVE_DAY_KEY);
     if (savedDay) {
@@ -832,6 +851,34 @@ function initDayFilters() {
       dayPills.forEach(p => p.classList.toggle("active", p.dataset.day === savedDay));
     }
   } catch (e) {}
+
+  // 2. Restore saved horizontal scroll position of the Day Bar
+  function restoreBarPosition() {
+    if (!dayPillsContainer) return;
+    const activePill = document.querySelector(`.day-pill[data-day="${currentDayFilter}"]`);
+    if (activePill && currentDayFilter !== "all") {
+      activePill.scrollIntoView({ behavior: "instant", inline: "center", block: "nearest" });
+    } else {
+      try {
+        const savedScroll = localStorage.getItem(DAY_BAR_SCROLL_KEY);
+        if (savedScroll) {
+          dayPillsContainer.scrollLeft = parseFloat(savedScroll);
+        }
+      } catch (e) {}
+    }
+  }
+
+  // Listen to manual scrolling on the Day Bar and save position
+  if (dayPillsContainer) {
+    dayPillsContainer.addEventListener("scroll", () => {
+      try {
+        localStorage.setItem(DAY_BAR_SCROLL_KEY, dayPillsContainer.scrollLeft);
+      } catch (e) {}
+    }, { passive: true });
+  }
+
+  // Initial restore after render
+  setTimeout(restoreBarPosition, 60);
 
   dayPills.forEach(pill => {
     pill.addEventListener("click", () => {
@@ -849,9 +896,14 @@ function initDayFilters() {
         pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       }
 
-      // Persist to localStorage
+      // Persist day and bar position to localStorage
       try {
         localStorage.setItem(ACTIVE_DAY_KEY, currentDayFilter);
+        if (dayPillsContainer) {
+          setTimeout(() => {
+            localStorage.setItem(DAY_BAR_SCROLL_KEY, dayPillsContainer.scrollLeft);
+          }, 350);
+        }
       } catch (e) {}
 
       renderSpots();
