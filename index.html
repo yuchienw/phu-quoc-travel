@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>富國島 7 天 6 夜極致自由行手冊 | 台灣出發・最詳盡海島攻略</title>
+  <meta name="description" content="專為台灣出發設計的富國島 7 天 6 夜自由行全攻略，包含每日行程、交通方式、地址電話、費用預算、在地隱藏文化、實用越南語、匯率換算與行李清單。">
+  <meta name="theme-color" content="#0d2b38">
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden" role="alert" aria-live="assertive"></div>
+
+  <!-- App Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="brand-badge">🇻🇳 台灣出發・免簽直飛 30 天</span>
+        <h1 class="brand-title">富國島 7 日極致自由行指南</h1>
+        <p class="brand-subtitle">Phú Quốc Expedition • 行程・交通・花費・文化・實用工具</p>
+      </div>
+
+      <div class="header-actions">
+        <button id="btnQuickCalc" class="action-btn" title="快速匯率換算">
+          <span class="icon">💱</span>
+          <span class="btn-text">匯率算盤</span>
+        </button>
+        <button id="btnSurvivalKit" class="action-btn" title="緊急求助與會話">
+          <span class="icon">🧰</span>
+          <span class="btn-text">行前百寶箱</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Stats Banner -->
+    <div class="quick-stats-bar">
+      <div class="stat-pill">
+        <span class="stat-label">簽證政策</span>
+        <span class="stat-val highlight">台灣直飛免簽證 30 天</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">飛行時間</span>
+        <span class="stat-val">約 3.5 ~ 4 小時 (TPE/KHH)</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">參考匯率</span>
+        <span class="stat-val font-mono">1 TWD ≈ 800 VND</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">心算口訣</span>
+        <span class="stat-val font-mono">去3個0 × 1.25 (或打8折)</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">島內主要交通</span>
+        <span class="stat-val">Grab 叫車 / 免費 VinBus</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="main-nav">
+      <div class="nav-scroll-container">
+        <button class="nav-tab active" data-tab="itinerary">
+          <span class="tab-icon">🗺️</span>
+          <span class="tab-title">每日詳細行程</span>
+        </button>
+        <button class="nav-tab" data-tab="culture">
+          <span class="tab-icon">🏝️</span>
+          <span class="tab-title">島嶼隱藏文化</span>
+        </button>
+        <button class="nav-tab" data-tab="budget">
+          <span class="tab-icon">💰</span>
+          <span class="tab-title">預算與記帳</span>
+        </button>
+        <button class="nav-tab" data-tab="phrases">
+          <span class="tab-icon">🗣️</span>
+          <span class="tab-title">點餐越語會話</span>
+        </button>
+        <button class="nav-tab" data-tab="checklist">
+          <span class="tab-icon">✅</span>
+          <span class="tab-title">行前行李清單</span>
+        </button>
+        <button class="nav-tab" data-tab="emergency">
+          <span class="tab-icon">🆘</span>
+          <span class="tab-title">緊急求助與須知</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="site-main">
+
+    <!-- ==================== TAB 1: ITINERARY ==================== -->
+    <section id="tab-itinerary" class="tab-content active">
+      
+      <!-- Day Selector Pills -->
+      <div class="day-selector-sticky">
+        <div class="day-pills">
+          <button class="day-pill active" data-day="all">全部總覽</button>
+          <button class="day-pill" data-day="1">Day 1 抵達・夜市</button>
+          <button class="day-pill" data-day="2">Day 2 跳島・火舞</button>
+          <button class="day-pill" data-day="3">Day 3 跨海纜車・煙火</button>
+          <button class="day-pill" data-day="4">Day 4 文化・大世界</button>
+          <button class="day-pill" data-day="5">Day 5 動物園・海星灣</button>
+          <button class="day-pill" data-day="6">Day 6 泥漿浴・慢活</button>
+          <button class="day-pill" data-day="7">Day 7 採買・返台</button>
+        </div>
+
+        <!-- Filter & Search Box -->
+        <div class="filter-search-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="spotSearch" placeholder="搜尋景點、美食、地址、必吃..." autocomplete="off">
+            <button id="clearSearch" class="clear-btn hidden">&times;</button>
+          </div>
+          <div class="category-filters">
+            <button class="cat-tag active" data-cat="all">全部</button>
+            <button class="cat-tag" data-cat="景點">🏖️ 景點秘境</button>
+            <button class="cat-tag" data-cat="美食">🍲 在地美食</button>
+            <button class="cat-tag" data-cat="樂園">🎡 樂園表演</button>
+            <button class="cat-tag" data-cat="交通">🚗 交通中轉</button>
+            <button class="cat-tag" data-cat="購物">🛍️ 購物特產</button>
+            <button class="cat-tag" data-cat="放鬆">💆 放鬆水療</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview Header -->
+      <div class="itinerary-summary-card">
+        <div class="summary-grid">
+          <div class="summary-col">
+            <div class="summary-label">行程天數</div>
+            <div class="summary-val">7 天 6 夜 (精華全覽)</div>
+          </div>
+          <div class="summary-col">
+            <div class="summary-label">住宿策略建議</div>
+            <div class="summary-val">前 3 晚住中部陽東/南部日落小鎮 ➔ 後 3 晚住北部度假村</div>
+          </div>
+          <div class="summary-col">
+            <div class="summary-label">島內主要通訊</div>
+            <div class="summary-val">Viettel / Vinaphone eSIM 吃到飽</div>
+          </div>
+          <div class="summary-col">
+            <div class="summary-label">重要特色</div>
+            <div class="summary-val">跨海纜車、海龜水族館、野生長頸鹿餵食、跳島浮潛、火舞與水上光影秀</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spot Cards Container -->
+      <div id="spotsContainer" class="spots-list">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: CULTURE & SECRETS ==================== -->
+    <section id="tab-culture" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">LOCAL INSIGHTS</span>
+        <h2>富國島 7 大在地隱藏文化與深度故事</h2>
+        <p class="section-desc">不只是度假打卡，帶你讀懂這座翡翠島嶼的百年歷史、漁民信仰、生態禁忌與防坑潛規則。</p>
+      </div>
+
+      <div class="culture-grid">
+        
+        <!-- Story 1 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🐕</span>
+            <div>
+              <span class="culture-badge">特有原生動物</span>
+              <h3 class="culture-title">富國脊背犬 (Phú Quốc Ridgeback) — 會爬樹抓魚的神犬</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國犬是世界上僅有的三種「脊背犬」之一（背部毛髮逆向生長成劍狀或扇狀）。島上世代相傳，富國犬腳趾間有像鴨蹼一樣的薄膜，擅長游泳捕魚，甚至能攀爬樹木追捕獵物！</p>
+            <div class="culture-tip">
+              <strong>💡 旅人視角：</strong>在島上的咖啡館、海灘或黑胡椒農場，常會看見體態精壯、眼神溫和的土著脊背犬。請友善對待牠們，牠們是島民最驕傲的家庭守護神。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 2 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🪵</span>
+            <div>
+              <span class="culture-badge">百年非物質遺產</span>
+              <h3 class="culture-title">天然黑金魚露 (Nước Mắm) 的釀造秘密與飛機禁令</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島魚露被譽為越南第一，關鍵在於使用泰國灣新鮮捕撈的<strong>黑海鯷魚 (Cá Cơm)</strong> 與南部天然粗海鹽，以 <strong>3:1 比例</strong> 裝入巨大的<strong>熱帶相思木桶 (Thùng Gỗ)</strong> 內，自然純手工發酵長達 12 至 15 個月，提煉出琥珀色、蛋白質高達 40°N~43°N 的頂級魚露。</p>
+            <div class="culture-tip warning">
+              <strong>⚠️ 航空搭乘重要禁令：</strong>由於魚露氣味極為強烈且具腐蝕性，<strong>所有航空公司一律禁止隨身攜帶或直接托運一般玻璃瓶裝魚露</strong>！若想帶回台灣，必須在機場免稅店購買專用密封盒，或請工廠代辦官方認證的航空真空寄送。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 3 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">⭐</span>
+            <div>
+              <span class="culture-badge">生態紅線禁忌</span>
+              <h3 class="culture-title">海星沙灘 (Rạch Vẹm) 的生存守則：切勿將海星拿出水面！</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島北部的海星沙灘以淺灘中密布的天然紅色海星聞名。然而，海星透過體表的微小皮鰓呼吸，一旦被遊客抓出水面在烈日下曝曬拍照，<strong>短短數十秒就會導致組織嚴重灼傷甚至脫水窒息死亡</strong>！</p>
+            <div class="culture-tip danger">
+              <strong>🚫 友善守則：</strong>請在水下靜靜觀賞或拍攝，不要觸摸、踩踏、移動海星，更不要將海星疊羅漢拍照。維護這片脆弱海域，讓美麗生態永續。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 4 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">⛩️</span>
+            <div>
+              <span class="culture-badge">島民精神支柱</span>
+              <h3 class="culture-title">海神信仰與「面海背山」的寺廟哲學</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島早期以捕魚為生，在波濤洶湧的泰國灣，漁民面對風浪充滿敬畏。陽東鎮海岬巨石上的<strong>舅舅廟 (Dinh Cậu)</strong> 供奉著海神與水龍聖母，每當漁船出海前，船長必來此點香祈福；而南部的<strong>護國寺 (Chùa Hộ Quốc)</strong> 依山面海，巨龍階梯正對蔚藍汪洋，庇佑全島風調雨順。</p>
+            <div class="culture-tip">
+              <strong>💡 參拜禮儀：</strong>進入寺廟正殿請穿著遮肩過膝的服裝，脫鞋進入，保持肅穆安靜。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 5 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">☕</span>
+            <div>
+              <span class="culture-badge">越南慢活生活美學</span>
+              <h3 class="culture-title">滴漏咖啡與「滿杯冰塊」的哲學</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>越南是全球第二大咖啡出口國，主產濃烈的羅布斯塔（Robusta）咖啡豆。傳統喝法使用鋁製滴漏壺 (Phin)，將濃苦的黑咖啡慢慢滴在杯底厚厚一層甜煉乳上，最後倒入裝滿碎冰塊的高玻璃杯中攪拌。</p>
+            <div class="culture-tip">
+              <strong>☕ 點餐通關密語：</strong>
+              <ul class="clean-list">
+                <li><strong>Cà phê sữa đá (卡啡素搭)：</strong>經典冰煉乳咖啡（濃烈甜香）</li>
+                <li><strong>Cà phê đen đá (卡啡顛搭)：</strong>冰黑咖啡（重度咖啡因，微苦甘醇）</li>
+                <li><strong>Bạc xỉu (博修)：</strong>白咖啡（牛奶煉乳多，咖啡少，適合怕苦的朋友）</li>
+                <li><strong>Cà phê muối (卡啡妹)：</strong>鹽奶蓋咖啡（近期爆紅，鹹甜綿密絕配）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 6 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">💵</span>
+            <div>
+              <span class="culture-badge">消費防坑指南</span>
+              <h3 class="culture-title">越南盾「零太多」防坑術與 Grab 支付秘訣</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>越南盾動輒數十萬、上百萬，鈔票顏色相近（例如 20,000 與 500,000 同樣偏藍色），常常有不肖店家在混亂中多收或少找零。</p>
+            <div class="culture-tip">
+              <strong>💡 聰明防坑 3 招：</strong>
+              <ol class="clean-list">
+                <li><strong>心算口訣：</strong>去尾數 3 個 0，乘以 1.25（或直接打 8 折）。例：100,000 VND 去掉三個零是 100 × 1.25 = 約 125 元台幣。</li>
+                <li><strong>付錢自己數：</strong>切勿將錢包或整疊紙鈔遞給攤販「讓他自己抽」，請在自己手中辨認清楚再交給對方。</li>
+                <li><strong>Grab 綁定信用卡：</strong>全島交通強烈建議使用 Grab APP，上車前價格透明固定，扣款免找零，避免計程車跳表繞路或找不開大鈔的糾紛。</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 7 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🦪</span>
+            <div>
+              <span class="culture-badge">夜市美食精髓</span>
+              <h3 class="culture-title">陽東夜市的「蔥油碎花生烤海膽」與避坑點菜法</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島產海膽（Nhum Biển），在地的靈魂吃法不是生吃，而是剖開後放在炭火上烘烤，淋上滾燙的<strong>香蔥油 (Mỡ hành)</strong> 與<strong>烤花生碎 (Đậu phộng)</strong>，再擠上新鮮金桔汁與特製胡椒鹽，口感濃郁滑嫩、香氣撲鼻！</p>
+            <div class="culture-tip">
+              <strong>💡 點海鮮防坑必備：</strong>點活海鮮（如巨型皮皮蝦、龍蝦、花蟹）務必<strong>先問清楚計價單位是「1 隻」還是「1 公斤 (1 kg)」</strong>，並請店家在眼前過磅瀝水確認價格後再下鍋料理！
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: BUDGET & CALCULATOR ==================== -->
+    <section id="tab-budget" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">BUDGET ESTIMATOR & CONVERTER</span>
+        <h2>7 日行程花費估算與即時匯率換算器</h2>
+        <p class="section-desc">掌握台幣與越南盾支出，清楚分配機票、住宿、樂園門票與海鮮大餐預算。</p>
+      </div>
+
+      <!-- Currency Converter Tool -->
+      <div class="calculator-card">
+        <h3 class="card-title">💱 即時雙向匯率算盤 (實時換算)</h3>
+        <div class="converter-inputs">
+          <div class="input-group">
+            <label for="twdInput">新台幣 (TWD)</label>
+            <div class="input-field-wrap">
+              <span class="currency-symbol">NT$</span>
+              <input type="number" id="twdInput" placeholder="輸入台幣金額" value="1000" min="0">
+            </div>
+          </div>
+
+          <div class="converter-divider">
+            <span class="exchange-rate-pill">1 TWD ≈ <input type="number" id="customRate" value="800" class="rate-input"> VND</span>
+          </div>
+
+          <div class="input-group">
+            <label for="vndInput">越南盾 (VND)</label>
+            <div class="input-field-wrap">
+              <span class="currency-symbol">₫</span>
+              <input type="number" id="vndInput" placeholder="輸入越南盾" value="800000" min="0">
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Reference Matrix -->
+        <div class="quick-matrix">
+          <div class="matrix-item" data-vnd="10000">
+            <span class="matrix-vnd">10,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 12.5</span>
+            <span class="matrix-desc">礦泉水 / 街頭甘蔗汁</span>
+          </div>
+          <div class="matrix-item" data-vnd="35000">
+            <span class="matrix-vnd">35,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 44</span>
+            <span class="matrix-desc">路邊越式法國麵包 Bánh Mì</span>
+          </div>
+          <div class="matrix-item" data-vnd="50000">
+            <span class="matrix-vnd">50,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 62.5</span>
+            <span class="matrix-desc">經典冰煉乳咖啡 / 椰子冰</span>
+          </div>
+          <div class="matrix-item" data-vnd="75000">
+            <span class="matrix-vnd">75,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 94</span>
+            <span class="matrix-desc">道地生牛肉河粉 Phở Bò</span>
+          </div>
+          <div class="matrix-item" data-vnd="250000">
+            <span class="matrix-vnd">250,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 312</span>
+            <span class="matrix-desc">全身精油 SPA 按摩 (1小時)</span>
+          </div>
+          <div class="matrix-item" data-vnd="950000">
+            <span class="matrix-vnd">950,000 ₫</span>
+            <span class="matrix-twd">≈ NT$ 1,188</span>
+            <span class="matrix-desc">VinWonders / Safari 門票</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7-Day Estimated Total Budget Breakdown -->
+      <div class="budget-breakdown-card">
+        <h3 class="card-title">📊 7天6夜 每人預算參考基準 (舒適品質型)</h3>
+        <p class="budget-subtitle">以 2 人同行、雙人房均攤估算（不含個人免稅精品採購）</p>
+
+        <div class="budget-table-responsive">
+          <table class="budget-table">
+            <thead>
+              <tr>
+                <th>項目類別</th>
+                <th>說明內容</th>
+                <th>預估越南盾 (VND)</th>
+                <th>預估台幣 (TWD)</th>
+                <th>佔比</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>✈️ 來回機票</strong></td>
+                <td>星宇/虎航/越捷直飛 (含托運行李)</td>
+                <td>約 9,600,000 ₫</td>
+                <td class="price-highlight">NT$ 12,000</td>
+                <td>35%</td>
+              </tr>
+              <tr>
+                <td><strong>🏨 渡假村住宿</strong></td>
+                <td>6 晚五星海景渡假村均攤 (含早餐)</td>
+                <td>約 9,600,000 ₫</td>
+                <td class="price-highlight">NT$ 12,000</td>
+                <td>35%</td>
+              </tr>
+              <tr>
+                <td><strong>🎟️ 樂園與行程門票</strong></td>
+                <td>Safari+VinWonders雙園票、跨海纜車+水上樂園、跳島快艇、海洋之吻秀</td>
+                <td>約 3,600,000 ₫</td>
+                <td class="price-highlight">NT$ 4,500</td>
+                <td>13%</td>
+              </tr>
+              <tr>
+                <td><strong>🍲 餐飲與夜市海鮮</strong></td>
+                <td>每日三餐、海星沙灘高腳屋、日落咖啡廳、夜市海鮮大餐</td>
+                <td>約 3,200,000 ₫</td>
+                <td class="price-highlight">NT$ 4,000</td>
+                <td>12%</td>
+              </tr>
+              <tr>
+                <td><strong>🚗 島內交通與接送</strong></td>
+                <td>機場接送、Grab 叫車、包車與租車</td>
+                <td>約 800,000 ₫</td>
+                <td class="price-highlight">NT$ 1,000</td>
+                <td>3%</td>
+              </tr>
+              <tr>
+                <td><strong>💆 SPA水療與雜支</strong></td>
+                <td>2 次放鬆按摩、eSIM 上網卡、小費與胡椒伴手禮</td>
+                <td>約 1,200,000 ₫</td>
+                <td class="price-highlight">NT$ 1,500</td>
+                <td>4%</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"><strong>💰 預估每人總計 (舒適豪華)</strong></td>
+                <td><strong>約 28,000,000 ₫</strong></td>
+                <td class="total-price">約 NT$ 35,000</td>
+                <td>100%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: VIETNAMESE PHRASES ==================== -->
+    <section id="tab-phrases" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">SURVIVAL PHRASES</span>
+        <h2>富國島自由行必備實用語音句典</h2>
+        <p class="section-desc">點擊 🔊 喇叭按鈕即可直接發音朗讀（支援在地真人腔調發音），點擊卡片可快速複製。</p>
+      </div>
+
+      <div class="phrases-filter-bar">
+        <button class="phrase-filter active" data-filter="all">全部會話</button>
+        <button class="phrase-filter" data-filter="order">🍲 點餐飲食</button>
+        <button class="phrase-filter" data-filter="taxi">🚗 叫車交通</button>
+        <button class="phrase-filter" data-filter="shopping">🛍️ 購物殺價</button>
+        <button class="phrase-filter" data-filter="emergency">🆘 求助急難</button>
+      </div>
+
+      <div class="phrases-grid" id="phrasesContainer">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 5: CHECKLIST ==================== -->
+    <section id="tab-checklist" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">PACKING CHECKLIST</span>
+        <h2>富國島海島渡假必備行李打包清單</h2>
+        <p class="section-desc">系統會自動保存您的勾選進度（儲存於手機瀏覽器），確保行前萬無一失！</p>
+      </div>
+
+      <div class="checklist-progress-card">
+        <div class="progress-info">
+          <span class="progress-title">打包完成度</span>
+          <span id="packProgressText" class="progress-percentage">0%</span>
+        </div>
+        <div class="progress-track">
+          <div id="packProgressBar" class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <div class="checklist-controls">
+          <button id="btnCheckAll" class="btn-sm">全部勾選</button>
+          <button id="btnUncheckAll" class="btn-sm secondary">全部重置</button>
+        </div>
+      </div>
+
+      <div class="checklist-categories" id="checklistContainer">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 6: EMERGENCY & MUST-KNOW ==================== -->
+    <section id="tab-emergency" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">SAFETY & ESSENTIALS</span>
+        <h2>緊急求助專線與行前必知重要守則</h2>
+        <p class="section-desc">在外自由行安全第一，將急難聯絡電話與醫院資訊存在手機隨時備用。</p>
+      </div>
+
+      <div class="emergency-cards-grid">
+        
+        <!-- Taiwan Office Card -->
+        <div class="emergency-card urgent">
+          <div class="em-header">
+            <span class="em-icon">🇹🇼</span>
+            <div>
+              <h3>駐胡志明市台北經濟文化辦事處</h3>
+              <p>Taipei Economic and Cultural Office in HCMC (急難救助)</p>
+            </div>
+          </div>
+          <div class="em-body">
+            <div class="em-item">
+              <span class="em-lbl">24H 急難救助電話：</span>
+              <a href="tel:+84903927019" class="em-link font-mono">+84-903-927-019</a>
+              <span class="em-sub">(越南境內撥打直撥：0903-927-019)</span>
+            </div>
+            <div class="em-item">
+              <span class="em-lbl">辦事處總機電話：</span>
+              <a href="tel:+842838349160" class="em-link font-mono">+84-28-3834-9160</a>
+            </div>
+            <div class="em-item">
+              <span class="em-lbl">地址：</span>
+              <span>336 Nguyen Tri Phuong St., Dist. 10, Ho Chi Minh City</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hospital Card -->
+        <div class="emergency-card">
+          <div class="em-header">
+            <span class="em-icon">🏥</span>
+            <div>
+              <h3>富國島 Vinmec 國際綜合醫院</h3>
+              <p>Vinmec Phu Quoc International Hospital (全島最高規格國際醫院，有英文醫療)</p>
+            </div>
+          </div>
+          <div class="em-body">
+            <div class="em-item">
+              <span class="em-lbl">急診 24H 專線：</span>
+              <a href="tel:+842973985588" class="em-link font-mono">+84-297-398-5588</a>
+            </div>
+            <div class="em-item">
+              <span class="em-lbl">地址：</span>
+              <span>Bãi Dài, Xã Gành Dầu, Thành phố Phú Quốc (近北島野生動物園)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local Police & Ambulance -->
+        <div class="emergency-card">
+          <div class="em-header">
+            <span class="em-icon">📞</span>
+            <div>
+              <h3>越南官方緊急通報直撥電話</h3>
+              <p>無需加國碼，當地 SIM 卡直接撥打</p>
+            </div>
+          </div>
+          <div class="em-body">
+            <div class="em-grid-numbers">
+              <div class="num-box">
+                <span class="num-title">警察局 (報案)</span>
+                <a href="tel:113" class="num-val font-mono">113</a>
+              </div>
+              <div class="num-box">
+                <span class="num-title">火警 (消防)</span>
+                <a href="tel:114" class="num-val font-mono">114</a>
+              </div>
+              <div class="num-box">
+                <span class="num-title">救護車 (急救)</span>
+                <a href="tel:115" class="num-val font-mono">115</a>
+              </div>
+              <div class="num-box">
+                <span class="num-title">富國機場服務台</span>
+                <a href="tel:+842973848078" class="num-val font-mono">+84 297 3848 078</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visa Exemption Notice Card -->
+        <div class="emergency-card info">
+          <div class="em-header">
+            <span class="em-icon">🛂</span>
+            <div>
+              <h3>富國島 30 天免簽證注意事項</h3>
+              <p>台灣護照適用（直飛直達政策）</p>
+            </div>
+          </div>
+          <div class="em-body">
+            <ul class="em-list">
+              <li><strong>必備條件 1：</strong>護照效期需滿 6 個月以上。</li>
+              <li><strong>必備條件 2：</strong>必須持有 30 天內<strong>離開富國島之有效回程機票或第三國機票</strong>。</li>
+              <li><strong>必備條件 3：</strong>必須由台灣直飛富國島機場 (PQC)，或經由國際線在富國島轉機；<strong>不得自行前往越南本島</strong>（如胡志明市、河內、峴港），否則需事先辦理越南一般電子簽證 (E-Visa)。</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Mobile Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="bottom-nav-item active" data-tab="itinerary">
+      <span class="b-icon">🗺️</span>
+      <span class="b-text">行程</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="culture">
+      <span class="b-icon">🏝️</span>
+      <span class="b-text">文化</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="budget">
+      <span class="b-icon">💱</span>
+      <span class="b-text">換算</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="phrases">
+      <span class="b-icon">🗣️</span>
+      <span class="b-text">會話</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="checklist">
+      <span class="b-icon">✅</span>
+      <span class="b-text">清單</span>
+    </button>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>🌴 祝您富國島 7 天 6 夜旅途愉快！享受陽光、沙灘與迷人日落。</p>
+      <p class="copyright">Designed for Taiwan Travelers • Pure Static Fast & Responsive Web Guide</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
