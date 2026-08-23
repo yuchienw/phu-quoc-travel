@@ -827,6 +827,7 @@ function initDayFilters() {
       dayPills.forEach(p => p.classList.remove("active"));
       pill.classList.add("active");
       currentDayFilter = pill.dataset.day;
+      pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       renderSpots();
     });
   });
@@ -879,7 +880,7 @@ function renderSpots() {
   let lastDay = null;
 
   filteredSpots.forEach(spot => {
-    if (spot.day !== lastDay && currentDayFilter === "all") {
+    if (spot.day !== lastDay) {
       lastDay = spot.day;
       html += `
         <div class="day-section-header">
