@@ -1,10 +1,10 @@
 /**
- * 富國島 7 天 6 夜極致自由行手冊 (2026/10/12 - 10/18)
- * 嚴格依照 reference/富國島_20261012-1018_7天6夜行程-2.xlsx 完整規格客製化
+ * 富國島 7 天 6 夜極致自由行手冊
+ * 行程參考自規劃行程，費用依據 2026 即時市場行情報價全面更新
  */
 
 // ==========================================
-// 1. DATA: 7-DAY EXACT ITINERARY (10/12 - 10/18)
+// 1. DATA: 7-DAY ITINERARY WITH REAL-TIME COSTS
 // ==========================================
 const ITINERARY_DATA = [
   // ---------- DAY 1: 10/12 (一) 中部 ----------
@@ -14,14 +14,14 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "桃園機場 (TPE) ✈ 富國島機場 (PQC)",
     nameVn: "Sun PhuQuoc Airways 9G 511 (直飛免簽)",
-    costVnd: "包含於機票",
-    costTwd: "Sun PhuQuoc Airways 9G 511",
-    transport: "班機 Sun PhuQuoc Airways 9G 511 (17:35 台北起飛 ➔ 20:25 抵達富國島)",
+    costVnd: "機票即時行情",
+    costTwd: "直飛來回約 NT$ 12,000",
+    transport: "直飛航班 Sun PhuQuoc Airways 9G 511 (17:35 TPE ➔ 20:25 PQC)",
     address: "Tổ 2, Ấp Dương Tơ, Xã Dương Tơ, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3848 078",
     openingHours: "24 小時營運",
-    description: "搭乘 Sun PhuQuoc Airways 直飛航班抵達富國島。持有台灣護照享「直飛 30 天免簽證」待遇，直接排隊出示 6 個月以上效期護照與 30 天內離境機票確認單即可蓋章通關。出關後於機場大廳領取/購買當地上網 SIM 卡，並可先小額換匯（主要換匯建議至陽東市區珠寶銀樓，匯率更佳）。",
-    tips: "💡 免簽政策：免簽蓋章僅限富國島境內停留，切勿自行前往越南本島。隨身帶好回程機票行程單。",
+    description: "搭乘直飛航班抵達富國島國際機場。台灣護照享有「直飛富國島 30 天免簽證」待遇，出示 6 個月以上效期護照與 30 天內離境機票行程單即可蓋章通關。出關後領取/購買 eSIM，並可於機場或市區銀樓換匯。",
+    tips: "💡 免簽政策：免簽章僅限富國島境內停留，切勿自行前往越南本島。隨身帶好回程機票行程單以備查驗。",
     mapsQuery: "Phu Quoc International Airport"
   },
   {
@@ -30,30 +30,30 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "中部安富飯店 Check-in 放行李",
     nameVn: "Khách sạn An Phú (An Phu Hotel)",
-    costVnd: "約 680,000 ₫ / 晚",
-    costTwd: "參考房價約 NT$ 850 / 晚",
-    transport: "機場搭乘 Grab 或計程車前往陽東市區（車程約 15 分鐘）",
+    costVnd: "即時房價約 640,000 ~ 750,000 ₫",
+    costTwd: "約 NT$ 800 ~ 940 / 晚",
+    transport: "機場搭乘 Grab 專車直達（車資約 120,000 ₫ / 約 NT$ 150）",
     address: "Đường 30 Tháng 4, Phường Dương Đông, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3988 989",
     openingHours: "24 小時前台服務",
-    description: "第一晚約 20:25 抵達，選擇入住中部陽東鎮核心區域的「安富飯店 (An Phu Hotel)」，地理位置絕佳、離機場近且性價比極高。辦理入住後卸下沉重行李，輕鬆展開夜間行程。",
-    tips: "💡 飯店步行至陽東夜市僅需 5~8 分鐘，隔天一早往北部 Grand World 移動非常便利！",
+    description: "第一晚約 20:25 抵達，選擇入住中部陽東鎮核心區域的「安富飯店 (An Phu Hotel)」，離機場僅 15 分鐘，性價比極高。辦理入住後卸下沉重行李，即可步行出發逛夜市吃宵夜。",
+    tips: "💡 飯店步行至陽東夜市僅需 5~8 分鐘，隔天一早往北部移動非常便利！",
     mapsQuery: "An Phu Hotel Phu Quoc 30 Thang 4"
   },
   {
     day: 1,
     time: "21:30 - 23:30",
     category: "美食",
-    nameZh: "陽東夜市道地晚餐 & 珠寶店內換匯",
+    nameZh: "陽東夜市海鮮晚餐 & 珠寶店換匯",
     nameVn: "Chợ Đêm Phú Quốc & Tiệm Vàng Đổi Ngoại Tệ",
-    costVnd: "晚餐約 250,000 ~ 500,000 ₫ / 人",
-    costTwd: "約 NT$ 310 ~ 625",
-    transport: "自安富飯店步行約 5 分鐘即達夜市入口",
+    costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
+    costTwd: "約 NT$ 310 ~ 560",
+    transport: "自飯店步行約 5 分鐘即達夜市入口",
     address: "54 Đường Nguyễn Trãi, Khu Phố 1, Dương Đông, Phú Quốc",
     phone: "+84 297 3846 123",
     openingHours: "17:00 - 23:30",
-    description: "抵達富國島的第一頓海島宵夜！漫步於熱鬧非凡的陽東夜市，必吃：香蔥花生烤海膽 (Nhum nướng mỡ hành)、越式炒冰捲 (Kem Cuộn)、巨型現烤大頭蝦與越式法國麵包。夜市週邊的知名珠寶金銀店（Tiệm Vàng）提供美金新鈔或台幣換匯服務，匯率通常比機場優渥許多。",
-    tips: "💡 換匯秘訣：攜帶 2013 年後發行、無折痕無污漬的百元美金新鈔，能換到最漂亮的匯率！點秤重海鮮記得先確認每公斤（1kg）價格。",
+    description: "抵達富國島的第一頓海島宵夜！漫步於熱鬧非凡的陽東夜市，必吃：香蔥花生烤海膽 (約 35k~50k ₫/顆)、越式炒冰捲 (約 35k ₫)、現烤大頭蝦與越式法國麵包。夜市週邊知名珠寶銀樓（Tiệm Vàng）提供美金或台幣換匯服務，匯率通常比機場優渥。",
+    tips: "💡 換匯秘訣：攜帶 2013 年後發行、無折痕的百元美金新鈔換匯最划算！點秤重活海鮮記得先確認每公斤（1kg）單價。",
     mapsQuery: "Phu Quoc Night Market Cho Dem"
   },
 
@@ -62,16 +62,16 @@ const ITINERARY_DATA = [
     day: 2,
     time: "08:30 - 09:30",
     category: "交通",
-    nameZh: "飯店早餐、Check-out ➔ 移動至北部渡假區",
+    nameZh: "早餐、Check-out ➔ 往北部渡假區移動",
     nameVn: "Di chuyển từ Dương Đông lên Bắc Đảo (Grand World)",
-    costVnd: "Grab 約 250,000 ₫ 或搭免費 VinBus",
-    costTwd: "Grab 約 NT$ 310 / VinBus 免費",
-    transport: "搭乘 Grab 專車或至站牌搭乘免費綠色 VinBus 電動公車北上",
+    costVnd: "Grab 約 280,000 ₫ 或搭免費 VinBus",
+    costTwd: "Grab 約 NT$ 350 / VinBus 免費",
+    transport: "搭乘 Grab 專車或搭乘免費綠色 VinBus 電動公車北上",
     address: "Khu Bãi Dài, Xã Gành Dầu, TP. Phú Quốc",
-    phone: "VinBus Hotline: 1900 866 663",
-    openingHours: "VinBus 全天營運",
-    description: "享用悠閒早餐後辦理退房，由中部陽東鎮啟程往北島移動。沿途欣賞富國島國家公園熱帶林相，約 35 分鐘即可抵達富國大世界溫德姆花園飯店。",
-    tips: "💡 手機下載「VinBus APP」，可即時查看公車路線與到站動態，北島區域內全線免費搭乘！",
+    phone: "VinBus: 1900 866 663",
+    openingHours: "全天營運",
+    description: "享用悠閒早餐後辦理退房，由中部陽東鎮啟程往北島移動。車程約 35 分鐘即可抵達富國大世界溫德姆花園飯店。",
+    tips: "💡 手機可下載「VinBus APP」，即時查詢免費公車路線與到站動態！",
     mapsQuery: "Wyndham Garden Grandworld Phu Quoc"
   },
   {
@@ -80,30 +80,30 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "溫德姆花園飯店 Check-in 寄放行李 (連住 2 晚)",
     nameVn: "Wyndham Garden Grandworld Phu Quoc",
-    costVnd: "約 1,680,000 ₫ / 晚",
-    costTwd: "參考房價約 NT$ 2,100 / 晚",
+    costVnd: "即時房價約 1,450,000 ~ 1,850,000 ₫",
+    costTwd: "約 NT$ 1,800 ~ 2,300 / 晚",
     transport: "抵達飯店大廳",
     address: "Khu Grand World, Bãi Dài, Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3636 555",
     openingHours: "24 小時服務",
-    description: "入住座落於富國大世界園區內的「溫德姆花園飯店 (Wyndham Garden Grandworld)」，連住 2 晚免除每天搬行李困擾。飯店緊鄰大世界運河街區，步行 3 分鐘即達商圈，前往 Safari 動物園與 VinWonders 樂園車程僅需 5~10 分鐘。",
-    tips: "💡 先在櫃檯寄存大件行李，輕裝出發前往 Safari 動物園！",
+    description: "入住座落於富國大世界園區內的「溫德姆花園飯店 (Wyndham Garden Grandworld)」，連住 2 晚免除每天換飯店的麻煩。步行 3 分鐘即達大世界運河商圈，前往 Safari 動物園與 VinWonders 樂園車程僅需 5~10 分鐘。",
+    tips: "💡 先在櫃檯寄加大件行李，輕裝出發前往 Safari 動物園！",
     mapsQuery: "Wyndham Garden Grandworld Phu Quoc"
   },
   {
     day: 2,
     time: "10:00 - 16:00",
     category: "樂園",
-    nameZh: "Vinpearl Safari 野生動物園 (搭遊園巴士・長頸鹿餵食午餐・飛禽表演)",
+    nameZh: "Vinpearl Safari 野生動物園 (搭猛獸巴士・長頸鹿餵食午餐・飛禽表演)",
     nameVn: "Vinpearl Safari Phú Quốc & Giraffe Restaurant",
-    costVnd: "全票約 850,000 ₫ (60歲以上長者約 650,000 ₫)；長頸鹿飼料 30,000 ₫",
+    costVnd: "全票約 850,000 ₫ (長者約 650,000 ₫)；長頸鹿飼料 30,000 ₫",
     costTwd: "全票約 NT$ 1,060 (長者約 NT$ 810)；飼料約 NT$ 38",
-    transport: "搭乘飯店/大世界免費接駁車或 Grab (約 8 分鐘)",
+    transport: "搭乘免費接駁車或 Grab (約 8 分鐘)",
     address: "Bãi Dài, Xã Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3636 699",
     openingHours: "08:30 - 16:00 (16:00 閉園)",
-    description: "越南規模最大的開放式野生動物園！精采規劃：① 先搭乘特製防彈 Safari Bus 深入猛獸野生放養區，近距離觀察孟加拉虎、非洲獅、白犀牛與斑馬；② 前往「長頸鹿餐廳 (Giraffe Restaurant)」購買紅蘿蔔與長頸鹿零距離餵食合照，並在此享用美味午餐；③ 走進互動區近距離觀賞環尾狐猴；④ 觀賞精彩的「飛禽表演秀 (Bird Show)」（固定演出時段：10:00 與 14:00）。",
-    tips: "💡 建議使用 KKday 購買雙園套票更划算！長頸鹿上午食慾最旺盛，記得提早卡位互動。",
+    description: "越南規模最大的開放式野生動物園！重點體驗：① 搭乘特製防彈 Safari Bus 深入猛獸野生放養區，近距離觀察孟加拉虎、非洲獅、白犀牛與斑馬；② 前往「長頸鹿餐廳 (Giraffe Restaurant)」購買紅蘿蔔與長頸鹿零距離餵食合照，並在此享用美味午餐；③ 走進互動區近距離觀賞環尾狐猴；④ 觀賞精彩的「飛禽表演秀 (Bird Show)」（固定演出時段：10:00 與 14:00）。",
+    tips: "💡 建議購買 Safari + VinWonders 雙園套票（約 1,500,000 ₫ / NT$1,875），長頸鹿上午食慾最好，建議早點前往互動！",
     mapsQuery: "Vinpearl Safari Phu Quoc"
   },
   {
@@ -114,22 +114,22 @@ const ITINERARY_DATA = [
     nameVn: "Nghỉ ngơi tại Wyndham Garden Grandworld",
     costVnd: "包含於房費",
     costTwd: "已含",
-    transport: "搭乘免費接駁車返回飯店",
+    transport: "搭乘接駁車返回飯店",
     address: "Wyndham Garden Grandworld Phu Quoc",
     phone: "+84 297 3636 555",
     openingHours: "隨時",
-    description: "結束豐富的動物園探索後，返回飯店進房正式 Check-in，吹冷氣洗去熱氣、稍作小憩充電，為晚上的大世界威尼斯不夜城儲備體力。",
-    tips: "💡 飯店提供泳池設施，可在此時段放鬆泡水。",
+    description: "結束動物園行程後返回飯店正式進房，吹冷氣小憩、使用飯店泳池設施，為晚上的大世界威尼斯不夜城儲備體力。",
+    tips: "💡 飯店提供室外泳池，傍晚非常適合放鬆消暑。",
     mapsQuery: "Wyndham Garden Grandworld Phu Quoc"
   },
   {
     day: 2,
     time: "18:30 - 22:30",
     category: "景點",
-    nameZh: "Grand World 富國大世界晚餐 ➔ 竹林傳奇 ➔ 21:00 威尼斯水上聲光秀",
+    nameZh: "Grand World 富國大世界晚餐 ➔ 竹林傳奇 ➔ 21:00 威尼斯水上光影秀",
     nameVn: "Grand World Phú Quốc & Show Sắc Màu Venice",
-    costVnd: "街區參觀與水舞秀完全免費；晚餐約 250,000 ~ 450,000 ₫",
-    costTwd: "秀免費；晚餐約 NT$ 310 ~ 560",
+    costVnd: "街區與水上光影秀完全免費；晚餐約 250,000 ~ 400,000 ₫",
+    costTwd: "秀免費；晚餐約 NT$ 310 ~ 500",
     transport: "自飯店步行 3 分鐘即達大世界運河核心區",
     address: "Grand World, Khu Bãi Dài, Gành Dầu, Phú Quốc",
     phone: "+84 297 3737 373",
@@ -144,16 +144,16 @@ const ITINERARY_DATA = [
     day: 3,
     time: "09:00 - 19:30",
     category: "樂園",
-    nameZh: "VinWonders 珍珠島水陸主題樂園 (海龜水族館・美人魚秀・餵食秀)",
+    nameZh: "VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀・餵食秀・閉幕秀)",
     nameVn: "VinWonders Phú Quốc (Disneyland Việt Nam)",
-    costVnd: "全票約 950,000 ₫ (長者約 710,000 ₫) 或雙園套票約 1,500,000 ₫",
-    costTwd: "全票約 NT$ 1,180 (長者約 NT$ 880) / 雙園套票約 NT$ 1,875",
+    costVnd: "單票約 950,000 ₫ (長者約 710,000 ₫) / 雙園套票約 1,500,000 ₫",
+    costTwd: "單票約 NT$ 1,180 / 雙園套票約 NT$ 1,875",
     transport: "搭乘免費 VinBus 或大世界接駁車（約 5 分鐘車程）",
     address: "Khu Bãi Dài, Xã Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3737 373",
     openingHours: "09:00 - 19:30 (19:30 閉園)",
-    description: "暢遊被譽為「越南迪士尼」的夢幻主題樂園！園內重點攻略：① 打卡世界五大巨型海龜造型「海王宮殿水族館 (The Sea Shell)」；② 11:00 與 15:00 魚群餵食秀；③ 14:00 優雅夢幻的美人魚秀 (Mermaid Show)；④ 園內主題餐廳享用午餐；⑤ 體驗各大室內外主題陸上遊樂設施（註：本行程專注於水族館與陸樂園，不安排 Aquatopia 水上滑水道）；⑥ 18:45 觀賞城堡前華麗震撼的閉幕光影秀「ONCE Show」。",
-    tips: "💡 建議入園前先使用 KKday 折扣碼「FU7TRAVE94」預訂雙園套票。水族館冷氣非常舒適，非常適合午後避暑！",
+    description: "暢遊被譽為「越南迪士尼」的夢幻主題樂園！重點攻略：① 打卡世界五大巨型海龜造型「海王宮殿水族館 (The Sea Shell)」；② 11:00 與 15:00 魚群餵食秀；③ 14:00 優雅夢幻的美人魚秀 (Mermaid Show)；④ 園內主題餐廳享用午餐；⑤ 體驗各大室內外主題陸上遊樂設施（註：本行程專注於水族館與陸樂園，不安排水上樂園滑水道）；⑥ 18:45 觀賞城堡前華麗震撼的閉幕光影秀「ONCE Show」。",
+    tips: "💡 建議購買雙園套票更划算！水族館內冷氣極佳，是午後避暑的最佳去處。",
     mapsQuery: "VinWonders Phu Quoc Sea Shell"
   },
   {
@@ -162,13 +162,13 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "Grand World 大世界特色晚餐 & 越式舒壓按摩 SPA",
     nameVn: "Ăn tối & Massage thư giãn tại Grand World",
-    costVnd: "按摩 60分鐘約 250,000 ~ 400,000 ₫；晚餐約 300,000 ₫",
-    costTwd: "按摩約 NT$ 310 ~ 500；晚餐約 NT$ 375",
+    costVnd: "60分鐘全身按摩約 250,000 ~ 380,000 ₫；晚餐約 280,000 ₫",
+    costTwd: "按摩約 NT$ 310 ~ 475；晚餐約 NT$ 350",
     transport: "自樂園搭車返回大世界街區",
     address: "Grand World Phú Quốc, Gành Dầu",
-    phone: "各大世界 SPA 店面",
+    phone: "各大世界正規 SPA 館",
     openingHours: "營業至 23:30",
-    description: "結束樂園一整天的歡樂行程，回到大世界運河旁挑選一家氣氛絕佳的海鮮燒烤或越式料理享用晚餐。餐後安排一場道地的越式全身草藥精油按摩或足底按摩，徹底釋放雙腿疲勞，回溫德姆花園飯店享受甜美睡眠。",
+    description: "結束樂園一整天的歡樂行程，回到大世界運河旁挑選一家氣氛絕佳的海鮮餐廳享用晚餐。餐後安排一場道地的越式全身草藥精油按摩或足底按摩，徹底釋放雙腿疲勞，回溫德姆花園飯店享受甜美睡眠。",
     tips: "💡 大世界商圈有多家正規透明的 SPA 按摩館，入店前可先確認價目表包含的小費規範。",
     mapsQuery: "Grand World Phu Quoc"
   },
@@ -178,16 +178,16 @@ const ITINERARY_DATA = [
     day: 4,
     time: "09:00 - 10:30",
     category: "交通",
-    nameZh: "飯店早餐、Check-out ➔ 一路往南前往日落小鎮 (Sunset Town)",
+    nameZh: "早餐、Check-out ➔ 一路往南前往日落小鎮 (Sunset Town)",
     nameVn: "Di chuyển từ Bắc Đảo xuống Nam Đảo (Sunset Town)",
-    costVnd: "Grab 專車約 450,000 ~ 600,000 ₫ 或包車",
-    costTwd: "約 NT$ 560 ~ 750 (全車均攤)",
+    costVnd: "Grab 專車約 480,000 ~ 580,000 ₫",
+    costTwd: "約 NT$ 600 ~ 725 (全車均攤)",
     transport: "預約 Grab 專車由北島直達南島日落小鎮（車程約 50 分鐘）",
     address: "Thị trấn Hoàng Hôn (Sunset Town), An Thới, Phú Quốc",
     phone: "各飯店前台專線",
     openingHours: "隨時出發",
     description: "在溫德姆花園飯店享用豐盛早餐後辦理退房，準備「一路往南」！南島是富國島最浪漫的地中海風情核心區，著名的親吻橋、跨海纜車與海洋之吻秀皆匯聚於此。",
-    tips: "💡 南下途中可請司機順路停靠沿途拍照點，約 10:00 前抵達日落小鎮辦理行李寄放。",
+    tips: "💡 約 10:00 前抵達日落小鎮辦理行李寄放，即可展開地中海街區漫步。",
     mapsQuery: "Sunset Town Phu Quoc An Thoi"
   },
   {
@@ -195,14 +195,14 @@ const ITINERARY_DATA = [
     time: "10:30 - 11:30",
     category: "交通",
     nameZh: "南部日落小鎮飯店 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Nhận phòng khách sạn Sunset Town (La Festa Phu Quoc)",
-    costVnd: "依預訂飯店而定",
-    costTwd: "連住南部 2 晚 (Sunset Town)",
+    nameVn: "Nhận phòng khách sạn Sunset Town (La Festa Phu Quoc / 精選海景飯店)",
+    costVnd: "即時房價約 1,350,000 ~ 2,500,000 ₫",
+    costTwd: "約 NT$ 1,680 ~ 3,125 / 晚",
     transport: "抵達日落小鎮飯店",
     address: "Thị trấn Hoàng Hôn, Bãi Đất Đỏ, An Thới, Phú Quốc",
     phone: "飯店前台",
     openingHours: "24 小時服務",
-    description: "入住南部地中海日落小鎮（可考慮希爾頓格芮精選 La Festa Phu Quoc 或週邊特色海景渡假酒店）。連住南部 2 晚的最大優勢在於：欣賞完夜間大秀與煙火後，可直接步行回到飯店，無需在深夜排隊叫車！",
+    description: "入住南部地中海日落小鎮海景飯店（如 La Festa Phu Quoc 或週邊特色海景酒店）。連住南部 2 晚的最大優勢在於：欣賞完夜間大秀與煙火後，可直接步行回到飯店，無需在深夜排隊叫車！",
     tips: "💡 寄放行李後即可漫步出門探索地中海風情街道。",
     mapsQuery: "La Festa Phu Quoc Curio Collection by Hilton"
   },
@@ -212,8 +212,8 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "日落小鎮 Sunset Town 海景午餐 & 漫步彩色阿瑪菲街區",
     nameVn: "Ăn trưa view biển & Dạo phố Địa Trung Hải",
-    costVnd: "午餐約 200,000 ~ 400,000 ₫ / 人",
-    costTwd: "約 NT$ 250 ~ 500",
+    costVnd: "午餐約 180,000 ~ 350,000 ₫ / 人",
+    costTwd: "約 NT$ 225 ~ 440",
     transport: "小鎮內悠閒步行",
     address: "Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "各餐廳現場",
@@ -228,13 +228,13 @@ const ITINERARY_DATA = [
     category: "景點",
     nameZh: "Kiss Bridge 親吻橋 ➔ 漫步踏海・絕美日落餘暉合影",
     nameVn: "Cầu Hôn (Kiss Bridge) ngắm hoàng hôn",
-    costVnd: "門票依當日票制/套票規範 (常有優惠或含於套票)",
+    costVnd: "單買約 100,000 ₫ (常含於套票)",
     costTwd: "約 NT$ 125",
     transport: "自小鎮廣場沿海濱步道步行 3 分鐘",
     address: "Cầu Hôn, Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "+84 886 045 888",
     openingHours: "07:00 - 22:00",
-    description: "由義大利建築大師 Marco Casamonti 精心設計的富國島世紀地標「吻橋 (Kiss Bridge)」！兩座橋身自南北兩側優雅伸向大海，在海中央僅相隔 30 公分。傍晚 17:00~17:45，火紅的夕陽恰好落在雙橋指尖縫隙之間，海風徐徐、金光波光粼粼，浪漫無比。",
+    description: "由義大利建築大師設計的富國島世紀地標「吻橋 (Kiss Bridge)」！兩座橋身自南北兩側優雅伸向大海，在海中央僅相隔 30 公分。傍晚 17:00~17:45，火紅的夕陽恰好落在雙橋指尖縫隙之間，海風徐徐、金光波光粼粼，浪漫無比。",
     tips: "💡 站在北橋與南橋交會點，利用手機長焦鏡頭借位拍出親吻夕陽的經典剪影照片！",
     mapsQuery: "Kiss Bridge Phu Quoc Cau Hon"
   },
@@ -244,13 +244,13 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "Sunset Town 海景餐廳晚餐 & 海濱夜市自由漫遊",
     nameVn: "Ăn tối nhà hàng ven biển & Chợ đêm Vui-Fest",
-    costVnd: "晚餐約 300,000 ~ 600,000 ₫ / 人",
-    costTwd: "約 NT$ 375 ~ 750",
+    costVnd: "晚餐約 250,000 ~ 500,000 ₫ / 人",
+    costTwd: "約 NT$ 310 ~ 625",
     transport: "小鎮內漫步",
     address: "Bờ biển Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "各海景餐廳現場",
     openingHours: "17:00 - 23:00",
-    description: "優先選擇靠海露天座位餐廳享用晚餐，伴隨海浪聲品嚐新鮮海鮮與熱帶飲品。餐後漫步於全越首座海濱文青夜市「Vui-Fest Bazaar」，欣賞街頭打擊樂秀與文創手作市集，享受愜意的海島夜晚。",
+    description: "優先選擇靠海露天座位餐廳享用晚餐，伴隨海浪聲品嚐新鮮海鮮與熱帶飲品。餐後漫步於海濱文青夜市「Vui-Fest Bazaar」，欣賞街頭打擊樂秀與文創手作市集，享受愜意的海島夜晚。",
     tips: "💡 今晚早點休息，為隔天最精彩的世界最長纜車與海之吻大秀做好準備！",
     mapsQuery: "Vui-Fest Bazaar Sunset Town"
   },
@@ -262,14 +262,14 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "Hon Thom 香島跨海纜車 (全世界最長跨海纜車) ➔ 太陽世界香島公園",
     nameVn: "Cáp treo Hòn Thơm (Dài nhất thế giới) & Sun World",
-    costVnd: "纜車票約 850,000 ₫ (依當期優惠)",
-    costTwd: "約 NT$ 1,060",
+    costVnd: "來回纜車票即時行情約 650,000 ~ 850,000 ₫",
+    costTwd: "約 NT$ 810 ~ 1,060",
     transport: "步行至日落小鎮安泰纜車站 (Ga Ánh Dương)",
     address: "Bãi Đất Đỏ, Phường An Thới, TP. Phú Quốc, Kiên Giang",
     phone: "+84 886 045 888",
     openingHours: "纜車營運時段：09:00-11:30 , 13:30-17:00 (中午暫停保養)",
     description: "搭乘獲金氏世界紀錄認證「全球最長三線跨海纜車」（全長 7,899 公尺，單程約 20 分鐘）！360度全景玻璃車廂凌空飛越安泰群島，俯瞰無數彩色漁船與碧綠珊瑚海灣。抵達香島（Hon Thom）後漫步於太陽世界香島自然公園，享受熱帶海島植被與海風景觀（註：本行程以搭纜車與景觀漫遊為主，不安排水上活動）。",
-    tips: "💡 務必留意纜車營運時間（09:00-11:30，下午 13:30-17:00），上午搭乘可避開午後排隊人潮！",
+    tips: "💡 務必留意纜車營運時間（上午 09:00-11:30，下午 13:30-17:00），上午搭乘可避開午後排隊人潮！",
     mapsQuery: "Sun World Hon Thom Cable Car Station An Thoi"
   },
   {
@@ -278,14 +278,14 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "返回 Sunset Town 享用午餐 ➔ 飯店吹冷氣休息充電",
     nameVn: "Trở về Sunset Town ăn trưa & Nghỉ ngơi",
-    costVnd: "午餐約 150,000 ~ 300,000 ₫ / 人",
-    costTwd: "約 NT$ 180 ~ 375",
+    costVnd: "午餐約 150,000 ~ 280,000 ₫ / 人",
+    costTwd: "約 NT$ 180 ~ 350",
     transport: "搭乘纜車返回日落小鎮",
     address: "Thị trấn Hoàng Hôn, An Thới",
     phone: "飯店前台",
     openingHours: "隨時",
     description: "搭乘纜車返回日落小鎮本島，在小鎮內享用可口午餐後返回飯店吹冷氣休息、小憩補眠。由於今晚有連續兩場頂級大秀與煙火表演，下午充分休息能確保夜間擁有最棒的精神享受演出！",
-    tips: "💡 請先確認手機內 KKday 憑證已下載好今晚 19:00 與 21:00 的電子門票。",
+    tips: "💡 請先確認手機內電子門票憑證已下載好今晚 19:00 與 21:00 的入場 QR Code。",
     mapsQuery: "Sunset Town Phu Quoc"
   },
   {
@@ -294,8 +294,8 @@ const ITINERARY_DATA = [
     category: "景點",
     nameZh: "Kiss Bridge 親吻橋 ➔ 夕陽暮光 ➔ 浪漫晚餐",
     nameVn: "Cầu Hôn hoàng hôn & Ăn tối sớm",
-    costVnd: "晚餐約 250,000 ~ 500,000 ₫ / 人",
-    costTwd: "約 NT$ 310 ~ 625",
+    costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
+    costTwd: "約 NT$ 310 ~ 560",
     transport: "步行前往親吻橋與海景餐廳",
     address: "Cầu Hôn & Bờ biển Sunset Town",
     phone: "現場",
@@ -308,26 +308,26 @@ const ITINERARY_DATA = [
     day: 5,
     time: "19:00 - 19:40",
     category: "樂園",
-    nameZh: "《海洋交響》(Symphony of the Sea) 水幕・雷射・投影・極限特技秀",
+    nameZh: "《海洋交響》(Symphony of the Sea) 水幕・雷射・極限特技秀",
     nameVn: "Show Bản Giao Hưởng Biển Cả (Symphony of the Sea)",
-    costVnd: "需 KKday 預先購票",
-    costTwd: "KKday 套票 (滿1500折94折碼: FU7TRAVE94)",
+    costVnd: "即時票價約 300,000 ~ 450,000 ₫",
+    costTwd: "約 NT$ 375 ~ 560",
     transport: "日落小鎮海上海灣專屬看台區",
     address: "Sân khấu bờ biển Sunset Town, An Thới, Phú Quốc",
     phone: "+84 886 045 888",
     openingHours: "19:00 準時開演",
     description: "結合世界級極限水上摩托車特技、水上飛人（Flyboard）、璀璨雷射激光、立體水幕投影與澎湃交響樂的沉浸式震撼大秀！特技演員在海面上空翻轉旋轉，視覺張力極具衝擊感！",
-    tips: "💡 必須提前於 KKday 購票，憑 QR Code 掃描快速入場。",
+    tips: "💡 提前線上購票憑 QR Code 掃描快速入場，佔據中段視野最佳。",
     mapsQuery: "Sunset Town Show Arena Phu Quoc"
   },
   {
     day: 5,
     time: "21:00 - 21:45",
     category: "樂園",
-    nameZh: "《海洋之吻》(Kiss of the Sea) 旗艦光影秀 ➔ 壓軸海面高空璀璨煙火",
+    nameZh: "《海洋之吻》(Kiss of the Sea) 旗艦大秀 ➔ 壓軸海面璀璨煙火",
     nameVn: "Show Kiss of the Sea & Pháo Hoa Hàng Đêm",
-    costVnd: "需 KKday 預先購票；煙火免費觀看",
-    costTwd: "KKday 預訂 (滿1500享94折)",
+    costVnd: "即時票價約 550,000 ~ 700,000 ₫ (煙火免費)",
+    costTwd: "約 NT$ 680 ~ 875",
     transport: "日落小鎮主圓形水上劇場（步行 2 分鐘）",
     address: "Sân khấu mái vòm Kiss of the Sea, Sunset Town, An Thới",
     phone: "+84 886 045 888",
@@ -344,13 +344,13 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "悠閒早餐、Check-out ➔ 南部移動至中部陽東鎮／Long Beach",
     nameVn: "Di chuyển từ Nam Đảo về Trung tâm Dương Đông",
-    costVnd: "Grab 專車約 250,000 ~ 350,000 ₫",
-    costTwd: "約 NT$ 310 ~ 440 (均攤)",
+    costVnd: "Grab 專車約 240,000 ~ 320,000 ₫",
+    costTwd: "約 NT$ 300 ~ 400 (全車均攤)",
     transport: "前一晚看秀較晚，今天睡到自然醒後搭 Grab 專車返回中部",
     address: "Khu Phố 7, Đường Trần Hưng Đạo, Phường Dương Đông, Phú Quốc",
     phone: "飯店前台",
     openingHours: "隨時出發",
-    description: "昨晚觀看海之吻與煙火較晚，今天早晨安排輕鬆慢活。享用早餐後辦理退房，專車返回中部陽東鎮 / Long Beach 區域，入住海景渡假飯店（天清飯店 Thien Thanh Resort 或 Seashells 海貝水療飯店）。",
+    description: "昨晚觀看海之吻與煙火較晚，今天早晨安排輕鬆慢活。享用早餐後辦理退房，專車返回中部陽東鎮 / Long Beach 區域，入住五星海景渡假飯店（天清飯店 Thien Thanh Resort 或 Seashells 海貝水療飯店）。",
     tips: "💡 最後一晚住中部離機場僅需 15 分鐘，免除隔天趕飛機的奔波風險！",
     mapsQuery: "Seashells Phu Quoc Hotel & Spa Tran Hung Dao"
   },
@@ -360,8 +360,8 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "中部渡假飯店 Check-in / 寄放行李 (天清飯店 或 海貝飯店)",
     nameVn: "Thien Thanh Resort / Seashells Phu Quoc Hotel & Spa",
-    costVnd: "天清約 1,840,000 ₫ / 海貝約 2,400,000 ₫",
-    costTwd: "天清約 NT$ 2,300 / 海貝約 NT$ 3,000",
+    costVnd: "天清約 1,750,000 ₫ / 海貝約 2,200,000 ₫",
+    costTwd: "天清約 NT$ 2,180 / 海貝約 NT$ 2,750",
     transport: "抵達飯店大廳",
     address: "Đường Trần Hưng Đạo / Võ Thị Sáu, Dương Đông, Phú Quốc",
     phone: "+84 297 3923 999",
@@ -376,8 +376,8 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "日落沙灘海景咖啡下午茶 ➔ 沙灘放空看海",
     nameVn: "Trà chiều ngắm hoàng hôn bãi biển Long Beach",
-    costVnd: "下午茶飲品約 80,000 ~ 160,000 ₫ / 人",
-    costTwd: "約 NT$ 100 ~ 200",
+    costVnd: "下午茶飲品約 70,000 ~ 150,000 ₫ / 人",
+    costTwd: "約 NT$ 90 ~ 190",
     transport: "步行或 Grab 短程 (約 3~5 分鐘)",
     address: "Bãi Trường (Long Beach), Dương Đông, Phú Quốc",
     phone: "各海景咖啡廳",
@@ -392,8 +392,8 @@ const ITINERARY_DATA = [
     category: "購物",
     nameZh: "陽東夜市美食 ➔ 特產伴手禮大採買 ➔ 越式洗頭與全身精油按摩",
     nameVn: "Chợ Đêm Phú Quốc, Mua đặc sản quà & Gội đầu dưỡng sinh",
-    costVnd: "採買腰果胡椒約 500,000 ₫；洗頭按摩約 300,000 ₫",
-    costTwd: "採買約 NT$ 625；越式洗頭按摩約 NT$ 375",
+    costVnd: "採買腰果胡椒約 400,000 ₫；洗頭按摩約 250,000 ₫",
+    costTwd: "採買約 NT$ 500；越式洗頭按摩約 NT$ 310",
     transport: "步行至陽東夜市商圈",
     address: "Chợ Đêm Phú Quốc & 金剛超市 Kingkong Mart",
     phone: "+84 966 690 999",
@@ -439,111 +439,7 @@ const ITINERARY_DATA = [
 ];
 
 // ==========================================
-// 2. DATA: TICKETS & SENIOR DISCOUNT MATRIX (Sheet 2)
-// ==========================================
-const TICKETS_DATA = [
-  {
-    name: "Grand World 富國大世界",
-    standardPrice: "街區免費",
-    seniorPrice: "免費",
-    arranged: "是",
-    notes: "夜間威尼斯水秀免費；Teddy Bear Museum 另計；本行程不安排貢多拉搭船"
-  },
-  {
-    name: "Vinpearl Safari 野生動物園",
-    standardPrice: "約 850,000 VND (約 NT$ 1,060)",
-    seniorPrice: "約 650,000 VND (約 NT$ 810)",
-    arranged: "是",
-    notes: "以官方當期長者資格（60歲以上）為準；含遊園猛獸巴士、長頸鹿餵食、飛禽秀"
-  },
-  {
-    name: "VinWonders 珍珠水陸樂園",
-    standardPrice: "約 950,000 VND (約 NT$ 1,180)",
-    seniorPrice: "約 710,000 VND (約 NT$ 880)",
-    arranged: "是",
-    notes: "含巨型海龜海王宮殿水族館、美人魚秀、陸上遊樂設施；本行程不安排水上樂園"
-  },
-  {
-    name: "VinWonders ＋ Safari 雙園套票",
-    standardPrice: "約 1,500,000 VND (約 NT$ 1,875)",
-    seniorPrice: "約 1,100,000 VND (約 NT$ 1,375)",
-    arranged: "⭐ 強烈推薦",
-    notes: "兩園都去買套票最划算！搭配 KKday 折扣碼「FU7TRAVE94」滿額再享 94 折"
-  },
-  {
-    name: "Hon Thom 香島跨海纜車",
-    standardPrice: "約 850,000 VND (約 NT$ 1,060)",
-    seniorPrice: "依當日票價",
-    arranged: "是",
-    notes: "搭乘全世界最長跨海纜車；欣賞香島自然風光，不安排水上活動"
-  },
-  {
-    name: "Kiss Bridge 親吻橋",
-    standardPrice: "依當日票制／套票",
-    seniorPrice: "依當日票制／套票",
-    arranged: "是",
-    notes: "10/15、10/16 傍晚安排漫步觀賞落日餘暉與借位拍照"
-  },
-  {
-    name: "Kiss of the Sea 海洋之吻大秀",
-    standardPrice: "依場次／座位 (約 450k~650k VND)",
-    seniorPrice: "依當日票制",
-    arranged: "是",
-    notes: "10/16 晚上 21:00；多媒體水幕光影觀賞秀（非遊客下水活動），需 KKday 預先購票"
-  },
-  {
-    name: "海面上空璀璨高空煙火",
-    standardPrice: "依當日安排 (免費觀看)",
-    seniorPrice: "免費",
-    arranged: "是",
-    notes: "10/16 晚上海洋之吻表演結束後，於海面與日落小鎮上空璀璨綻放"
-  }
-];
-
-// ==========================================
-// 3. DATA: HOTEL CONFIGURATION (Sheet 3)
-// ==========================================
-const HOTELS_DATA = [
-  {
-    date: "10/12 (一)",
-    area: "中部",
-    nights: "1 晚",
-    hotel: "安富飯店 (An Phu Hotel)",
-    refPrice: "約 NT$ 850",
-    link: "https://rs23cp.pse.is/7jsuuk",
-    reason: "第一晚約 20:25 抵達，離機場僅 15 分鐘，性價比極高；步行可達夜市，隔天往北超方便"
-  },
-  {
-    date: "10/13 ~ 10/14 (二、三)",
-    area: "北部",
-    nights: "2 晚",
-    hotel: "溫德姆花園飯店 (Wyndham Garden Grandworld Phu Quoc)",
-    refPrice: "約 NT$ 2,100 / 晚",
-    link: "https://www.agoda.com",
-    reason: "座落大世界園區內，連住 2 晚不換房；就近暢玩 Safari 動物園、VinWonders 樂園與威尼斯水秀"
-  },
-  {
-    date: "10/15 ~ 10/16 (四、五)",
-    area: "南部",
-    nights: "2 晚",
-    hotel: "日落小鎮 (Sunset Town)；可考慮 La Festa Phu Quoc 或週邊海景飯店",
-    refPrice: "依預訂房型",
-    link: "https://www.agoda.com",
-    reason: "親吻橋與夕陽集中在此；連住 2 晚看完 10/16 海洋之吻與煙火後可直接步行回飯店，免去深夜塞車"
-  },
-  {
-    date: "10/17 (六)",
-    area: "中部",
-    nights: "1 晚",
-    hotel: "富國天清飯店 (Thien Thanh Resort 約 NT$2,300) 或 海貝水療飯店 (Seashells 約 NT$3,000)",
-    refPrice: "約 NT$ 2,300 ~ 3,000",
-    link: "https://rs23cp.pse.is/7jsvam",
-    reason: "最後一晚入住陽東鎮/Long Beach海邊，享受放鬆下午茶與夜市伴手禮採買，離機場近免奔波"
-  }
-];
-
-// ==========================================
-// 4. DATA: VIETNAMESE SURVIVAL PHRASES
+// 2. DATA: VIETNAMESE SURVIVAL PHRASES
 // ==========================================
 const PHRASES_DATA = [
   // Order & Food
@@ -578,7 +474,7 @@ const PHRASES_DATA = [
 ];
 
 // ==========================================
-// 5. DATA: PACKING CHECKLIST
+// 3. DATA: PACKING CHECKLIST
 // ==========================================
 const CHECKLIST_DATA = [
   {
@@ -587,10 +483,10 @@ const CHECKLIST_DATA = [
     items: [
       { id: "c1_1", text: "中華民國護照正本 (效期需 6 個月以上)" },
       { id: "c1_2", text: "Sun PhuQuoc Airways 來回電子機票行程單 (紙本+手機截圖，免簽必查)" },
-      { id: "c1_3", text: "安富 / 溫德姆 / 日落小鎮 / 天清或海貝 住宿憑證" },
-      { id: "c1_4", text: "KKday 樂園與大秀門票 QR Code (折扣碼: FU7TRAVE94)" },
-      { id: "c1_5", text: "美金百元新鈔 (2013年後版本無折痕，陽東銀樓換匯最優) 或台幣" },
-      { id: "c1_6", text: "海外高回饋信用卡 (至少 2 張，Grab 扣款與大筆消費必備)" }
+      { id: "c1_3", text: "安富 / 溫德姆 / 日落小鎮 / 天清或海貝 住宿預訂確認單" },
+      { id: "c1_4", text: "美金百元新鈔 (2013年後版本無折痕，陽東銀樓換匯最優) 或台幣" },
+      { id: "c1_5", text: "海外高回饋信用卡 (至少 2 張，Grab 扣款與大筆消費必備)" },
+      { id: "c1_6", text: "海外突發疾病醫療險與旅遊平安險保單" }
     ]
   },
   {
@@ -627,7 +523,7 @@ const CHECKLIST_DATA = [
 ];
 
 // ==========================================
-// 6. APPLICATION CONTROLLER
+// 4. APPLICATION CONTROLLER
 // ==========================================
 let currentDayFilter = "all";
 let currentCategoryFilter = "all";
@@ -644,8 +540,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initPhrases();
   initChecklist();
   renderSpots();
-  renderTicketsTable();
-  renderHotelsTable();
   renderPhrases();
   renderChecklist();
 });
@@ -712,7 +606,7 @@ window.speakVietnamese = function(text) {
 };
 
 // ==========================================
-// 7. TAB NAVIGATION
+// 5. TAB NAVIGATION
 // ==========================================
 function initTabs() {
   const topTabs = document.querySelectorAll(".nav-tab");
@@ -734,7 +628,7 @@ function initTabs() {
 }
 
 // ==========================================
-// 8. ITINERARY RENDERING & FILTERING
+// 6. ITINERARY RENDERING & FILTERING
 // ==========================================
 function initDayFilters() {
   const dayPills = document.querySelectorAll(".day-pill");
@@ -810,8 +704,8 @@ function renderSpots() {
 
   const DAY_TITLES = {
     1: "Day 1 (10/12 一) : 桃園出發 ✈ 富國島 ➔ 宿安富飯店 ➔ 陽東夜市晚餐與銀樓換匯",
-    2: "Day 2 (10/13 二) : 往北移動 ➔ 宿溫德姆 ➔ Safari 野生動物園 (餵長頸鹿+午餐+飛禽秀) ➔ 大世界威尼斯水秀",
-    3: "Day 3 (10/14 三) : VinWonders 水陸主題樂園 (海龜水族館+美人魚秀) ➔ 大世界晚餐 ➔ 越式 SPA 按摩",
+    2: "Day 2 (10/13 二) : 往北移動 ➔ 宿溫德姆 ➔ Safari 野生動物園 (猛獸車+餵長頸鹿) ➔ 大世界威尼斯水秀",
+    3: "Day 3 (10/14 三) : VinWonders 珍珠水陸樂園 (海龜水族館+美人魚秀) ➔ 大世界晚餐 ➔ 越式 SPA 按摩",
     4: "Day 4 (10/15 四) : 一路往南 ➔ 宿日落小鎮 ➔ 海景午餐 ➔ 親吻橋看夕陽 ➔ Vui-Fest 海濱夜市",
     5: "Day 5 (10/16 五) : 世界最長跨海纜車 ➔ 太陽世界香島公園 ➔ 親吻橋夕陽 ➔ 19:00海洋交響 ➔ 21:00海洋之吻+煙火",
     6: "Day 6 (10/17 六) : 往中部移動 ➔ 宿天清/海貝飯店 ➔ 日落沙灘海景下午茶 ➔ 陽東夜市伴手禮採買 ➔ 越式洗頭按摩",
@@ -829,7 +723,7 @@ function renderSpots() {
           <h3 class="day-section-title">
             <span>📅</span> ${DAY_TITLES[spot.day] || `Day ${spot.day}`}
           </h3>
-          <span class="day-section-sub">10/${11 + spot.day} 行程</span>
+          <span class="day-section-sub">10/${11 + spot.day} 精華行程</span>
         </div>
       `;
     }
@@ -903,95 +797,7 @@ function renderSpots() {
 }
 
 // ==========================================
-// 9. TICKETS TABLE & HOTELS TABLE (Sheet 2 & Sheet 3)
-// ==========================================
-function renderTicketsTable() {
-  const container = document.getElementById("ticketsTableContainer");
-  if (!container) return;
-
-  let html = `
-    <div class="budget-table-responsive">
-      <table class="budget-table">
-        <thead>
-          <tr>
-            <th>景點／活動</th>
-            <th>目前參考價格 (全票)</th>
-            <th>60歲以上長者參考</th>
-            <th>是否安排</th>
-            <th>備註說明</th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
-
-  TICKETS_DATA.forEach(t => {
-    html += `
-      <tr>
-        <td><strong>${t.name}</strong></td>
-        <td class="price-highlight font-mono">${t.standardPrice}</td>
-        <td class="font-mono" style="color: #0f766e; font-weight:600;">${t.seniorPrice}</td>
-        <td><span class="spot-badge" style="background:#e0f2fe; color:#0369a1; font-weight:700;">${t.arranged}</span></td>
-        <td style="font-size:0.84rem; color:#475569;">${t.notes}</td>
-      </tr>
-    `;
-  });
-
-  html += `
-        </tbody>
-      </table>
-    </div>
-  `;
-
-  container.innerHTML = html;
-}
-
-function renderHotelsTable() {
-  const container = document.getElementById("hotelsTableContainer");
-  if (!container) return;
-
-  let html = `
-    <div class="budget-table-responsive">
-      <table class="budget-table">
-        <thead>
-          <tr>
-            <th>住宿日期</th>
-            <th>區域</th>
-            <th>晚數</th>
-            <th>建議住宿區域／飯店推薦</th>
-            <th>參考房價</th>
-            <th>選擇理由</th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
-
-  HOTELS_DATA.forEach(h => {
-    html += `
-      <tr>
-        <td><strong class="font-mono">${h.date}</strong></td>
-        <td><span class="spot-badge" style="background:#fef3c7; color:#92400e;">${h.area}</span></td>
-        <td><strong>${h.nights}</strong></td>
-        <td>
-          <div style="font-weight:700; color:#0d2b38;">${h.hotel}</div>
-          <a href="${h.link}" target="_blank" rel="noopener noreferrer" style="font-size:0.75rem; color:#0f766e; text-decoration:underline;">🔗 點此查看預訂連結</a>
-        </td>
-        <td class="price-highlight font-mono">${h.refPrice}</td>
-        <td style="font-size:0.84rem; color:#475569;">${h.reason}</td>
-      </tr>
-    `;
-  });
-
-  html += `
-        </tbody>
-      </table>
-    </div>
-  `;
-
-  container.innerHTML = html;
-}
-
-// ==========================================
-// 10. CURRENCY CALCULATOR
+// 7. CURRENCY CALCULATOR
 // ==========================================
 function initCurrencyCalculator() {
   const twdInput = document.getElementById("twdInput");
@@ -1030,7 +836,7 @@ function initCurrencyCalculator() {
 }
 
 // ==========================================
-// 11. VIETNAMESE PHRASES ENGINE
+// 8. VIETNAMESE PHRASES ENGINE
 // ==========================================
 function initPhrases() {
   const filterBtns = document.querySelectorAll(".phrase-filter");
@@ -1072,9 +878,9 @@ function renderPhrases() {
 }
 
 // ==========================================
-// 12. CHECKLIST ENGINE
+// 9. CHECKLIST ENGINE
 // ==========================================
-const STORAGE_KEY = "phu_quoc_checklist_checked_v2";
+const STORAGE_KEY = "phu_quoc_checklist_checked_v3";
 
 function getCheckedItems() {
   try {
