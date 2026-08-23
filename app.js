@@ -1,10 +1,10 @@
 /**
  * 富國島 7 天 6 夜極致自由行手冊
- * 行程參考自規劃行程，費用依據 2026 即時市場行情報價全面更新
+ * 司機語音發音優化：專為 Grab / 計程車叫車設計，純地名發音無廢話
  */
 
 // ==========================================
-// 1. DATA: 7-DAY ITINERARY WITH REAL-TIME COSTS
+// 1. DATA: 7-DAY ITINERARY WITH REAL-TIME COSTS & TAXI VOICE
 // ==========================================
 const ITINERARY_DATA = [
   // ---------- DAY 1: 10/12 (一) 中部 ----------
@@ -13,14 +13,15 @@ const ITINERARY_DATA = [
     time: "17:35 - 20:25",
     category: "交通",
     nameZh: "桃園機場 (TPE) ✈ 富國島機場 (PQC)",
-    nameVn: "Sun PhuQuoc Airways 9G 511 (直飛免簽)",
+    nameVn: "Sân bay Quốc tế Phú Quốc",
+    taxiVoice: "Sân bay Phú Quốc",
     costVnd: "機票即時行情",
     costTwd: "直飛來回約 NT$ 12,000",
     transport: "直飛航班 Sun PhuQuoc Airways 9G 511 (17:35 TPE ➔ 20:25 PQC)",
     address: "Tổ 2, Ấp Dương Tơ, Xã Dương Tơ, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3848 078",
     openingHours: "24 小時營運",
-    description: "搭乘直飛航班抵達富國島國際機場。台灣護照享有「直飛富國島 30 天免簽證」待遇，出示 6 個月以上效期護照與 30 天內離境機票行程單即可蓋章通關。出關後領取/購買 eSIM，並可於機場或市區銀樓換匯。",
+    description: "搭乘直飛航班抵達富國島國際機場。持有台灣護照享有「直飛富國島 30 天免簽證」待遇，出示 6 個月以上效期護照與 30 天內離境機票行程單即可蓋章通關。出關後領取/購買 eSIM，並可於機場或市區銀樓換匯。",
     tips: "💡 免簽政策：免簽章僅限富國島境內停留，切勿自行前往越南本島。隨身帶好回程機票行程單以備查驗。",
     mapsQuery: "Phu Quoc International Airport"
   },
@@ -29,7 +30,8 @@ const ITINERARY_DATA = [
     time: "20:45 - 21:30",
     category: "交通",
     nameZh: "中部安富飯店 Check-in 放行李",
-    nameVn: "Khách sạn An Phú (An Phu Hotel)",
+    nameVn: "Khách sạn An Phú",
+    taxiVoice: "Khách sạn An Phú, Dương Đông",
     costVnd: "即時房價約 640,000 ~ 750,000 ₫",
     costTwd: "約 NT$ 800 ~ 940 / 晚",
     transport: "機場搭乘 Grab 專車直達（車資約 120,000 ₫ / 約 NT$ 150）",
@@ -45,7 +47,8 @@ const ITINERARY_DATA = [
     time: "21:30 - 23:30",
     category: "美食",
     nameZh: "陽東夜市海鮮晚餐 & 珠寶店換匯",
-    nameVn: "Chợ Đêm Phú Quốc & Tiệm Vàng Đổi Ngoại Tệ",
+    nameVn: "Chợ Đêm Phú Quốc",
+    taxiVoice: "Chợ Đêm Phú Quốc",
     costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
     costTwd: "約 NT$ 310 ~ 560",
     transport: "自飯店步行約 5 分鐘即達夜市入口",
@@ -63,7 +66,8 @@ const ITINERARY_DATA = [
     time: "08:30 - 09:30",
     category: "交通",
     nameZh: "早餐、Check-out ➔ 往北部渡假區移動",
-    nameVn: "Di chuyển từ Dương Đông lên Bắc Đảo (Grand World)",
+    nameVn: "Wyndham Garden Grandworld",
+    taxiVoice: "Khách sạn Wyndham Garden Grand World",
     costVnd: "Grab 約 280,000 ₫ 或搭免費 VinBus",
     costTwd: "Grab 約 NT$ 350 / VinBus 免費",
     transport: "搭乘 Grab 專車或搭乘免費綠色 VinBus 電動公車北上",
@@ -79,7 +83,8 @@ const ITINERARY_DATA = [
     time: "09:30 - 10:00",
     category: "交通",
     nameZh: "溫德姆花園飯店 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Wyndham Garden Grandworld Phu Quoc",
+    nameVn: "Wyndham Garden Grandworld",
+    taxiVoice: "Khách sạn Wyndham Garden Grand World Phú Quốc",
     costVnd: "即時房價約 1,450,000 ~ 1,850,000 ₫",
     costTwd: "約 NT$ 1,800 ~ 2,300 / 晚",
     transport: "抵達飯店大廳",
@@ -95,7 +100,8 @@ const ITINERARY_DATA = [
     time: "10:00 - 16:00",
     category: "樂園",
     nameZh: "Vinpearl Safari 野生動物園 (搭猛獸巴士・長頸鹿餵食午餐・飛禽表演)",
-    nameVn: "Vinpearl Safari Phú Quốc & Giraffe Restaurant",
+    nameVn: "Vinpearl Safari Phú Quốc",
+    taxiVoice: "Vinpearl Safari Phú Quốc",
     costVnd: "全票約 850,000 ₫ (長者約 650,000 ₫)；長頸鹿飼料 30,000 ₫",
     costTwd: "全票約 NT$ 1,060 (長者約 NT$ 810)；飼料約 NT$ 38",
     transport: "搭乘免費接駁車或 Grab (約 8 分鐘)",
@@ -111,7 +117,8 @@ const ITINERARY_DATA = [
     time: "16:30 - 18:30",
     category: "放鬆",
     nameZh: "返回溫德姆花園飯店休息・悠閒梳洗",
-    nameVn: "Nghỉ ngơi tại Wyndham Garden Grandworld",
+    nameVn: "Wyndham Garden Grandworld",
+    taxiVoice: "Khách sạn Wyndham Garden Grand World",
     costVnd: "包含於房費",
     costTwd: "已含",
     transport: "搭乘接駁車返回飯店",
@@ -127,7 +134,8 @@ const ITINERARY_DATA = [
     time: "18:30 - 22:30",
     category: "景點",
     nameZh: "Grand World 富國大世界晚餐 ➔ 竹林傳奇 ➔ 21:00 威尼斯水上光影秀",
-    nameVn: "Grand World Phú Quốc & Show Sắc Màu Venice",
+    nameVn: "Grand World Phú Quốc",
+    taxiVoice: "Grand World Phú Quốc",
     costVnd: "街區與水上光影秀完全免費；晚餐約 250,000 ~ 400,000 ₫",
     costTwd: "秀免費；晚餐約 NT$ 310 ~ 500",
     transport: "自飯店步行 3 分鐘即達大世界運河核心區",
@@ -145,7 +153,8 @@ const ITINERARY_DATA = [
     time: "09:00 - 19:30",
     category: "樂園",
     nameZh: "VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀・餵食秀・閉幕秀)",
-    nameVn: "VinWonders Phú Quốc (Disneyland Việt Nam)",
+    nameVn: "VinWonders Phú Quốc",
+    taxiVoice: "VinWonders Phú Quốc",
     costVnd: "單票約 950,000 ₫ (長者約 710,000 ₫) / 雙園套票約 1,500,000 ₫",
     costTwd: "單票約 NT$ 1,180 / 雙園套票約 NT$ 1,875",
     transport: "搭乘免費 VinBus 或大世界接駁車（約 5 分鐘車程）",
@@ -161,7 +170,8 @@ const ITINERARY_DATA = [
     time: "20:00 - 22:30",
     category: "放鬆",
     nameZh: "Grand World 大世界特色晚餐 & 越式舒壓按摩 SPA",
-    nameVn: "Ăn tối & Massage thư giãn tại Grand World",
+    nameVn: "Grand World Phú Quốc",
+    taxiVoice: "Grand World Phú Quốc",
     costVnd: "60分鐘全身按摩約 250,000 ~ 380,000 ₫；晚餐約 280,000 ₫",
     costTwd: "按摩約 NT$ 310 ~ 475；晚餐約 NT$ 350",
     transport: "自樂園搭車返回大世界街區",
@@ -179,7 +189,8 @@ const ITINERARY_DATA = [
     time: "09:00 - 10:30",
     category: "交通",
     nameZh: "早餐、Check-out ➔ 一路往南前往日落小鎮 (Sunset Town)",
-    nameVn: "Di chuyển từ Bắc Đảo xuống Nam Đảo (Sunset Town)",
+    nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
+    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town, An Thới",
     costVnd: "Grab 專車約 480,000 ~ 580,000 ₫",
     costTwd: "約 NT$ 600 ~ 725 (全車均攤)",
     transport: "預約 Grab 專車由北島直達南島日落小鎮（車程約 50 分鐘）",
@@ -195,7 +206,8 @@ const ITINERARY_DATA = [
     time: "10:30 - 11:30",
     category: "交通",
     nameZh: "南部日落小鎮飯店 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Nhận phòng khách sạn Sunset Town (La Festa Phu Quoc / 精選海景飯店)",
+    nameVn: "Khách sạn Sunset Town",
+    taxiVoice: "Khách sạn La Festa Sunset Town, An Thới",
     costVnd: "即時房價約 1,350,000 ~ 2,500,000 ₫",
     costTwd: "約 NT$ 1,680 ~ 3,125 / 晚",
     transport: "抵達日落小鎮飯店",
@@ -211,7 +223,8 @@ const ITINERARY_DATA = [
     time: "11:30 - 14:00",
     category: "美食",
     nameZh: "日落小鎮 Sunset Town 海景午餐 & 漫步彩色阿瑪菲街區",
-    nameVn: "Ăn trưa view biển & Dạo phố Địa Trung Hải",
+    nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
+    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
     costVnd: "午餐約 180,000 ~ 350,000 ₫ / 人",
     costTwd: "約 NT$ 225 ~ 440",
     transport: "小鎮內悠閒步行",
@@ -227,7 +240,8 @@ const ITINERARY_DATA = [
     time: "16:30 - 18:30",
     category: "景點",
     nameZh: "Kiss Bridge 親吻橋 ➔ 漫步踏海・絕美日落餘暉合影",
-    nameVn: "Cầu Hôn (Kiss Bridge) ngắm hoàng hôn",
+    nameVn: "Cầu Hôn (Kiss Bridge)",
+    taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn",
     costVnd: "單買約 100,000 ₫ (常含於套票)",
     costTwd: "約 NT$ 125",
     transport: "自小鎮廣場沿海濱步道步行 3 分鐘",
@@ -243,7 +257,8 @@ const ITINERARY_DATA = [
     time: "19:00 - 22:00",
     category: "美食",
     nameZh: "Sunset Town 海景餐廳晚餐 & 海濱夜市自由漫遊",
-    nameVn: "Ăn tối nhà hàng ven biển & Chợ đêm Vui-Fest",
+    nameVn: "Chợ đêm Vui-Fest Bazaar",
+    taxiVoice: "Chợ đêm Vui-Fest, Sunset Town",
     costVnd: "晚餐約 250,000 ~ 500,000 ₫ / 人",
     costTwd: "約 NT$ 310 ~ 625",
     transport: "小鎮內漫步",
@@ -261,7 +276,8 @@ const ITINERARY_DATA = [
     time: "09:00 - 11:30",
     category: "樂園",
     nameZh: "Hon Thom 香島跨海纜車 (全世界最長跨海纜車) ➔ 太陽世界香島公園",
-    nameVn: "Cáp treo Hòn Thơm (Dài nhất thế giới) & Sun World",
+    nameVn: "Ga Cáp treo Hòn Thơm (Sun World)",
+    taxiVoice: "Ga Cáp treo Hòn Thơm, An Thới",
     costVnd: "來回纜車票即時行情約 650,000 ~ 850,000 ₫",
     costTwd: "約 NT$ 810 ~ 1,060",
     transport: "步行至日落小鎮安泰纜車站 (Ga Ánh Dương)",
@@ -277,7 +293,8 @@ const ITINERARY_DATA = [
     time: "12:00 - 15:30",
     category: "放鬆",
     nameZh: "返回 Sunset Town 享用午餐 ➔ 飯店吹冷氣休息充電",
-    nameVn: "Trở về Sunset Town ăn trưa & Nghỉ ngơi",
+    nameVn: "Thị trấn Hoàng Hôn",
+    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
     costVnd: "午餐約 150,000 ~ 280,000 ₫ / 人",
     costTwd: "約 NT$ 180 ~ 350",
     transport: "搭乘纜車返回日落小鎮",
@@ -293,7 +310,8 @@ const ITINERARY_DATA = [
     time: "17:00 - 18:45",
     category: "景點",
     nameZh: "Kiss Bridge 親吻橋 ➔ 夕陽暮光 ➔ 浪漫晚餐",
-    nameVn: "Cầu Hôn hoàng hôn & Ăn tối sớm",
+    nameVn: "Cầu Hôn (Kiss Bridge)",
+    taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn",
     costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
     costTwd: "約 NT$ 310 ~ 560",
     transport: "步行前往親吻橋與海景餐廳",
@@ -309,7 +327,8 @@ const ITINERARY_DATA = [
     time: "19:00 - 19:40",
     category: "樂園",
     nameZh: "《海洋交響》(Symphony of the Sea) 水幕・雷射・極限特技秀",
-    nameVn: "Show Bản Giao Hưởng Biển Cả (Symphony of the Sea)",
+    nameVn: "Sân khấu bờ biển Sunset Town",
+    taxiVoice: "Sân khấu nhạc nước Sunset Town, An Thới",
     costVnd: "即時票價約 300,000 ~ 450,000 ₫",
     costTwd: "約 NT$ 375 ~ 560",
     transport: "日落小鎮海上海灣專屬看台區",
@@ -325,7 +344,8 @@ const ITINERARY_DATA = [
     time: "21:00 - 21:45",
     category: "樂園",
     nameZh: "《海洋之吻》(Kiss of the Sea) 旗艦大秀 ➔ 壓軸海面璀璨煙火",
-    nameVn: "Show Kiss of the Sea & Pháo Hoa Hàng Đêm",
+    nameVn: "Sân khấu Kiss of the Sea",
+    taxiVoice: "Sân khấu Kiss of the Sea, Sunset Town",
     costVnd: "即時票價約 550,000 ~ 700,000 ₫ (煙火免費)",
     costTwd: "約 NT$ 680 ~ 875",
     transport: "日落小鎮主圓形水上劇場（步行 2 分鐘）",
@@ -343,7 +363,8 @@ const ITINERARY_DATA = [
     time: "09:30 - 11:00",
     category: "交通",
     nameZh: "悠閒早餐、Check-out ➔ 南部移動至中部陽東鎮／Long Beach",
-    nameVn: "Di chuyển từ Nam Đảo về Trung tâm Dương Đông",
+    nameVn: "Dương Đông (Long Beach)",
+    taxiVoice: "Thị trấn Dương Đông, Đường Trần Hưng Đạo",
     costVnd: "Grab 專車約 240,000 ~ 320,000 ₫",
     costTwd: "約 NT$ 300 ~ 400 (全車均攤)",
     transport: "前一晚看秀較晚，今天睡到自然醒後搭 Grab 專車返回中部",
@@ -359,7 +380,8 @@ const ITINERARY_DATA = [
     time: "11:00 - 12:00",
     category: "交通",
     nameZh: "中部渡假飯店 Check-in / 寄放行李 (天清飯店 或 海貝飯店)",
-    nameVn: "Thien Thanh Resort / Seashells Phu Quoc Hotel & Spa",
+    nameVn: "Thien Thanh Resort / Seashells Hotel",
+    taxiVoice: "Khách sạn Thien Thanh Resort, Trần Hưng Đạo",
     costVnd: "天清約 1,750,000 ₫ / 海貝約 2,200,000 ₫",
     costTwd: "天清約 NT$ 2,180 / 海貝約 NT$ 2,750",
     transport: "抵達飯店大廳",
@@ -375,7 +397,8 @@ const ITINERARY_DATA = [
     time: "14:00 - 17:30",
     category: "放鬆",
     nameZh: "日落沙灘海景咖啡下午茶 ➔ 沙灘放空看海",
-    nameVn: "Trà chiều ngắm hoàng hôn bãi biển Long Beach",
+    nameVn: "Bãi Trường (Long Beach)",
+    taxiVoice: "Bãi biển Long Beach, Trần Hưng Đạo",
     costVnd: "下午茶飲品約 70,000 ~ 150,000 ₫ / 人",
     costTwd: "約 NT$ 90 ~ 190",
     transport: "步行或 Grab 短程 (約 3~5 分鐘)",
@@ -391,7 +414,8 @@ const ITINERARY_DATA = [
     time: "18:00 - 22:30",
     category: "購物",
     nameZh: "陽東夜市美食 ➔ 特產伴手禮大採買 ➔ 越式洗頭與全身精油按摩",
-    nameVn: "Chợ Đêm Phú Quốc, Mua đặc sản quà & Gội đầu dưỡng sinh",
+    nameVn: "Chợ Đêm Phú Quốc & Kingkong Mart",
+    taxiVoice: "Chợ Đêm Phú Quốc",
     costVnd: "採買腰果胡椒約 400,000 ₫；洗頭按摩約 250,000 ₫",
     costTwd: "採買約 NT$ 500；越式洗頭按摩約 NT$ 310",
     transport: "步行至陽東夜市商圈",
@@ -409,7 +433,8 @@ const ITINERARY_DATA = [
     time: "08:00 - 09:30",
     category: "美食",
     nameZh: "飯店海景自助早餐 ➔ 悠閒收拾行李與退房",
-    nameVn: "Ăn sáng buffet khách sạn & Trả phòng",
+    nameVn: "Khách sạn nghỉ dưỡng Phú Quốc",
+    taxiVoice: "Khách sạn Phú Quốc",
     costVnd: "包含於房費",
     costTwd: "已含",
     transport: "飯店海景餐廳",
@@ -425,7 +450,8 @@ const ITINERARY_DATA = [
     time: "09:30 - 16:10",
     category: "交通",
     nameZh: "飯店 ➔ 富國國際機場 (PQC) ✈ 桃園機場 (TPE)",
-    nameVn: "Sun PhuQuoc Airways PQC-TPE 9G 510 (11:30 - 16:10)",
+    nameVn: "Sân bay Quốc tế Phú Quốc",
+    taxiVoice: "Sân bay Phú Quốc (Ga đi)",
     costVnd: "Grab 車資約 100,000 ₫",
     costTwd: "車資約 NT$ 125",
     transport: "Grab 叫車至富國機場（約 15 分鐘）；搭乘班機 9G 510",
@@ -439,38 +465,44 @@ const ITINERARY_DATA = [
 ];
 
 // ==========================================
-// 2. DATA: VIETNAMESE SURVIVAL PHRASES
+// 2. DATA: VIETNAMESE SURVIVAL PHRASES (TAXI FOCUSED)
 // ==========================================
 const PHRASES_DATA = [
+  // Taxi & Location (Short & Pure Destination)
+  { category: "taxi", vn: "Cho tôi đến đây", pinyin: "對問地登代", zh: "請載我到這裡 (出示手機)" },
+  { category: "taxi", vn: "Khách sạn An Phú", pinyin: "卡傘安富", zh: "安富飯店 (An Phu Hotel)" },
+  { category: "taxi", vn: "Wyndham Grand World", pinyin: "溫德姆格蘭世界", zh: "溫德姆花園飯店" },
+  { category: "taxi", vn: "Vinpearl Safari", pinyin: "珍珠野生動物園", zh: "野生動物園" },
+  { category: "taxi", vn: "VinWonders Phú Quốc", pinyin: "珍珠奇幻樂園", zh: "珍珠水陸主題樂園" },
+  { category: "taxi", vn: "Grand World Phú Quốc", pinyin: "富國大世界", zh: "富國大世界 (不夜城)" },
+  { category: "taxi", vn: "Thị trấn Hoàng Hôn, Sunset Town", pinyin: "日落小鎮", zh: "日落小鎮 Sunset Town" },
+  { category: "taxi", vn: "Ga Cáp treo Hòn Thơm", pinyin: "香島跨海纜車", zh: "香島跨海纜車站" },
+  { category: "taxi", vn: "Cầu Hôn", pinyin: "親吻橋", zh: "吻橋 Kiss Bridge" },
+  { category: "taxi", vn: "Chợ Đêm Phú Quốc", pinyin: "陽東夜市", zh: "陽東夜市" },
+  { category: "taxi", vn: "Siêu thị Kingkong Mart", pinyin: "金剛超市", zh: "金剛超市 Kingkong Mart" },
+  { category: "taxi", vn: "Sân bay Phú Quốc", pinyin: "富國島機場", zh: "富國國際機場" },
+  { category: "taxi", vn: "Dừng lại ở đây, cảm ơn", pinyin: "榮來鵝代，感恩", zh: "請停在這裡，謝謝" },
+  { category: "taxi", vn: "Bật đồng hồ tính tiền giúp tôi", pinyin: "博同火頂頂友對", zh: "請按跳表計費" },
+
   // Order & Food
-  { category: "order", vn: "Xin chào!", pinyin: "新潮！", zh: "你好！(通用問候)" },
-  { category: "order", vn: "Cảm ơn bạn rất nhiều.", pinyin: "感恩班熱扭", zh: "非常感謝你！" },
-  { category: "order", vn: "Cho tôi xem thực đơn.", pinyin: "抽對先特騰", zh: "請給我看一下菜單。" },
-  { category: "order", vn: "Cho tôi một tô Phở Bò.", pinyin: "抽對莫斗ㄈㄜˇ波", zh: "請給我一碗牛肉河粉。" },
-  { category: "order", vn: "Cho tôi một ly cà phê sữa đá.", pinyin: "抽對莫利卡啡素搭", zh: "請給我一杯冰煉乳咖啡。" },
-  { category: "order", vn: "Không cay / Đừng bỏ ớt.", pinyin: "空蓋 / 頂薄俄", zh: "不要辣 / 請不要加辣椒！" },
-  { category: "order", vn: "Không bỏ rau mùi (ngò rí).", pinyin: "空薄饒美 (鵝利)", zh: "請不要加香菜！" },
-  { category: "order", vn: "Ít đường / Ít sữa.", pinyin: "意登 / 意素", zh: "微糖 / 少奶。" },
-  { category: "order", vn: "Cho tôi xin thêm nước đá.", pinyin: "抽對心添呢搭", zh: "請給我加一些冰塊。" },
-  { category: "order", vn: "Tính tiền / Em ơi thanh toán.", pinyin: "頂頂 / 恩鵝意停端", zh: "買單！/ 服務生結帳。" },
+  { category: "order", vn: "Xin chào!", pinyin: "新潮！", zh: "你好！" },
+  { category: "order", vn: "Cảm ơn!", pinyin: "感恩！", zh: "謝謝！" },
+  { category: "order", vn: "Cho tôi xem thực đơn", pinyin: "抽對先特騰", zh: "請給我看一下菜單" },
+  { category: "order", vn: "Cho tôi một tô Phở Bò", pinyin: "抽對莫斗ㄈㄜˇ波", zh: "請給我一碗牛肉河粉" },
+  { category: "order", vn: "Cho tôi một ly cà phê sữa đá", pinyin: "抽對莫利卡啡素搭", zh: "請給我一杯冰煉乳咖啡" },
+  { category: "order", vn: "Không cay", pinyin: "空蓋", zh: "不要辣！" },
+  { category: "order", vn: "Không bỏ rau mùi", pinyin: "空薄饒美", zh: "不要香菜！" },
+  { category: "order", vn: "Tính tiền", pinyin: "頂頂", zh: "買單結帳！" },
 
-  // Taxi & Transport
-  { category: "taxi", vn: "Tôi muốn đi đến đây.", pinyin: "對問地登代", zh: "我要去這裡。(出示手機地址)" },
-  { category: "taxi", vn: "Bật đồng hồ tính tiền giúp tôi.", pinyin: "博同火頂頂友對", zh: "請幫我按跳表計費。" },
-  { category: "taxi", vn: "Dừng lại ở đây, cảm ơn.", pinyin: "榮來鵝代，感恩", zh: "請停在這裡，謝謝。" },
-  { category: "taxi", vn: "Đi thẳng / Rẽ trái / Rẽ phải.", pinyin: "地躺 / 熱災 / 熱害", zh: "直走 / 左轉 / 右轉。" },
+  // Shopping
+  { category: "shopping", vn: "Bao nhiêu tiền?", pinyin: "包妞頂？", zh: "這個多少錢？" },
+  { category: "shopping", vn: "Đắt quá! Giảm giá được không?", pinyin: "得瓜！樣價得空？", zh: "太貴了！可以算便宜點嗎？" },
+  { category: "shopping", vn: "Tôi lấy cái này", pinyin: "對淚該耐", zh: "我要買這個" },
 
-  // Shopping & Bargaining
-  { category: "shopping", vn: "Cái này bao nhiêu tiền?", pinyin: "該耐包妞頂？", zh: "這個多少錢？" },
-  { category: "shopping", vn: "Đắt quá! Giảm giá được không?", pinyin: "得瓜！樣價得空？", zh: "太貴了！可以算便宜一點嗎？" },
-  { category: "shopping", vn: "Có cái mới / màu khác không?", pinyin: "過該妹 / 矛客空？", zh: "有全新的 / 其他顏色嗎？" },
-  { category: "shopping", vn: "Tôi lấy cái này.", pinyin: "對淚該耐", zh: "我要買這個。" },
-
-  // Emergency & Help
-  { category: "emergency", vn: "Làm ơn giúp tôi với!", pinyin: "藍恩友對威！", zh: "拜託請幫幫我！" },
-  { category: "emergency", vn: "Tôi bị lạc đường.", pinyin: "對比辣等", zh: "我迷路了。" },
-  { category: "emergency", vn: "Nhà vệ sinh ở đâu?", pinyin: "雅威新鵝逗？", zh: "請問洗手間在哪裡？" },
-  { category: "emergency", vn: "Cứu tôi với! / Gọi cảnh sát!", pinyin: "救對威！/ 乖警薩！", zh: "救命！/ 請叫警察！" }
+  // Emergency
+  { category: "emergency", vn: "Làm ơn giúp tôi!", pinyin: "藍恩友對！", zh: "請幫幫我！" },
+  { category: "emergency", vn: "Tôi bị lạc đường", pinyin: "對比辣等", zh: "我迷路了" },
+  { category: "emergency", vn: "Nhà vệ sinh ở đâu?", pinyin: "雅威新鵝逗？", zh: "請問洗手間在哪裡？" }
 ];
 
 // ==========================================
@@ -554,7 +586,7 @@ function showToast(message, icon = "✅") {
 
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 2500);
+  }, 2400);
 }
 
 // Copy to clipboard helper
@@ -585,13 +617,16 @@ function fallbackCopy(text, label) {
   document.body.removeChild(textArea);
 }
 
-// Text to Speech for Vietnamese
+// Crisp, direct Vietnamese speech for Grab/Taxi drivers
 window.speakVietnamese = function(text) {
+  // Strip any parentheses or subtitles to keep destination pure & clear
+  const cleanDestination = text.replace(/\(.*?\)/g, '').trim();
+  
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(cleanDestination);
     utterance.lang = 'vi-VN';
-    utterance.rate = 0.85;
+    utterance.rate = 0.8; // Clear, audible pace for drivers
     utterance.pitch = 1.0;
     
     const voices = window.speechSynthesis.getVoices();
@@ -599,9 +634,9 @@ window.speakVietnamese = function(text) {
     if (viVoice) utterance.voice = viVoice;
     
     window.speechSynthesis.speak(utterance);
-    showToast(`正在朗讀：${text}`, "🔊");
+    showToast(`🔊 播放地名給司機聽：${cleanDestination}`, "🚕");
   } else {
-    showToast("您的裝置暫不支援語音合成朗讀", "⚠️");
+    showToast(`目的地：${cleanDestination}`, "🚕");
   }
 };
 
@@ -729,6 +764,7 @@ function renderSpots() {
     }
 
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapsQuery || spot.nameVn)}`;
+    const driverVoiceText = spot.taxiVoice || spot.nameVn;
 
     html += `
       <article class="spot-card">
@@ -780,10 +816,10 @@ function renderSpots() {
             <span>🗺️</span> 導航 Google Maps
           </a>
           <button class="btn-spot-action" onclick="copyText('${spot.address.replace(/'/g, "\\'")}', '越文地址')">
-            <span>📋</span> 複製地址 (給司機看)
+            <span>📋</span> 複製地址 (貼入Grab)
           </button>
-          <button class="btn-spot-action" onclick="speakVietnamese('${spot.nameVn.replace(/'/g, "\\'")}')">
-            <span>🔊</span> 聽地名發音
+          <button class="btn-spot-action" onclick="speakVietnamese('${driverVoiceText.replace(/'/g, "\\'")}')" style="background:#f0fdfa; border-color:#0f766e; color:#0f766e; font-weight:700;">
+            <span>🔊</span> 播給司機聽 (地名)
           </button>
           <button class="btn-spot-action" onclick="copyText('${spot.nameVn.replace(/'/g, "\\'")}', '店名')">
             <span>📋</span> 複製名稱
@@ -864,8 +900,8 @@ function renderPhrases() {
       <div class="phrase-card" onclick="copyText('${p.vn.replace(/'/g, "\\'")}', '越文會話')">
         <div class="phrase-content">
           <div class="phrase-vn">${p.vn}</div>
-          <div class="phrase-pinyin">🗣️ 中文諧音：${p.pinyin}</div>
-          <div class="phrase-zh">💡 中文意思：${p.zh}</div>
+          <div class="phrase-pinyin">🗣️ 諧音：${p.pinyin}</div>
+          <div class="phrase-zh">💡 意思：${p.zh}</div>
         </div>
         <button class="btn-tts" title="點擊發音" onclick="event.stopPropagation(); speakVietnamese('${p.vn.replace(/'/g, "\\'")}')">
           🔊
