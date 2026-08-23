@@ -789,9 +789,6 @@ window.speakVietnamese = function(text) {
     if (viVoice) utterance.voice = viVoice;
     
     window.speechSynthesis.speak(utterance);
-    showToast(`🔊 播放地名給司機聽：${cleanDestination}`, "🚕");
-  } else {
-    showToast(`目的地：${cleanDestination}`, "🚕");
   }
 };
 
