@@ -187,6 +187,13 @@ body {
   overflow-x: auto;
   padding-bottom: 12px;
   scrollbar-width: none; /* Firefox */
+  transition: all 0.2s ease-in-out;
+}
+
+body.hide-overview #quickStatsBar,
+body.hide-overview .quick-stats-bar,
+body.hide-overview .itinerary-summary-card {
+  display: none !important;
 }
 
 .quick-stats-bar::-webkit-scrollbar {

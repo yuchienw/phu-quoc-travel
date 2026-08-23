@@ -713,14 +713,17 @@ function renderSpots() {
   if (!container) return;
 
   // Toggle Top Header Quick Stats Bar & Itinerary Summary Card: only show on "全部總覽" (all)
+  const isSingleDay = (currentDayFilter !== "all") || (!!currentSearchQuery);
+  document.body.classList.toggle("hide-overview", isSingleDay);
+
   const quickStatsBar = document.getElementById("quickStatsBar") || document.querySelector(".quick-stats-bar");
   if (quickStatsBar) {
-    quickStatsBar.style.display = (currentDayFilter === "all") ? "flex" : "none";
+    quickStatsBar.style.display = isSingleDay ? "none" : "flex";
   }
 
   const summaryCard = document.querySelector(".itinerary-summary-card");
   if (summaryCard) {
-    summaryCard.style.display = (currentDayFilter === "all" && !currentSearchQuery) ? "block" : "none";
+    summaryCard.style.display = isSingleDay ? "none" : "block";
   }
 
   const filteredSpots = ITINERARY_DATA.filter(spot => {
