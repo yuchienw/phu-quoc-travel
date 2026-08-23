@@ -817,17 +817,43 @@ function initTabs() {
   document.getElementById("btnSurvivalKit")?.addEventListener("click", () => switchTab("emergency"));
 }
 
-// ==========================================
-// 7. ITINERARY RENDERING & FILTERING
-// ==========================================
+const ACTIVE_DAY_KEY = "phu_quoc_selected_day_v1";
+const CUSTOM_RATE_KEY = "phu_quoc_custom_rate_v1";
+
 function initDayFilters() {
   const dayPills = document.querySelectorAll(".day-pill");
+  const allPill = document.querySelector('.day-pill[data-day="all"]');
+
+  // Restore saved day filter from localStorage
+  try {
+    const savedDay = localStorage.getItem(ACTIVE_DAY_KEY);
+    if (savedDay) {
+      currentDayFilter = savedDay;
+      dayPills.forEach(p => p.classList.toggle("active", p.dataset.day === savedDay));
+    }
+  } catch (e) {}
+
   dayPills.forEach(pill => {
     pill.addEventListener("click", () => {
-      dayPills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      currentDayFilter = pill.dataset.day;
-      pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      const clickedDay = pill.dataset.day;
+
+      // Toggle feature: clicking the already active day switches back to "all"!
+      if (pill.classList.contains("active") && clickedDay !== "all") {
+        currentDayFilter = "all";
+        dayPills.forEach(p => p.classList.toggle("active", p.dataset.day === "all"));
+        if (allPill) allPill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        showToast("已切換回「全部總覽」", "🗺️");
+      } else {
+        currentDayFilter = clickedDay;
+        dayPills.forEach(p => p.classList.toggle("active", p.dataset.day === clickedDay));
+        pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+
+      // Persist to localStorage
+      try {
+        localStorage.setItem(ACTIVE_DAY_KEY, currentDayFilter);
+      } catch (e) {}
+
       renderSpots();
     });
   });
@@ -972,9 +998,23 @@ function initCurrencyCalculator() {
 
   if (!twdInput || !vndInput || !customRate) return;
 
+  // Restore saved custom rate from localStorage
+  try {
+    const savedRate = localStorage.getItem(CUSTOM_RATE_KEY);
+    if (savedRate && parseFloat(savedRate) > 0) {
+      exchangeRate = parseFloat(savedRate);
+      customRate.value = exchangeRate;
+      twdInput.value = 1000;
+      vndInput.value = Math.round(1000 * exchangeRate);
+    }
+  } catch (e) {}
+
   function onRateChange(newRate) {
     if (!newRate || newRate <= 0) return;
     exchangeRate = newRate;
+    try {
+      localStorage.setItem(CUSTOM_RATE_KEY, newRate);
+    } catch (e) {}
     
     // Sync other components
     renderDynamicCurrencyElements();
