@@ -1,10 +1,10 @@
 /**
  * 富國島 7 天 6 夜極致自由行手冊
- * 司機語音發音優化：專為 Grab / 計程車叫車設計，純地名發音無廢話
+ * 全動態即時匯率換算引擎：修改匯率時，全站所有景點卡片、換算矩陣、預算總表與頂部橫條同步即時重算
  */
 
 // ==========================================
-// 1. DATA: 7-DAY ITINERARY WITH REAL-TIME COSTS & TAXI VOICE
+// 1. DATA: 7-DAY ITINERARY (WITH DYNAMIC PRICING SCHEMAS)
 // ==========================================
 const ITINERARY_DATA = [
   // ---------- DAY 1: 10/12 (一) 中部 ----------
@@ -15,8 +15,12 @@ const ITINERARY_DATA = [
     nameZh: "桃園機場 (TPE) ✈ 富國島機場 (PQC)",
     nameVn: "Sân bay Quốc tế Phú Quốc",
     taxiVoice: "Sân bay Phú Quốc",
-    costVnd: "機票即時行情",
-    costTwd: "直飛來回約 NT$ 12,000",
+    pricing: {
+      type: "fixed_twd",
+      twd: 12000,
+      vndLabel: "機票即時行情",
+      twdLabel: "直飛來回約 NT$ 12,000"
+    },
     transport: "直飛航班 Sun PhuQuoc Airways 9G 511 (17:35 TPE ➔ 20:25 PQC)",
     address: "Tổ 2, Ấp Dương Tơ, Xã Dương Tơ, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3848 078",
@@ -32,8 +36,13 @@ const ITINERARY_DATA = [
     nameZh: "中部安富飯店 Check-in 放行李",
     nameVn: "Khách sạn An Phú",
     taxiVoice: "Khách sạn An Phú, Dương Đông",
-    costVnd: "即時房價約 640,000 ~ 750,000 ₫",
-    costTwd: "約 NT$ 800 ~ 940 / 晚",
+    pricing: {
+      type: "vnd_range",
+      min: 640000,
+      max: 750000,
+      unit: " / 晚",
+      labelPrefix: "即時房價約"
+    },
     transport: "機場搭乘 Grab 專車直達（車資約 120,000 ₫ / 約 NT$ 150）",
     address: "Đường 30 Tháng 4, Phường Dương Đông, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3988 989",
@@ -49,8 +58,13 @@ const ITINERARY_DATA = [
     nameZh: "陽東夜市海鮮晚餐 & 珠寶店換匯",
     nameVn: "Chợ Đêm Phú Quốc",
     taxiVoice: "Chợ Đêm Phú Quốc",
-    costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
-    costTwd: "約 NT$ 310 ~ 560",
+    pricing: {
+      type: "vnd_range",
+      min: 250000,
+      max: 450000,
+      unit: " / 人",
+      labelPrefix: "晚餐約"
+    },
     transport: "自飯店步行約 5 分鐘即達夜市入口",
     address: "54 Đường Nguyễn Trãi, Khu Phố 1, Dương Đông, Phú Quốc",
     phone: "+84 297 3846 123",
@@ -68,8 +82,11 @@ const ITINERARY_DATA = [
     nameZh: "早餐、Check-out ➔ 往北部渡假區移動",
     nameVn: "Wyndham Garden Grandworld",
     taxiVoice: "Khách sạn Wyndham Garden Grand World",
-    costVnd: "Grab 約 280,000 ₫ 或搭免費 VinBus",
-    costTwd: "Grab 約 NT$ 350 / VinBus 免費",
+    pricing: {
+      type: "custom",
+      vndText: "Grab 約 280,000 ₫ 或搭免費 VinBus",
+      calcTwd: (r) => `Grab 約 NT$ ${Math.round(280000 / r)} / VinBus 免費`
+    },
     transport: "搭乘 Grab 專車或搭乘免費綠色 VinBus 電動公車北上",
     address: "Khu Bãi Dài, Xã Gành Dầu, TP. Phú Quốc",
     phone: "VinBus: 1900 866 663",
@@ -85,8 +102,13 @@ const ITINERARY_DATA = [
     nameZh: "溫德姆花園飯店 Check-in 寄放行李 (連住 2 晚)",
     nameVn: "Wyndham Garden Grandworld",
     taxiVoice: "Khách sạn Wyndham Garden Grand World Phú Quốc",
-    costVnd: "即時房價約 1,450,000 ~ 1,850,000 ₫",
-    costTwd: "約 NT$ 1,800 ~ 2,300 / 晚",
+    pricing: {
+      type: "vnd_range",
+      min: 1450000,
+      max: 1850000,
+      unit: " / 晚",
+      labelPrefix: "即時房價約"
+    },
     transport: "抵達飯店大廳",
     address: "Khu Grand World, Bãi Dài, Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3636 555",
@@ -102,14 +124,17 @@ const ITINERARY_DATA = [
     nameZh: "Vinpearl Safari 野生動物園 (搭猛獸巴士・長頸鹿餵食午餐・飛禽表演)",
     nameVn: "Vinpearl Safari Phú Quốc",
     taxiVoice: "Vinpearl Safari Phú Quốc",
-    costVnd: "全票約 850,000 ₫ (長者約 650,000 ₫)；長頸鹿飼料 30,000 ₫",
-    costTwd: "全票約 NT$ 1,060 (長者約 NT$ 810)；飼料約 NT$ 38",
+    pricing: {
+      type: "custom",
+      vndText: "全票約 850,000 ₫ (長者約 650,000 ₫)；長頸鹿飼料 30,000 ₫",
+      calcTwd: (r) => `全票約 NT$ ${Math.round(850000 / r)} (長者約 NT$ ${Math.round(650000 / r)})；飼料約 NT$ ${Math.round(30000 / r)}`
+    },
     transport: "搭乘免費接駁車或 Grab (約 8 分鐘)",
     address: "Bãi Dài, Xã Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3636 699",
     openingHours: "08:30 - 16:00 (16:00 閉園)",
     description: "越南規模最大的開放式野生動物園！重點體驗：① 搭乘特製防彈 Safari Bus 深入猛獸野生放養區，近距離觀察孟加拉虎、非洲獅、白犀牛與斑馬；② 前往「長頸鹿餐廳 (Giraffe Restaurant)」購買紅蘿蔔與長頸鹿零距離餵食合照，並在此享用美味午餐；③ 走進互動區近距離觀賞環尾狐猴；④ 觀賞精彩的「飛禽表演秀 (Bird Show)」（固定演出時段：10:00 與 14:00）。",
-    tips: "💡 建議購買 Safari + VinWonders 雙園套票（約 1,500,000 ₫ / NT$1,875），長頸鹿上午食慾最好，建議早點前往互動！",
+    tips: "💡 建議購買 Safari + VinWonders 雙園套票（約 1,500,000 ₫），長頸鹿上午食慾最好，建議早點前往互動！",
     mapsQuery: "Vinpearl Safari Phu Quoc"
   },
   {
@@ -119,8 +144,11 @@ const ITINERARY_DATA = [
     nameZh: "返回溫德姆花園飯店休息・悠閒梳洗",
     nameVn: "Wyndham Garden Grandworld",
     taxiVoice: "Khách sạn Wyndham Garden Grand World",
-    costVnd: "包含於房費",
-    costTwd: "已含",
+    pricing: {
+      type: "free",
+      vndText: "包含於房費",
+      twdText: "已含"
+    },
     transport: "搭乘接駁車返回飯店",
     address: "Wyndham Garden Grandworld Phu Quoc",
     phone: "+84 297 3636 555",
@@ -136,8 +164,11 @@ const ITINERARY_DATA = [
     nameZh: "Grand World 富國大世界晚餐 ➔ 竹林傳奇 ➔ 21:00 威尼斯水上光影秀",
     nameVn: "Grand World Phú Quốc",
     taxiVoice: "Grand World Phú Quốc",
-    costVnd: "街區與水上光影秀完全免費；晚餐約 250,000 ~ 400,000 ₫",
-    costTwd: "秀免費；晚餐約 NT$ 310 ~ 500",
+    pricing: {
+      type: "custom",
+      vndText: "街區與水上光影秀完全免費；晚餐約 250,000 ~ 400,000 ₫",
+      calcTwd: (r) => `秀免費；晚餐約 NT$ ${Math.round(250000 / r)} ~ ${Math.round(400000 / r)}`
+    },
     transport: "自飯店步行 3 分鐘即達大世界運河核心區",
     address: "Grand World, Khu Bãi Dài, Gành Dầu, Phú Quốc",
     phone: "+84 297 3737 373",
@@ -155,8 +186,11 @@ const ITINERARY_DATA = [
     nameZh: "VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀・餵食秀・閉幕秀)",
     nameVn: "VinWonders Phú Quốc",
     taxiVoice: "VinWonders Phú Quốc",
-    costVnd: "單票約 950,000 ₫ (長者約 710,000 ₫) / 雙園套票約 1,500,000 ₫",
-    costTwd: "單票約 NT$ 1,180 / 雙園套票約 NT$ 1,875",
+    pricing: {
+      type: "custom",
+      vndText: "單票約 950,000 ₫ (長者約 710,000 ₫) / 雙園套票約 1,500,000 ₫",
+      calcTwd: (r) => `單票約 NT$ ${Math.round(950000 / r)} / 雙園套票約 NT$ ${Math.round(1500000 / r)}`
+    },
     transport: "搭乘免費 VinBus 或大世界接駁車（約 5 分鐘車程）",
     address: "Khu Bãi Dài, Xã Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3737 373",
@@ -172,8 +206,11 @@ const ITINERARY_DATA = [
     nameZh: "Grand World 大世界特色晚餐 & 越式舒壓按摩 SPA",
     nameVn: "Grand World Phú Quốc",
     taxiVoice: "Grand World Phú Quốc",
-    costVnd: "60分鐘全身按摩約 250,000 ~ 380,000 ₫；晚餐約 280,000 ₫",
-    costTwd: "按摩約 NT$ 310 ~ 475；晚餐約 NT$ 350",
+    pricing: {
+      type: "custom",
+      vndText: "60分鐘全身按摩約 250,000 ~ 380,000 ₫；晚餐約 280,000 ₫",
+      calcTwd: (r) => `按摩約 NT$ ${Math.round(250000 / r)} ~ ${Math.round(380000 / r)}；晚餐約 NT$ ${Math.round(280000 / r)}`
+    },
     transport: "自樂園搭車返回大世界街區",
     address: "Grand World Phú Quốc, Gành Dầu",
     phone: "各大世界正規 SPA 館",
@@ -191,8 +228,13 @@ const ITINERARY_DATA = [
     nameZh: "早餐、Check-out ➔ 一路往南前往日落小鎮 (Sunset Town)",
     nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
     taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town, An Thới",
-    costVnd: "Grab 專車約 480,000 ~ 580,000 ₫",
-    costTwd: "約 NT$ 600 ~ 725 (全車均攤)",
+    pricing: {
+      type: "vnd_range",
+      min: 480000,
+      max: 580000,
+      unit: " (全車均攤)",
+      labelPrefix: "Grab 專車約"
+    },
     transport: "預約 Grab 專車由北島直達南島日落小鎮（車程約 50 分鐘）",
     address: "Thị trấn Hoàng Hôn (Sunset Town), An Thới, Phú Quốc",
     phone: "各飯店前台專線",
@@ -208,8 +250,13 @@ const ITINERARY_DATA = [
     nameZh: "南部日落小鎮飯店 Check-in 寄放行李 (連住 2 晚)",
     nameVn: "Khách sạn Sunset Town",
     taxiVoice: "Khách sạn La Festa Sunset Town, An Thới",
-    costVnd: "即時房價約 1,350,000 ~ 2,500,000 ₫",
-    costTwd: "約 NT$ 1,680 ~ 3,125 / 晚",
+    pricing: {
+      type: "vnd_range",
+      min: 1350000,
+      max: 2500000,
+      unit: " / 晚",
+      labelPrefix: "即時房價約"
+    },
     transport: "抵達日落小鎮飯店",
     address: "Thị trấn Hoàng Hôn, Bãi Đất Đỏ, An Thới, Phú Quốc",
     phone: "飯店前台",
@@ -225,8 +272,13 @@ const ITINERARY_DATA = [
     nameZh: "日落小鎮 Sunset Town 海景午餐 & 漫步彩色阿瑪菲街區",
     nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
     taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
-    costVnd: "午餐約 180,000 ~ 350,000 ₫ / 人",
-    costTwd: "約 NT$ 225 ~ 440",
+    pricing: {
+      type: "vnd_range",
+      min: 180000,
+      max: 350000,
+      unit: " / 人",
+      labelPrefix: "午餐約"
+    },
     transport: "小鎮內悠閒步行",
     address: "Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "各餐廳現場",
@@ -242,8 +294,11 @@ const ITINERARY_DATA = [
     nameZh: "Kiss Bridge 親吻橋 ➔ 漫步踏海・絕美日落餘暉合影",
     nameVn: "Cầu Hôn (Kiss Bridge)",
     taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn",
-    costVnd: "單買約 100,000 ₫ (常含於套票)",
-    costTwd: "約 NT$ 125",
+    pricing: {
+      type: "custom",
+      vndText: "單買約 100,000 ₫ (常含於套票)",
+      calcTwd: (r) => `約 NT$ ${Math.round(100000 / r)}`
+    },
     transport: "自小鎮廣場沿海濱步道步行 3 分鐘",
     address: "Cầu Hôn, Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "+84 886 045 888",
@@ -259,8 +314,13 @@ const ITINERARY_DATA = [
     nameZh: "Sunset Town 海景餐廳晚餐 & 海濱夜市自由漫遊",
     nameVn: "Chợ đêm Vui-Fest Bazaar",
     taxiVoice: "Chợ đêm Vui-Fest, Sunset Town",
-    costVnd: "晚餐約 250,000 ~ 500,000 ₫ / 人",
-    costTwd: "約 NT$ 310 ~ 625",
+    pricing: {
+      type: "vnd_range",
+      min: 250000,
+      max: 500000,
+      unit: " / 人",
+      labelPrefix: "晚餐約"
+    },
     transport: "小鎮內漫步",
     address: "Bờ biển Thị trấn Hoàng Hôn, An Thới, Phú Quốc",
     phone: "各海景餐廳現場",
@@ -278,8 +338,13 @@ const ITINERARY_DATA = [
     nameZh: "Hon Thom 香島跨海纜車 (全世界最長跨海纜車) ➔ 太陽世界香島公園",
     nameVn: "Ga Cáp treo Hòn Thơm (Sun World)",
     taxiVoice: "Ga Cáp treo Hòn Thơm, An Thới",
-    costVnd: "來回纜車票即時行情約 650,000 ~ 850,000 ₫",
-    costTwd: "約 NT$ 810 ~ 1,060",
+    pricing: {
+      type: "vnd_range",
+      min: 650000,
+      max: 850000,
+      unit: "",
+      labelPrefix: "來回纜車票即時行情約"
+    },
     transport: "步行至日落小鎮安泰纜車站 (Ga Ánh Dương)",
     address: "Bãi Đất Đỏ, Phường An Thới, TP. Phú Quốc, Kiên Giang",
     phone: "+84 886 045 888",
@@ -295,8 +360,13 @@ const ITINERARY_DATA = [
     nameZh: "返回 Sunset Town 享用午餐 ➔ 飯店吹冷氣休息充電",
     nameVn: "Thị trấn Hoàng Hôn",
     taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
-    costVnd: "午餐約 150,000 ~ 280,000 ₫ / 人",
-    costTwd: "約 NT$ 180 ~ 350",
+    pricing: {
+      type: "vnd_range",
+      min: 150000,
+      max: 280000,
+      unit: " / 人",
+      labelPrefix: "午餐約"
+    },
     transport: "搭乘纜車返回日落小鎮",
     address: "Thị trấn Hoàng Hôn, An Thới",
     phone: "飯店前台",
@@ -312,8 +382,13 @@ const ITINERARY_DATA = [
     nameZh: "Kiss Bridge 親吻橋 ➔ 夕陽暮光 ➔ 浪漫晚餐",
     nameVn: "Cầu Hôn (Kiss Bridge)",
     taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn",
-    costVnd: "晚餐約 250,000 ~ 450,000 ₫ / 人",
-    costTwd: "約 NT$ 310 ~ 560",
+    pricing: {
+      type: "vnd_range",
+      min: 250000,
+      max: 450000,
+      unit: " / 人",
+      labelPrefix: "晚餐約"
+    },
     transport: "步行前往親吻橋與海景餐廳",
     address: "Cầu Hôn & Bờ biển Sunset Town",
     phone: "現場",
@@ -329,8 +404,13 @@ const ITINERARY_DATA = [
     nameZh: "《海洋交響》(Symphony of the Sea) 水幕・雷射・極限特技秀",
     nameVn: "Sân khấu bờ biển Sunset Town",
     taxiVoice: "Sân khấu nhạc nước Sunset Town, An Thới",
-    costVnd: "即時票價約 300,000 ~ 450,000 ₫",
-    costTwd: "約 NT$ 375 ~ 560",
+    pricing: {
+      type: "vnd_range",
+      min: 300000,
+      max: 450000,
+      unit: "",
+      labelPrefix: "即時票價約"
+    },
     transport: "日落小鎮海上海灣專屬看台區",
     address: "Sân khấu bờ biển Sunset Town, An Thới, Phú Quốc",
     phone: "+84 886 045 888",
@@ -346,8 +426,11 @@ const ITINERARY_DATA = [
     nameZh: "《海洋之吻》(Kiss of the Sea) 旗艦大秀 ➔ 壓軸海面璀璨煙火",
     nameVn: "Sân khấu Kiss of the Sea",
     taxiVoice: "Sân khấu Kiss of the Sea, Sunset Town",
-    costVnd: "即時票價約 550,000 ~ 700,000 ₫ (煙火免費)",
-    costTwd: "約 NT$ 680 ~ 875",
+    pricing: {
+      type: "custom",
+      vndText: "即時票價約 550,000 ~ 700,000 ₫ (煙火免費)",
+      calcTwd: (r) => `約 NT$ ${Math.round(550000 / r)} ~ ${Math.round(700000 / r)}`
+    },
     transport: "日落小鎮主圓形水上劇場（步行 2 分鐘）",
     address: "Sân khấu mái vòm Kiss of the Sea, Sunset Town, An Thới",
     phone: "+84 886 045 888",
@@ -365,8 +448,13 @@ const ITINERARY_DATA = [
     nameZh: "悠閒早餐、Check-out ➔ 南部移動至中部陽東鎮／Long Beach",
     nameVn: "Dương Đông (Long Beach)",
     taxiVoice: "Thị trấn Dương Đông, Đường Trần Hưng Đạo",
-    costVnd: "Grab 專車約 240,000 ~ 320,000 ₫",
-    costTwd: "約 NT$ 300 ~ 400 (全車均攤)",
+    pricing: {
+      type: "vnd_range",
+      min: 240000,
+      max: 320000,
+      unit: " (全車均攤)",
+      labelPrefix: "Grab 專車約"
+    },
     transport: "前一晚看秀較晚，今天睡到自然醒後搭 Grab 專車返回中部",
     address: "Khu Phố 7, Đường Trần Hưng Đạo, Phường Dương Đông, Phú Quốc",
     phone: "飯店前台",
@@ -382,8 +470,11 @@ const ITINERARY_DATA = [
     nameZh: "中部渡假飯店 Check-in / 寄放行李 (天清飯店 或 海貝飯店)",
     nameVn: "Thien Thanh Resort / Seashells Hotel",
     taxiVoice: "Khách sạn Thien Thanh Resort, Trần Hưng Đạo",
-    costVnd: "天清約 1,750,000 ₫ / 海貝約 2,200,000 ₫",
-    costTwd: "天清約 NT$ 2,180 / 海貝約 NT$ 2,750",
+    pricing: {
+      type: "custom",
+      vndText: "天清約 1,750,000 ₫ / 海貝約 2,200,000 ₫",
+      calcTwd: (r) => `天清約 NT$ ${Math.round(1750000 / r)} / 海貝約 NT$ ${Math.round(2200000 / r)}`
+    },
     transport: "抵達飯店大廳",
     address: "Đường Trần Hưng Đạo / Võ Thị Sáu, Dương Đông, Phú Quốc",
     phone: "+84 297 3923 999",
@@ -399,8 +490,13 @@ const ITINERARY_DATA = [
     nameZh: "日落沙灘海景咖啡下午茶 ➔ 沙灘放空看海",
     nameVn: "Bãi Trường (Long Beach)",
     taxiVoice: "Bãi biển Long Beach, Trần Hưng Đạo",
-    costVnd: "下午茶飲品約 70,000 ~ 150,000 ₫ / 人",
-    costTwd: "約 NT$ 90 ~ 190",
+    pricing: {
+      type: "vnd_range",
+      min: 70000,
+      max: 150000,
+      unit: " / 人",
+      labelPrefix: "下午茶飲品約"
+    },
     transport: "步行或 Grab 短程 (約 3~5 分鐘)",
     address: "Bãi Trường (Long Beach), Dương Đông, Phú Quốc",
     phone: "各海景咖啡廳",
@@ -416,8 +512,11 @@ const ITINERARY_DATA = [
     nameZh: "陽東夜市美食 ➔ 特產伴手禮大採買 ➔ 越式洗頭與全身精油按摩",
     nameVn: "Chợ Đêm Phú Quốc & Kingkong Mart",
     taxiVoice: "Chợ Đêm Phú Quốc",
-    costVnd: "採買腰果胡椒約 400,000 ₫；洗頭按摩約 250,000 ₫",
-    costTwd: "採買約 NT$ 500；越式洗頭按摩約 NT$ 310",
+    pricing: {
+      type: "custom",
+      vndText: "採買腰果胡椒約 400,000 ₫；洗頭按摩約 250,000 ₫",
+      calcTwd: (r) => `採買約 NT$ ${Math.round(400000 / r)}；洗頭按摩約 NT$ ${Math.round(250000 / r)}`
+    },
     transport: "步行至陽東夜市商圈",
     address: "Chợ Đêm Phú Quốc & 金剛超市 Kingkong Mart",
     phone: "+84 966 690 999",
@@ -435,8 +534,11 @@ const ITINERARY_DATA = [
     nameZh: "飯店海景自助早餐 ➔ 悠閒收拾行李與退房",
     nameVn: "Khách sạn nghỉ dưỡng Phú Quốc",
     taxiVoice: "Khách sạn Phú Quốc",
-    costVnd: "包含於房費",
-    costTwd: "已含",
+    pricing: {
+      type: "free",
+      vndText: "包含於房費",
+      twdText: "已含"
+    },
     transport: "飯店海景餐廳",
     address: "飯店內",
     phone: "前台",
@@ -452,8 +554,11 @@ const ITINERARY_DATA = [
     nameZh: "飯店 ➔ 富國國際機場 (PQC) ✈ 桃園機場 (TPE)",
     nameVn: "Sân bay Quốc tế Phú Quốc",
     taxiVoice: "Sân bay Phú Quốc (Ga đi)",
-    costVnd: "Grab 車資約 100,000 ₫",
-    costTwd: "車資約 NT$ 125",
+    pricing: {
+      type: "custom",
+      vndText: "Grab 車資約 100,000 ₫",
+      calcTwd: (r) => `車資約 NT$ ${Math.round(100000 / r)}`
+    },
     transport: "Grab 叫車至富國機場（約 15 分鐘）；搭乘班機 9G 510",
     address: "Sân bay Quốc tế Phú Quốc (PQC)",
     phone: "+84 297 3848 078",
@@ -464,8 +569,60 @@ const ITINERARY_DATA = [
   }
 ];
 
+// Helper to compute spot prices dynamically
+function computeSpotCost(spot, rate) {
+  const p = spot.pricing;
+  if (!p) return { vnd: "即時行情", twd: "以匯率換算" };
+
+  if (p.type === "fixed_twd") {
+    return {
+      vnd: p.vndLabel || `約 ${(p.twd * rate).toLocaleString()} ₫`,
+      twd: p.twdLabel || `約 NT$ ${p.twd.toLocaleString()}`
+    };
+  }
+  if (p.type === "free") {
+    return { vnd: p.vndText, twd: p.twdText };
+  }
+  if (p.type === "vnd_range") {
+    const twdMin = Math.round(p.min / rate);
+    const twdMax = Math.round(p.max / rate);
+    return {
+      vnd: `${p.labelPrefix} ${p.min.toLocaleString()} ~ ${p.max.toLocaleString()} ₫${p.unit || ''}`,
+      twd: `約 NT$ ${twdMin.toLocaleString()} ~ ${twdMax.toLocaleString()}${p.unit || ''}`
+    };
+  }
+  if (p.type === "custom") {
+    return {
+      vnd: p.vndText,
+      twd: p.calcTwd(rate)
+    };
+  }
+  return { vnd: "即時行情", twd: "以匯率換算" };
+}
+
 // ==========================================
-// 2. DATA: VIETNAMESE SURVIVAL PHRASES (TAXI FOCUSED)
+// 2. DATA: BUDGET TABLE & QUICK MATRIX
+// ==========================================
+const BUDGET_ITEMS_DATA = [
+  { icon: "✈️", name: "來回機票", desc: "直飛富國島來回機票 (含20kg托運行李與稅金)", vnd: 9600000, ratio: "38%" },
+  { icon: "🏨", name: "6 晚精選住宿", desc: "安富(1晚)+溫德姆花園(2晚)+日落小鎮海景(2晚)+天清/海貝(1晚) 均攤", vnd: 7200000, ratio: "28%" },
+  { icon: "🎟️", name: "樂園與大秀門票", desc: "Safari+VinWonders雙園套票、香島跨海纜車、Kiss of the Sea光影秀", vnd: 3200000, ratio: "13%" },
+  { icon: "🍲", name: "餐飲與夜市海鮮", desc: "每日三餐、長頸鹿餐廳午餐、日落海景餐廳、夜市海鮮大餐", vnd: 3200000, ratio: "13%" },
+  { icon: "🚗", name: "島內 Grab 與接送", desc: "機場接送、北南跨區 Grab 專車 (搭配北部免費 VinBus)", vnd: 700000, ratio: "3%" },
+  { icon: "💆", name: "越式洗頭與伴手禮", desc: "越式洗頭舒壓、全身精油 SPA、上網卡、胡椒與腰果採買", vnd: 1300000, ratio: "5%" }
+];
+
+const QUICK_MATRIX_DATA = [
+  { vnd: 10000, desc: "礦泉水 / 街頭甘蔗汁" },
+  { vnd: 40000, desc: "炭烤蔥油海膽 / 法國麵包" },
+  { vnd: 50000, desc: "經典冰煉乳咖啡 / 椰子冰" },
+  { vnd: 250000, desc: "越式洗頭 / 60分鐘按摩" },
+  { vnd: 850000, desc: "Safari 全票 / 跨海纜車票" },
+  { vnd: 1500000, desc: "Safari + VinWonders 雙園套票" }
+];
+
+// ==========================================
+// 3. DATA: VIETNAMESE SURVIVAL PHRASES
 // ==========================================
 const PHRASES_DATA = [
   // Taxi & Location (Short & Pure Destination)
@@ -506,7 +663,7 @@ const PHRASES_DATA = [
 ];
 
 // ==========================================
-// 3. DATA: PACKING CHECKLIST
+// 4. DATA: PACKING CHECKLIST
 // ==========================================
 const CHECKLIST_DATA = [
   {
@@ -554,6 +711,9 @@ const CHECKLIST_DATA = [
   }
 ];
 
+// ==========================================
+// 5. APPLICATION CONTROLLER
+// ==========================================
 let currentDayFilter = "all";
 let currentPhraseFilter = "all";
 let exchangeRate = 800; // 1 TWD = 800 VND
@@ -564,6 +724,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initCurrencyCalculator();
   initPhrases();
   initChecklist();
+  
+  // Initial renders
+  renderDynamicCurrencyElements();
   renderSpots();
   renderPhrases();
   renderChecklist();
@@ -612,14 +775,13 @@ function fallbackCopy(text, label) {
 
 // Crisp, direct Vietnamese speech for Grab/Taxi drivers
 window.speakVietnamese = function(text) {
-  // Strip any parentheses or subtitles to keep destination pure & clear
   const cleanDestination = text.replace(/\(.*?\)/g, '').trim();
   
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(cleanDestination);
     utterance.lang = 'vi-VN';
-    utterance.rate = 0.8; // Clear, audible pace for drivers
+    utterance.rate = 0.8;
     utterance.pitch = 1.0;
     
     const voices = window.speechSynthesis.getVoices();
@@ -634,7 +796,7 @@ window.speakVietnamese = function(text) {
 };
 
 // ==========================================
-// 5. TAB NAVIGATION
+// 6. TAB NAVIGATION
 // ==========================================
 function initTabs() {
   const topTabs = document.querySelectorAll(".nav-tab");
@@ -656,7 +818,7 @@ function initTabs() {
 }
 
 // ==========================================
-// 6. ITINERARY RENDERING & FILTERING
+// 7. ITINERARY RENDERING & FILTERING
 // ==========================================
 function initDayFilters() {
   const dayPills = document.querySelectorAll(".day-pill");
@@ -731,6 +893,7 @@ function renderSpots() {
 
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapsQuery || spot.nameVn)}`;
     const driverVoiceText = spot.taxiVoice || spot.nameVn;
+    const dynamicCost = computeSpotCost(spot, exchangeRate);
 
     html += `
       <article class="spot-card">
@@ -745,8 +908,8 @@ function renderSpots() {
             <div class="spot-name-vn">🇻🇳 ${spot.nameVn}</div>
           </div>
           <div class="spot-cost-tag">
-            <div class="cost-vnd">${spot.costVnd}</div>
-            <div class="cost-twd">${spot.costTwd}</div>
+            <div class="cost-vnd">${dynamicCost.vnd}</div>
+            <div class="cost-twd">${dynamicCost.twd}</div>
           </div>
         </div>
 
@@ -799,7 +962,7 @@ function renderSpots() {
 }
 
 // ==========================================
-// 7. CURRENCY CALCULATOR
+// 8. REAL-TIME DYNAMIC CURRENCY ENGINE
 // ==========================================
 function initCurrencyCalculator() {
   const twdInput = document.getElementById("twdInput");
@@ -808,37 +971,110 @@ function initCurrencyCalculator() {
 
   if (!twdInput || !vndInput || !customRate) return;
 
-  function updateFromTwd() {
+  function onRateChange(newRate) {
+    if (!newRate || newRate <= 0) return;
+    exchangeRate = newRate;
+    
+    // Sync other components
+    renderDynamicCurrencyElements();
+    renderSpots(); // Re-render spot cards with newly calculated TWD values!
+  }
+
+  twdInput.addEventListener("input", () => {
     const twd = parseFloat(twdInput.value) || 0;
-    const rate = parseFloat(customRate.value) || 800;
-    vndInput.value = Math.round(twd * rate);
-  }
-
-  function updateFromVnd() {
-    const vnd = parseFloat(vndInput.value) || 0;
-    const rate = parseFloat(customRate.value) || 800;
-    if (rate > 0) twdInput.value = Math.round(vnd / rate);
-  }
-
-  twdInput.addEventListener("input", updateFromTwd);
-  vndInput.addEventListener("input", updateFromVnd);
-  customRate.addEventListener("input", () => {
-    exchangeRate = parseFloat(customRate.value) || 800;
-    updateFromTwd();
+    vndInput.value = Math.round(twd * exchangeRate);
   });
 
-  document.querySelectorAll(".matrix-item").forEach(item => {
-    item.addEventListener("click", () => {
-      const vndVal = parseFloat(item.dataset.vnd);
-      vndInput.value = vndVal;
-      updateFromVnd();
-      showToast(`已載入 ${vndVal.toLocaleString()} ₫ 換算！`, "💱");
-    });
+  vndInput.addEventListener("input", () => {
+    const vnd = parseFloat(vndInput.value) || 0;
+    if (exchangeRate > 0) twdInput.value = Math.round(vnd / exchangeRate);
+  });
+
+  customRate.addEventListener("input", (e) => {
+    const val = parseFloat(e.target.value);
+    if (val && val > 0) {
+      onRateChange(val);
+      const twd = parseFloat(twdInput.value) || 0;
+      vndInput.value = Math.round(twd * val);
+    }
   });
 }
 
+// Re-renders all currency-dependent UI (Top Bar, Quick Matrix, Budget Table)
+function renderDynamicCurrencyElements() {
+  const rate = exchangeRate || 800;
+
+  // 1. Top Quick Stats Banner
+  const statRatePill = document.getElementById("statRatePill");
+  if (statRatePill) statRatePill.innerText = `1 TWD ≈ ${rate} VND`;
+
+  const statFormulaPill = document.getElementById("statFormulaPill");
+  if (statFormulaPill) {
+    const multiplier = (1000 / rate).toFixed(2);
+    statFormulaPill.innerText = `去3個0 × ${multiplier}`;
+  }
+
+  // 2. Quick Reference Matrix
+  const matrixContainer = document.querySelector(".quick-matrix");
+  if (matrixContainer) {
+    let matrixHtml = "";
+    QUICK_MATRIX_DATA.forEach(item => {
+      const twdVal = item.vnd / rate;
+      const twdStr = twdVal < 100 ? twdVal.toFixed(1) : Math.round(twdVal).toLocaleString();
+      matrixHtml += `
+        <div class="matrix-item" data-vnd="${item.vnd}" onclick="loadMatrixVnd(${item.vnd})">
+          <span class="matrix-vnd">${item.vnd.toLocaleString()} ₫</span>
+          <span class="matrix-twd">≈ NT$ ${twdStr}</span>
+          <span class="matrix-desc">${item.desc}</span>
+        </div>
+      `;
+    });
+    matrixContainer.innerHTML = matrixHtml;
+  }
+
+  // 3. Dynamic Budget Breakdown Table
+  const budgetTableBody = document.querySelector(".budget-table tbody");
+  const budgetTotalVnd = document.querySelector(".budget-table tfoot td:nth-child(2)");
+  const budgetTotalTwd = document.querySelector(".budget-table tfoot .total-price");
+
+  if (budgetTableBody) {
+    let tableHtml = "";
+    let totalVnd = 0;
+
+    BUDGET_ITEMS_DATA.forEach(item => {
+      totalVnd += item.vnd;
+      const twdVal = Math.round(item.vnd / rate);
+      tableHtml += `
+        <tr>
+          <td><strong>${item.icon} ${item.name}</strong></td>
+          <td>${item.desc}</td>
+          <td>約 ${item.vnd.toLocaleString()} ₫</td>
+          <td class="price-highlight">NT$ ${twdVal.toLocaleString()}</td>
+          <td>${item.ratio}</td>
+        </tr>
+      `;
+    });
+
+    budgetTableBody.innerHTML = tableHtml;
+
+    const totalTwd = Math.round(totalVnd / rate);
+    if (budgetTotalVnd) budgetTotalVnd.innerHTML = `<strong>約 ${totalVnd.toLocaleString()} ₫</strong>`;
+    if (budgetTotalTwd) budgetTotalTwd.innerText = `約 NT$ ${totalTwd.toLocaleString()}`;
+  }
+}
+
+window.loadMatrixVnd = function(vndVal) {
+  const vndInput = document.getElementById("vndInput");
+  const twdInput = document.getElementById("twdInput");
+  if (vndInput && twdInput) {
+    vndInput.value = vndVal;
+    twdInput.value = Math.round(vndVal / exchangeRate);
+    showToast(`已載入 ${vndVal.toLocaleString()} ₫ 換算！`, "💱");
+  }
+};
+
 // ==========================================
-// 8. VIETNAMESE PHRASES ENGINE
+// 9. VIETNAMESE PHRASES ENGINE
 // ==========================================
 function initPhrases() {
   const filterBtns = document.querySelectorAll(".phrase-filter");
@@ -880,7 +1116,7 @@ function renderPhrases() {
 }
 
 // ==========================================
-// 9. CHECKLIST ENGINE
+// 10. CHECKLIST ENGINE
 // ==========================================
 const STORAGE_KEY = "phu_quoc_checklist_checked_v3";
 
