@@ -712,6 +712,12 @@ function renderSpots() {
   const container = document.getElementById("spotsContainer");
   if (!container) return;
 
+  // Toggle Itinerary Summary Card: only show on "全部總覽" (all)
+  const summaryCard = document.querySelector(".itinerary-summary-card");
+  if (summaryCard) {
+    summaryCard.style.display = (currentDayFilter === "all" && !currentSearchQuery) ? "block" : "none";
+  }
+
   const filteredSpots = ITINERARY_DATA.filter(spot => {
     const matchDay = currentDayFilter === "all" || spot.day.toString() === currentDayFilter;
     const matchCategory = currentCategoryFilter === "all" || spot.category === currentCategoryFilter;
