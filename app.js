@@ -554,20 +554,13 @@ const CHECKLIST_DATA = [
   }
 ];
 
-// ==========================================
-// 4. APPLICATION CONTROLLER
-// ==========================================
 let currentDayFilter = "all";
-let currentCategoryFilter = "all";
 let currentPhraseFilter = "all";
-let currentSearchQuery = "";
 let exchangeRate = 800; // 1 TWD = 800 VND
 
 document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initDayFilters();
-  initCategoryFilters();
-  initSearch();
   initCurrencyCalculator();
   initPhrases();
   initChecklist();
@@ -677,43 +670,12 @@ function initDayFilters() {
   });
 }
 
-function initCategoryFilters() {
-  const catTags = document.querySelectorAll(".cat-tag");
-  catTags.forEach(tag => {
-    tag.addEventListener("click", () => {
-      catTags.forEach(t => t.classList.remove("active"));
-      tag.classList.add("active");
-      currentCategoryFilter = tag.dataset.cat;
-      renderSpots();
-    });
-  });
-}
-
-function initSearch() {
-  const searchInput = document.getElementById("spotSearch");
-  const clearBtn = document.getElementById("clearSearch");
-  if (!searchInput) return;
-
-  searchInput.addEventListener("input", (e) => {
-    currentSearchQuery = e.target.value.trim().toLowerCase();
-    clearBtn.classList.toggle("hidden", !currentSearchQuery);
-    renderSpots();
-  });
-
-  clearBtn?.addEventListener("click", () => {
-    searchInput.value = "";
-    currentSearchQuery = "";
-    clearBtn.classList.add("hidden");
-    renderSpots();
-  });
-}
-
 function renderSpots() {
   const container = document.getElementById("spotsContainer");
   if (!container) return;
 
   // Toggle Top Header Quick Stats Bar & Itinerary Summary Card: only show on "全部總覽" (all)
-  const isSingleDay = (currentDayFilter !== "all") || (!!currentSearchQuery);
+  const isSingleDay = (currentDayFilter !== "all");
   document.body.classList.toggle("hide-overview", isSingleDay);
 
   const quickStatsBar = document.getElementById("quickStatsBar") || document.querySelector(".quick-stats-bar");
@@ -727,25 +689,15 @@ function renderSpots() {
   }
 
   const filteredSpots = ITINERARY_DATA.filter(spot => {
-    const matchDay = currentDayFilter === "all" || spot.day.toString() === currentDayFilter;
-    const matchCategory = currentCategoryFilter === "all" || spot.category === currentCategoryFilter;
-    const query = currentSearchQuery;
-    const matchSearch = !query || 
-      spot.nameZh.toLowerCase().includes(query) ||
-      spot.nameVn.toLowerCase().includes(query) ||
-      spot.description.toLowerCase().includes(query) ||
-      spot.tips.toLowerCase().includes(query) ||
-      spot.address.toLowerCase().includes(query);
-
-    return matchDay && matchCategory && matchSearch;
+    return currentDayFilter === "all" || spot.day.toString() === currentDayFilter;
   });
 
   if (filteredSpots.length === 0) {
     container.innerHTML = `
       <div style="text-align: center; padding: 48px 16px; background: #fff; border-radius: 16px; border: 1px dashed #cbd5e1;">
-        <div style="font-size: 2.5rem; margin-bottom: 8px;">🔍</div>
-        <h3 style="color: #0f172a; margin-bottom: 4px;">沒有找到符合條件的景點或行程</h3>
-        <p style="color: #64748b; font-size: 0.9rem;">請嘗試更換關鍵字或點選「全部總覽」查看完整清單</p>
+        <div style="font-size: 2.5rem; margin-bottom: 8px;">🏝️</div>
+        <h3 style="color: #0f172a; margin-bottom: 4px;">此天暫無排定行程</h3>
+        <p style="color: #64748b; font-size: 0.9rem;">請點選其他天數或點選「全部總覽」查看完整行程</p>
       </div>
     `;
     return;
