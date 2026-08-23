@@ -712,7 +712,12 @@ function renderSpots() {
   const container = document.getElementById("spotsContainer");
   if (!container) return;
 
-  // Toggle Itinerary Summary Card: only show on "全部總覽" (all)
+  // Toggle Top Header Quick Stats Bar & Itinerary Summary Card: only show on "全部總覽" (all)
+  const quickStatsBar = document.getElementById("quickStatsBar") || document.querySelector(".quick-stats-bar");
+  if (quickStatsBar) {
+    quickStatsBar.style.display = (currentDayFilter === "all") ? "flex" : "none";
+  }
+
   const summaryCard = document.querySelector(".itinerary-summary-card");
   if (summaryCard) {
     summaryCard.style.display = (currentDayFilter === "all" && !currentSearchQuery) ? "block" : "none";
