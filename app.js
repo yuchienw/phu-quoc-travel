@@ -797,6 +797,20 @@ const ACTIVE_DAY_KEY = "phu_quoc_selected_day_v1";
 const DAY_BAR_SCROLL_KEY = "phu_quoc_day_bar_scroll_v1";
 const CUSTOM_RATE_KEY = "phu_quoc_custom_rate_v1";
 
+function scrollItineraryToTop() {
+  const itineraryTab = document.getElementById("tab-itinerary");
+  if (!itineraryTab?.classList.contains("active")) return;
+
+  const daySelector = document.querySelector(".day-selector-sticky");
+  const scrollTarget = daySelector || document.getElementById("spotsContainer") || itineraryTab;
+  const targetTop = scrollTarget.getBoundingClientRect().top + window.scrollY;
+
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: "smooth"
+  });
+}
+
 // ==========================================
 // 6. TAB NAVIGATION
 // ==========================================
@@ -904,6 +918,7 @@ function initDayFilters() {
       } catch (e) {}
 
       renderSpots();
+      requestAnimationFrame(scrollItineraryToTop);
     });
   });
 }
