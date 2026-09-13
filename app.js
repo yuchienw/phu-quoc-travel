@@ -1434,7 +1434,7 @@ const PHRASES_DATA = [
 // ==========================================
 const CHECKLIST_DATA = [
   {
-    category: "重要證件與金融 (Excel 必備)",
+    category: "重要證件與金融",
     icon: "🛂",
     items: [
       { id: "c1_1", text: "護照正本 (效期需滿 6 個月以上)" },
@@ -1448,7 +1448,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    category: "常備藥品與防護 (Excel 必備)",
+    category: "常備藥品與防護",
     icon: "💊",
     items: [
       { id: "c2_1", text: "腸胃藥 (胃散、止瀉藥，適應海鮮與夜市飲食)" },
@@ -1461,7 +1461,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    category: "3C 電子與電力 (Excel 必備)",
+    category: "3C 電子與電力通訊",
     icon: "🔌",
     items: [
       { id: "c3_1", text: "攝影器材 (相機 / 手機三軸穩定器 / 備用記憶卡)" },
@@ -1473,7 +1473,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    category: "個人盥洗與衛生 (Excel 必備)",
+    category: "個人盥洗與衛生",
     icon: "🪥",
     items: [
       { id: "c4_1", text: "盥洗用具 (牙刷、牙膏、旅行裝洗沐用品)" },
@@ -1482,7 +1482,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    category: "防曬、配件與玩水裝備 (Excel 必備)",
+    category: "防曬、配件與玩水裝備",
     icon: "🏖️",
     items: [
       { id: "c5_1", text: "防曬乳液 (高係數 SPF 50+ 海洋友善防曬)" },
