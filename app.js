@@ -40,8 +40,8 @@ const ITINERARY_DATA = [
     pricing: {
       type: "fixed_twd",
       twd: 12824,
-      vndLabel: "機票即時行情",
-      twdLabel: "直飛來回約 NT$ 12,824"
+      vndLabel: "2人直飛來回特惠",
+      twdLabel: "2人直飛來回 NT$ 12,824 (單人約 NT$ 6,412)"
     },
     transport: "直飛航班 Sun PhuQuoc Airways 9G 511 (A321NEO)",
     address: "Tổ 2, Ấp Dương Tơ, Xã Dương Tơ, TP. Phú Quốc, Kiên Giang",
