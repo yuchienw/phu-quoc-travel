@@ -1359,9 +1359,18 @@ body.hide-overview .itinerary-summary-card {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
+@media (max-width: 859px) {
+  .main-nav {
+    display: none !important; /* Hide top menu on mobile, keeping only bottom nav */
+  }
+  .site-header {
+    padding-bottom: 16px;
+  }
+}
+
 @media (min-width: 860px) {
   .bottom-nav {
-    display: none; /* Hide bottom nav on large desktop screens */
+    display: none !important; /* Hide bottom nav on large desktop screens */
   }
   body {
     padding-bottom: 0;
