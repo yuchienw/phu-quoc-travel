@@ -417,6 +417,92 @@ body.hide-overview .itinerary-summary-card {
   color: var(--text-muted);
 }
 
+/* Overview Days List (shown on '全部總覽') */
+.overview-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.overview-day-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 5px solid var(--color-primary);
+  text-decoration: none;
+}
+
+.overview-day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.overview-day-card:active {
+  transform: scale(0.99);
+}
+
+.overview-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.overview-day-pill {
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.3px;
+}
+
+.overview-area-badge {
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.overview-day-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.overview-day-spots {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #cbd5e1;
+}
+
+.overview-day-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 4px;
+}
+
 /* Spot Card */
 .spot-card {
   background-color: var(--bg-card);

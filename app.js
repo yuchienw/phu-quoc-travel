@@ -1733,9 +1733,102 @@ function renderSpots() {
     summaryCard.style.display = isSingleDay ? "none" : "block";
   }
 
-  const filteredSpots = ITINERARY_DATA.filter(spot => {
-    return currentDayFilter === "all" || spot.day.toString() === currentDayFilter;
-  });
+  const DAY_TITLES = {
+    1: "Day 1 (10/13 二) : 桃園出發 ✈ 富國島 ➔ 宿安富飯店 ➔ 陽東夜市晚餐與 Robinson Pearl 換匯",
+    2: "Day 2 (10/14 三) : 往北移動 ➔ 宿溫德姆 ➔ Safari 野生動物園 ➔ 大世界小卷米線 ➔ 威尼斯水秀",
+    3: "Day 3 (10/15 四) : VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀) ➔ 閉幕煙火 ➔ 越式 SPA",
+    4: "Day 4 (10/16 五) : 一路往南 ➔ 宿海岸生活飯店 ➔ 親吻橋夕陽 ➔ 19:00海洋交響秀 ➔ VUI-Fest 夜市",
+    5: "Day 5 (10/17 六) : 免費香島跨海纜車 ➔ 太陽世界香島公園 ➔ 親吻橋夕陽 ➔ 21:00海洋之吻與高空煙火",
+    6: "Day 6 (10/18 日) : 往中部移動 ➔ 宿海貝/天清 ➔ 桑奈托日落沙灘下午茶 ➔ 特產採買 ➔ 如意越式洗頭",
+    7: "Day 7 (10/19 一) : 飯店海景早餐 ➔ 富國國際機場 (PQC) ✈ 搭乘 9G 510 平安返抵桃園 (TPE)"
+  };
+
+  const DAY_OVERVIEWS = [
+    {
+      day: 1,
+      date: "10/13 (二)",
+      area: "中部陽東",
+      title: "Day 1 (10/13 二) : 桃園出發 ✈ 富國島 ➔ 宿安富飯店 ➔ 陽東夜市晚餐與 Robinson Pearl 換匯",
+      summary: "桃園機場 T1 報到 ➔ 17:35 直飛航班 9G 511 ➔ 20:25 抵達富國機場 ➔ 機場換匯/SIM卡 ➔ 宿安富飯店 ➔ 陽東夜市/換匯",
+      color: "#0f766e"
+    },
+    {
+      day: 2,
+      date: "10/14 (三)",
+      area: "北部珍珠區",
+      title: "Day 2 (10/14 三) : 往北移動 ➔ 宿溫德姆 ➔ Safari 野生動物園 ➔ 大世界小卷米線 ➔ 威尼斯水秀",
+      summary: "退房往北 ➔ 宿溫德姆花園 ➔ Safari 野生動物園 (遊園巴士+長頸鹿餵食) ➔ 大世界逛街 ➔ 21:00 威尼斯聲光水舞秀",
+      color: "#0284c7"
+    },
+    {
+      day: 3,
+      date: "10/15 (四)",
+      area: "北部珍珠區",
+      title: "Day 3 (10/15 四) : VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀) ➔ 閉幕煙火 ➔ 越式 SPA",
+      summary: "VinWonders 珍珠水陸主題樂園 (海龜水族館、美人魚秀、餵食秀) ➔ 18:45 閉幕遊行煙火聲光秀 ➔ 大世界晚餐/按摩",
+      color: "#8b5cf6"
+    },
+    {
+      day: 4,
+      date: "10/16 (五)",
+      area: "南部日落小鎮",
+      title: "Day 4 (10/16 五) : 一路往南 ➔ 宿海岸生活飯店 ➔ 親吻橋夕陽 ➔ 19:00海洋交響秀 ➔ VUI-Fest 夜市",
+      summary: "退房往南 ➔ 宿富國海岸生活飯店 ➔ 日落小鎮 Sunset Town ➔ 親吻橋看夕陽 ➔ 19:00 海洋交響秀 ➔ VUI-Fest 海濱夜市",
+      color: "#ea580c"
+    },
+    {
+      day: 5,
+      date: "10/17 (六)",
+      area: "南部香島與小鎮",
+      title: "Day 5 (10/17 六) : 免費香島跨海纜車 ➔ 太陽世界香島公園 ➔ 親吻橋夕陽 ➔ 21:00海洋之吻與高空煙火",
+      summary: "全世界最長跨海纜車 ➔ 太陽世界香島自然公園 ➔ 返回日落小鎮晚餐 ➔ 19:00 海洋交響 ➔ 21:00 海洋之吻與高空煙火",
+      color: "#d97706"
+    },
+    {
+      day: 6,
+      date: "10/18 (日)",
+      area: "中部陽東/長灘",
+      title: "Day 6 (10/18 日) : 往中部移動 ➔ 宿海貝/天清 ➔ 桑奈托日落沙灘下午茶 ➔ 特產採買 ➔ 如意越式洗頭",
+      summary: "退房往中部 ➔ 宿海貝水療/天清飯店 ➔ 桑奈托日落沙灘 (長腿大象打卡) ➔ 金剛超市伴手禮採買 ➔ 如意越式洗頭放鬆",
+      color: "#059669"
+    },
+    {
+      day: 7,
+      date: "10/19 (一)",
+      area: "中部/機場",
+      title: "Day 7 (10/19 一) : 飯店海景早餐 ➔ 富國國際機場 (PQC) ✈ 搭乘 9G 510 平安返抵桃園 (TPE)",
+      summary: "飯店悠閒早餐 ➔ 退房搭車前往富國國際機場 (PQC) ➔ 11:30 搭乘 9G 510 ➔ 16:10 平安抵達桃園機場 T1 ➔ 返家",
+      color: "#475569"
+    }
+  ];
+
+  // 1. If "全部總覽" (all): Show ONLY Day titles summary cards (no detailed spot cards)
+  if (currentDayFilter === "all") {
+    let allHtml = `<div class="overview-days-list">`;
+    DAY_OVERVIEWS.forEach(d => {
+      allHtml += `
+        <div class="overview-day-card" style="border-left-color: ${d.color};" onclick="selectDay('${d.day}')">
+          <div class="overview-day-header">
+            <span class="overview-day-pill" style="background: ${d.color};">Day ${d.day} (${d.date})</span>
+            <span class="overview-area-badge">📍 ${d.area}</span>
+          </div>
+          <h3 class="overview-day-title">${d.title}</h3>
+          <div class="overview-day-spots">
+            <strong>重點精華：</strong>${d.summary}
+          </div>
+          <div class="overview-day-footer" style="color: ${d.color};">
+            <span>點擊查看 Day ${d.day} 詳細景點時間表</span> ➔
+          </div>
+        </div>
+      `;
+    });
+    allHtml += `</div>`;
+    container.innerHTML = allHtml;
+    return;
+  }
+
+  // 2. If single day (Day 1~7): Filter and render detailed spot cards
+  const filteredSpots = ITINERARY_DATA.filter(spot => spot.day.toString() === currentDayFilter);
 
   if (filteredSpots.length === 0) {
     container.innerHTML = `
@@ -1747,16 +1840,6 @@ function renderSpots() {
     `;
     return;
   }
-
-  const DAY_TITLES = {
-    1: "Day 1 (10/13 二) : 桃園出發 ✈ 富國島 ➔ 宿安富飯店 ➔ 陽東夜市晚餐與 Robinson Pearl 換匯",
-    2: "Day 2 (10/14 三) : 往北移動 ➔ 宿溫德姆 ➔ Safari 野生動物園 ➔ 大世界小卷米線 ➔ 威尼斯水秀",
-    3: "Day 3 (10/15 四) : VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀) ➔ 閉幕煙火 ➔ 越式 SPA",
-    4: "Day 4 (10/16 五) : 一路往南 ➔ 宿海岸生活飯店 ➔ 親吻橋夕陽 ➔ 19:00海洋交響秀 ➔ VUI-Fest 夜市",
-    5: "Day 5 (10/17 六) : 免費香島跨海纜車 ➔ 太陽世界香島公園 ➔ 親吻橋夕陽 ➔ 21:00海洋之吻與高空煙火",
-    6: "Day 6 (10/18 日) : 往中部移動 ➔ 宿海貝/天清 ➔ 桑奈托日落沙灘下午茶 ➔ 特產採買 ➔ 如意越式洗頭",
-    7: "Day 7 (10/19 一) : 飯店海景早餐 ➔ 富國國際機場 (PQC) ✈ 搭乘 9G 510 平安返抵桃園 (TPE)"
-  };
 
   let html = "";
   let lastDay = null;
@@ -2235,4 +2318,11 @@ window.toggleCheckItem = function(id, isChecked) {
   }
   saveCheckedItems(checkedMap);
   renderChecklist();
+};
+
+window.selectDay = function(dayNum) {
+  const targetPill = document.querySelector(`.day-pill[data-day="${dayNum}"]`);
+  if (targetPill) {
+    targetPill.click();
+  }
 };
