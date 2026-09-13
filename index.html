@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=20261013_v15">
+  <link rel="stylesheet" href="styles.css?v=20261013_v16">
 </head>
 <body>
   <!-- Toast Notification -->
@@ -78,10 +78,6 @@
           <span class="tab-icon">📌</span>
           <span class="tab-title">備選私房口袋清單</span>
         </button>
-        <button class="nav-tab" data-tab="culture">
-          <span class="tab-icon">🏝️</span>
-          <span class="tab-title">島嶼隱藏文化</span>
-        </button>
         <button class="nav-tab" data-tab="budget">
           <span class="tab-icon">💰</span>
           <span class="tab-title">即時預算與換算</span>
@@ -97,6 +93,10 @@
         <button class="nav-tab" data-tab="emergency">
           <span class="tab-icon">🆘</span>
           <span class="tab-title">緊急求助與攻略</span>
+        </button>
+        <button class="nav-tab" data-tab="culture">
+          <span class="tab-icon">🏝️</span>
+          <span class="tab-title">島嶼隱藏文化</span>
         </button>
       </div>
     </nav>
@@ -178,132 +178,6 @@
       <!-- Places Cards Container -->
       <div id="placesContainer" class="spots-list">
         <!-- Rendered by app.js -->
-      </div>
-    </section>
-
-    <!-- ==================== TAB 2: CULTURE & SECRETS ==================== -->
-    <section id="tab-culture" class="tab-content">
-      <div class="section-hero">
-        <span class="section-tag">LOCAL INSIGHTS</span>
-        <h2>富國島 7 大在地隱藏文化與深度故事</h2>
-        <p class="section-desc">不只是度假打卡，帶你讀懂這座翡翠島嶼的百年歷史、漁民信仰、生態禁忌與防坑潛規則。</p>
-      </div>
-
-      <div class="culture-grid">
-        
-        <!-- Story 1 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">🐕</span>
-            <div>
-              <span class="culture-badge">特有原生動物</span>
-              <h3 class="culture-title">富國脊背犬 (Phú Quốc Ridgeback) — 會爬樹抓魚的神犬</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>富國犬是世界上僅有的三種「脊背犬」之一（背部毛髮逆向生長成劍狀或扇狀）。島上世代相傳，富國犬腳趾間有像鴨蹼一樣的薄膜，擅長游泳捕魚，甚至能攀爬樹木追捕獵物！</p>
-            <div class="culture-tip">
-              <strong>💡 旅人視角：</strong>在島上的咖啡館、海灘或黑胡椒農場，常會看見體態精壯、眼神溫和的土著脊背犬。請友善對待牠們，牠們是島民最驕傲的家庭守護神。
-            </div>
-          </div>
-        </article>
-
-        <!-- Story 2 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">🪵</span>
-            <div>
-              <span class="culture-badge">百年非物質遺產</span>
-              <h3 class="culture-title">天然黑金魚露 (Nước Mắm) 的釀造秘密與飛機禁令</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>富國島魚露被譽為越南第一，關鍵在於使用泰國灣新鮮捕撈的<strong>黑海鯷魚 (Cá Cơm)</strong> 與南部天然粗海鹽，以 <strong>3:1 比例</strong> 裝入巨大的<strong>熱帶相思木桶 (Thùng Gỗ)</strong> 內，自然純手工發酵長達 12 至 15 個月，提煉出琥珀色、蛋白質高達 40°N~43°N 的頂級魚露。</p>
-            <div class="culture-tip warning">
-              <strong>⚠️ 航空搭乘重要禁令：</strong>由於魚露氣味極為強烈且具腐蝕性，<strong>所有航空公司一律禁止隨身攜帶或直接托運一般玻璃瓶裝魚露</strong>！若想帶回台灣，必須在機場免稅店購買專用密封盒，或請工廠代辦官方認證的航空真空寄送。
-            </div>
-          </div>
-        </article>
-
-        <!-- Story 3 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">☕</span>
-            <div>
-              <span class="culture-badge">越南慢活美學</span>
-              <h3 class="culture-title">滴漏咖啡與「滿杯冰塊」的哲學</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>越南是全球第二大咖啡出口國，主產濃烈的羅布斯塔（Robusta）咖啡豆。傳統喝法使用鋁製滴漏壺 (Phin)，將濃苦的黑咖啡慢慢滴在杯底厚厚一層甜煉乳上，最後倒入裝滿碎冰塊的高玻璃杯中攪拌。</p>
-            <div class="culture-tip">
-              <strong>☕ 點餐通關密語：</strong>
-              <ul class="clean-list">
-                <li><strong>Cà phê sữa đá (卡啡素搭)：</strong>經典冰煉乳咖啡（濃烈甜香）</li>
-                <li><strong>Cà phê đen đá (卡啡顛搭)：</strong>冰黑咖啡（重度咖啡因，微苦甘醇）</li>
-                <li><strong>Bạc xỉu (博修)：</strong>白咖啡（牛奶煉乳多，咖啡少，適合怕苦的朋友）</li>
-                <li><strong>Cà phê dừa (卡啡油)：</strong>椰子咖啡冰沙（香甜綿密）</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <!-- Story 4 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">💵</span>
-            <div>
-              <span class="culture-badge">消費防坑指南</span>
-              <h3 class="culture-title">越南盾「零太多」防坑術與 Grab 支付秘訣</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>越南盾動輒數十萬、上百萬，鈔票顏色相近（例如 20,000 與 500,000 同樣偏藍色），常常有不肖店家在混亂中多收或少找零。</p>
-            <div class="culture-tip">
-              <strong>💡 聰明防坑 3 招：</strong>
-              <ol class="clean-list">
-                <li><strong>心算口訣：</strong>去尾數 3 個 0，乘以 1.25（或直接打 8 折）。例：100,000 VND 去掉三個零是 100 × 1.25 = 約 125 元台幣。</li>
-                <li><strong>付錢自己數：</strong>切勿將錢包或整疊紙鈔遞給攤販「讓他自己抽」，請在自己手中辨認清楚再交給對方。</li>
-                <li><strong>Grab 綁定信用卡：</strong>全島交通強烈建議使用 Grab APP，上車前價格透明固定，扣款免找零，避免計程車跳表繞路或找不開大鈔的糾紛。</li>
-              </ol>
-            </div>
-          </div>
-        </article>
-
-        <!-- Story 5 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">🦪</span>
-            <div>
-              <span class="culture-badge">夜市美食精髓</span>
-              <h3 class="culture-title">陽東夜市的「蔥油碎花生烤海膽」與避坑點菜法</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>富國島產海膽（Nhum Biển），在地的靈魂吃法不是生吃，而是剖開後放在炭火上烘烤，淋上滾燙的<strong>香蔥油 (Mỡ hành)</strong> 與<strong>烤花生碎 (Đậu phộng)</strong>，再擠上新鮮金桔汁與特製胡椒鹽，口感濃郁滑嫩、香氣撲鼻！</p>
-            <div class="culture-tip">
-              <strong>💡 點海鮮防坑必備：</strong>點活海鮮（如巨型皮皮蝦、龍蝦、花蟹）務必<strong>先問清楚計價單位是「1 隻」還是「1 公斤 (1 kg)」</strong>，並請店家在眼前過磅瀝水確認價格後再下鍋料理！
-            </div>
-          </div>
-        </article>
-
-        <!-- Story 6 -->
-        <article class="culture-card">
-          <div class="culture-header">
-            <span class="culture-icon">💆</span>
-            <div>
-              <span class="culture-badge">越南特色養生</span>
-              <h3 class="culture-title">越式洗頭 (Gội Đầu Dưỡng Sinh) 的極致放鬆體驗</h3>
-            </div>
-          </div>
-          <div class="culture-body">
-            <p>越南傳統的「養生越式洗頭」是一整套結合天然草藥薰蒸、頭皮深層清潔、水循環沖洗、肩頸穴道按壓、臉部去角質與敷臉舒壓的完整療程。在富國島旅行一整天後，安排一場 60~90 分鐘的越式洗頭，能徹底洗去海風與陽光帶來的疲憊。</p>
-            <div class="culture-tip">
-              <strong>💡 體驗建議：</strong>費用約 180,000 ~ 280,000 ₫ (約 NT$ 225 ~ 350)，性價比極高，洗完直接回飯店享受深層睡眠！
-            </div>
-          </div>
-        </article>
-
       </div>
     </section>
 
@@ -660,6 +534,132 @@
       </div>
     </section>
 
+    <!-- ==================== TAB 7: CULTURE & SECRETS ==================== -->
+    <section id="tab-culture" class="tab-content">
+      <div class="section-hero">
+        <span class="section-tag">LOCAL INSIGHTS</span>
+        <h2>富國島 7 大在地隱藏文化與深度故事</h2>
+        <p class="section-desc">不只是度假打卡，帶你讀懂這座翡翠島嶼的百年歷史、漁民信仰、生態禁忌與防坑潛規則。</p>
+      </div>
+
+      <div class="culture-grid">
+        
+        <!-- Story 1 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🐕</span>
+            <div>
+              <span class="culture-badge">特有原生動物</span>
+              <h3 class="culture-title">富國脊背犬 (Phú Quốc Ridgeback) — 會爬樹抓魚的神犬</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國犬是世界上僅有的三種「脊背犬」之一（背部毛髮逆向生長成劍狀或扇狀）。島上世代相傳，富國犬腳趾間有像鴨蹼一樣的薄膜，擅長游泳捕魚，甚至能攀爬樹木追捕獵物！</p>
+            <div class="culture-tip">
+              <strong>💡 旅人視角：</strong>在島上的咖啡館、海灘或黑胡椒農場，常會看見體態精壯、眼神溫和的土著脊背犬。請友善對待牠們，牠們是島民最驕傲的家庭守護神。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 2 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🪵</span>
+            <div>
+              <span class="culture-badge">百年非物質遺產</span>
+              <h3 class="culture-title">天然黑金魚露 (Nước Mắm) 的釀造秘密與飛機禁令</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島魚露被譽為越南第一，關鍵在於使用泰國灣新鮮捕撈的<strong>黑海鯷魚 (Cá Cơm)</strong> 與南部天然粗海鹽，以 <strong>3:1 比例</strong> 裝入巨大的<strong>熱帶相思木桶 (Thùng Gỗ)</strong> 內，自然純手工發酵長達 12 至 15 個月，提煉出琥珀色、蛋白質高達 40°N~43°N 的頂級魚露。</p>
+            <div class="culture-tip warning">
+              <strong>⚠️ 航空搭乘重要禁令：</strong>由於魚露氣味極為強烈且具腐蝕性，<strong>所有航空公司一律禁止隨身攜帶或直接托運一般玻璃瓶裝魚露</strong>！若想帶回台灣，必須在機場免稅店購買專用密封盒，或請工廠代辦官方認證的航空真空寄送。
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 3 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">☕</span>
+            <div>
+              <span class="culture-badge">越南慢活美學</span>
+              <h3 class="culture-title">滴漏咖啡與「滿杯冰塊」的哲學</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>越南是全球第二大咖啡出口國，主產濃烈的羅布斯塔（Robusta）咖啡豆。傳統喝法使用鋁製滴漏壺 (Phin)，將濃苦的黑咖啡慢慢滴在杯底厚厚一層甜煉乳上，最後倒入裝滿碎冰塊的高玻璃杯中攪拌。</p>
+            <div class="culture-tip">
+              <strong>☕ 點餐通關密語：</strong>
+              <ul class="clean-list">
+                <li><strong>Cà phê sữa đá (卡啡素搭)：</strong>經典冰煉乳咖啡（濃烈甜香）</li>
+                <li><strong>Cà phê đen đá (卡啡顛搭)：</strong>冰黑咖啡（重度咖啡因，微苦甘醇）</li>
+                <li><strong>Bạc xỉu (博修)：</strong>白咖啡（牛奶煉乳多，咖啡少，適合怕苦的朋友）</li>
+                <li><strong>Cà phê dừa (卡啡油)：</strong>椰子咖啡冰沙（香甜綿密）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 4 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">💵</span>
+            <div>
+              <span class="culture-badge">消費防坑指南</span>
+              <h3 class="culture-title">越南盾「零太多」防坑術與 Grab 支付秘訣</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>越南盾動輒數十萬、上百萬，鈔票顏色相近（例如 20,000 與 500,000 同樣偏藍色），常常有不肖店家在混亂中多收或少找零。</p>
+            <div class="culture-tip">
+              <strong>💡 聰明防坑 3 招：</strong>
+              <ol class="clean-list">
+                <li><strong>心算口訣：</strong>去尾數 3 個 0，乘以 1.25（或直接打 8 折）。例：100,000 VND 去掉三個零是 100 × 1.25 = 約 125 元台幣。</li>
+                <li><strong>付錢自己數：</strong>切勿將錢包或整疊紙鈔遞給攤販「讓他自己抽」，請在自己手中辨認清楚再交給對方。</li>
+                <li><strong>Grab 綁定信用卡：</strong>全島交通強烈建議使用 Grab APP，上車前價格透明固定，扣款免找零，避免計程車跳表繞路或找不開大鈔的糾紛。</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 5 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">🦪</span>
+            <div>
+              <span class="culture-badge">夜市美食精髓</span>
+              <h3 class="culture-title">陽東夜市的「蔥油碎花生烤海膽」與避坑點菜法</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>富國島產海膽（Nhum Biển），在地的靈魂吃法不是生吃，而是剖開後放在炭火上烘烤，淋上滾燙的<strong>香蔥油 (Mỡ hành)</strong> 與<strong>烤花生碎 (Đậu phộng)</strong>，再擠上新鮮金桔汁與特製胡椒鹽，口感濃郁滑嫩、香氣撲鼻！</p>
+            <div class="culture-tip">
+              <strong>💡 點海鮮防坑必備：</strong>點活海鮮（如巨型皮皮蝦、龍蝦、花蟹）務必<strong>先問清楚計價單位是「1 隻」還是「1 公斤 (1 kg)」</strong>，並請店家在眼前過磅瀝水確認價格後再下鍋料理！
+            </div>
+          </div>
+        </article>
+
+        <!-- Story 6 -->
+        <article class="culture-card">
+          <div class="culture-header">
+            <span class="culture-icon">💆</span>
+            <div>
+              <span class="culture-badge">越南特色養生</span>
+              <h3 class="culture-title">越式洗頭 (Gội Đầu Dưỡng Sinh) 的極致放鬆體驗</h3>
+            </div>
+          </div>
+          <div class="culture-body">
+            <p>越南傳統的「養生越式洗頭」是一整套結合天然草藥薰蒸、頭皮深層清潔、水循環沖洗、肩頸穴道按壓、臉部去角質與敷臉舒壓的完整療程。在富國島旅行一整天後，安排一場 60~90 分鐘的越式洗頭，能徹底洗去海風與陽光帶來的疲憊。</p>
+            <div class="culture-tip">
+              <strong>💡 體驗建議：</strong>費用約 180,000 ~ 280,000 ₫ (約 NT$ 225 ~ 350)，性價比極高，洗完直接回飯店享受深層睡眠！
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Bottom Mobile Navigation Bar -->
@@ -671,10 +671,6 @@
     <button class="bottom-nav-item" data-tab="places">
       <span class="b-icon">📌</span>
       <span class="b-text">口袋</span>
-    </button>
-    <button class="bottom-nav-item" data-tab="culture">
-      <span class="b-icon">🏝️</span>
-      <span class="b-text">文化</span>
     </button>
     <button class="bottom-nav-item" data-tab="budget">
       <span class="b-icon">💱</span>
@@ -692,6 +688,10 @@
       <span class="b-icon">🆘</span>
       <span class="b-text">攻略</span>
     </button>
+    <button class="bottom-nav-item" data-tab="culture">
+      <span class="b-icon">🏝️</span>
+      <span class="b-text">文化</span>
+    </button>
   </nav>
 
   <!-- Footer -->
@@ -702,6 +702,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=20261013_v15"></script>
+  <script src="app.js?v=20261013_v16"></script>
 </body>
 </html>
