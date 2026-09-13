@@ -1630,9 +1630,6 @@ function initTabs() {
 
   topTabs.forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
   bottomTabs.forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tab)));
-
-  document.getElementById("btnQuickCalc")?.addEventListener("click", () => switchTab("budget"));
-  document.getElementById("btnSurvivalKit")?.addEventListener("click", () => switchTab("emergency"));
 }
 
 function initDayFilters() {
