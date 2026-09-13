@@ -1365,12 +1365,11 @@ function computeSpotCost(spot, rate) {
 // 3. DATA: BUDGET TABLE & QUICK MATRIX
 // ==========================================
 const BUDGET_ITEMS_DATA = [
-  { icon: "✈️", name: "來回機票", desc: "Sun PhuQuoc 直飛來回 (含托運行李/稅金/贈香島纜車門票)", vnd: 10250000, ratio: "38%" },
-  { icon: "🏨", name: "6 晚精選住宿", desc: "安富(1晚)+溫德姆(2晚)+海岸生活(2晚)+海貝/天清(1晚) 雙人均攤", vnd: 7200000, ratio: "27%" },
-  { icon: "🎟️", name: "樂園與大秀門票", desc: "Safari動物園、VinWonders水陸雙園、Kiss of the Sea光影秀 (纜車機票贈送)", vnd: 3200000, ratio: "12%" },
-  { icon: "🍲", name: "餐飲與夜市海鮮", desc: "小卷米粉、長頸鹿餐廳、烤肉飯、日落海景餐廳、夜市海鮮大餐", vnd: 3600000, ratio: "14%" },
-  { icon: "🚗", name: "島內 Grab 與接送", desc: "機場接送、北南跨區 Grab 專車 (搭配北部免費 VinBus)", vnd: 750000, ratio: "3%" },
-  { icon: "💆", name: "越式洗頭與伴手禮", desc: "如意越式洗頭、全身精油 SPA、上網卡、胡椒與腰果特產採買", vnd: 1500000, ratio: "6%" }
+  { icon: "✈️", name: "直飛來回機票", desc: "Sun PhuQuoc 直飛特惠 (2人含20kg托運行李/稅金/贈送香島纜車門票)", twd2p: 12824, ratio: "26%" },
+  { icon: "🏨", name: "6 晚精選住宿", desc: "1 間雙人房：安富(1晚 1,000) + 溫德姆(2晚 6,000) + 海岸生活(2晚 3,000) + 海貝/天清(1晚 3,892)", twd2p: 13892, ratio: "28%" },
+  { icon: "🎟️", name: "樂園與大秀門票", desc: "Safari 動物園(2,000) + 大世界(1,000) + 珍珠樂園(2,000) + 海之吻(2,000) (纜車贈送0元)", twd2p: 7000, ratio: "14%" },
+  { icon: "🍲", name: "7 日餐飲與夜市", desc: "每日三餐、小卷米粉、長頸鹿餐廳、日落海景餐廳、夜市海鮮大餐 (2人約 2,000/天)", twd2p: 14000, ratio: "28%" },
+  { icon: "🚗", name: "全島 Grab 交通", desc: "機場來回接送、北南跨區專車 (搭配北部免費 VinBus)", twd2p: 2000, ratio: "4%" }
 ];
 
 const QUICK_MATRIX_DATA = [
@@ -2035,22 +2034,27 @@ function renderDynamicCurrencyElements() {
 
   // 3. Dynamic Budget Breakdown Table
   const budgetTableBody = document.querySelector(".budget-table tbody");
-  const budgetTotalVnd = document.querySelector(".budget-table tfoot td:nth-child(2)");
-  const budgetTotalTwd = document.querySelector(".budget-table tfoot .total-price");
+  const budgetTableFoot = document.querySelector(".budget-table tfoot");
 
   if (budgetTableBody) {
     let tableHtml = "";
-    let totalVnd = 0;
+    let totalTwd2p = 0;
+    let totalVnd2p = 0;
 
     BUDGET_ITEMS_DATA.forEach(item => {
-      totalVnd += item.vnd;
-      const twdVal = Math.round(item.vnd / rate);
+      const twd2p = item.twd2p;
+      const vnd2p = Math.round(twd2p * rate);
+      const twdPerPerson = Math.round(twd2p / 2);
+      totalTwd2p += twd2p;
+      totalVnd2p += vnd2p;
+
       tableHtml += `
         <tr>
           <td><strong>${item.icon} ${item.name}</strong></td>
           <td>${item.desc}</td>
-          <td>約 ${item.vnd.toLocaleString()} ₫</td>
-          <td class="price-highlight">NT$ ${twdVal.toLocaleString()}</td>
+          <td class="font-mono">約 ${vnd2p.toLocaleString()} ₫</td>
+          <td class="price-highlight">NT$ ${twd2p.toLocaleString()}</td>
+          <td class="price-highlight" style="color:#0f766e; font-weight:700;">NT$ ${twdPerPerson.toLocaleString()}</td>
           <td>${item.ratio}</td>
         </tr>
       `;
@@ -2058,9 +2062,18 @@ function renderDynamicCurrencyElements() {
 
     budgetTableBody.innerHTML = tableHtml;
 
-    const totalTwd = Math.round(totalVnd / rate);
-    if (budgetTotalVnd) budgetTotalVnd.innerHTML = `<strong>約 ${totalVnd.toLocaleString()} ₫</strong>`;
-    if (budgetTotalTwd) budgetTotalTwd.innerText = `約 NT$ ${totalTwd.toLocaleString()}`;
+    if (budgetTableFoot) {
+      const totalPerPerson = Math.round(totalTwd2p / 2);
+      budgetTableFoot.innerHTML = `
+        <tr>
+          <td colspan="2"><strong>💰 7 天 6 夜 2 人同行總費用 (Total)</strong></td>
+          <td class="font-mono"><strong>約 ${totalVnd2p.toLocaleString()} ₫</strong></td>
+          <td class="total-price">約 NT$ ${totalTwd2p.toLocaleString()}</td>
+          <td class="total-price" style="color:#0f766e;">每人約 NT$ ${totalPerPerson.toLocaleString()}</td>
+          <td>100%</td>
+        </tr>
+      `;
+    }
   }
 }
 
