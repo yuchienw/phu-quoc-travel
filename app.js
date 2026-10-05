@@ -16,7 +16,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "出發搭機場捷運 ➔ 抵達桃園機場 T1 報到",
     nameVn: "Sân bay Quốc tế Đào Viên (TPE)",
-    taxiVoice: "Sân bay Đào Viên",
+    taxiVoice: "Sân bay Quốc tế Đào Viên",
     pricing: {
       type: "custom",
       vndText: "捷運車資約 160 NT$",
@@ -36,7 +36,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "桃園機場 (TPE) ✈ 富國島機場 (PQC)",
     nameVn: "Sân bay Quốc tế Phú Quốc",
-    taxiVoice: "Sân bay Phú Quốc",
+    taxiVoice: "Sân bay Quốc tế Phú Quốc",
     pricing: {
       type: "fixed_twd",
       twd: 12824,
@@ -57,7 +57,7 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "機場少量換匯 & 購買 SIM 卡 / 啟用 eSIM",
     nameVn: "Sân bay Quốc tế Phú Quốc",
-    taxiVoice: "Sân bay Phú Quốc",
+    taxiVoice: "Sân bay Quốc tế Phú Quốc, Ga đến",
     pricing: {
       type: "vnd_range",
       min: 150000,
@@ -79,7 +79,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "富國島羅塞塔酒店 Check-in 放行李",
     nameVn: "Khách sạn Rosetta Phú Quốc",
-    taxiVoice: "Khách sạn Rosetta, Dương Đông",
+    taxiVoice: "Khách sạn Rosetta, Dương Đông, Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "1晚 VN 1,328,562 ₫ (10/8 前免費取消)",
@@ -99,7 +99,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "陽東夜市晚餐 & Robinson Pearl 店內換匯",
     nameVn: "Chợ Đêm Phú Quốc & Robinson Pearl",
-    taxiVoice: "Chợ Đêm Phú Quốc",
+    taxiVoice: "Chợ Đêm Phú Quốc, Đường Nguyễn Trãi, Dương Đông",
     pricing: {
       type: "vnd_range",
       min: 250000,
@@ -123,7 +123,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "早餐、Check-out ➔ 搭車前往北部渡假區",
     nameVn: "Vinholidays Fiesta Phú Quốc",
-    taxiVoice: "Khách sạn Vinholidays Fiesta Phú Quốc",
+    taxiVoice: "Khách sạn Vinholidays Fiesta, Grand World Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "Grab 約 280,000 ₫ 或搭免費 VinBus",
@@ -143,7 +143,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "富國島溫佩假期1號 Check-in 寄放行李 (連住 2 晚)",
     nameVn: "Vinholidays Fiesta Phú Quốc",
-    taxiVoice: "Vinholidays Fiesta Phú Quốc, Grand World",
+    taxiVoice: "Khách sạn Vinholidays Fiesta, Grand World Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "2晚 VN 4,891,494 ₫ (10/9 前免費取消)",
@@ -163,7 +163,7 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "Vinpearl Safari 富國島野生動物園 (搭遊園巴士・猛禽區・長頸鹿餵食午餐・飛禽秀)",
     nameVn: "Vinpearl Safari Phú Quốc",
-    taxiVoice: "Vinpearl Safari Phú Quốc",
+    taxiVoice: "Vinpearl Safari Phú Quốc, Gành Dầu",
     pricing: {
       type: "custom",
       vndText: "Safari + VinWonders 雙人2日套票",
@@ -183,7 +183,7 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "閉園、回溫佩假期1號飯店休息・梳洗小憩",
     nameVn: "Vinholidays Fiesta Phú Quốc",
-    taxiVoice: "Khách sạn Vinholidays Fiesta Phú Quốc",
+    taxiVoice: "Khách sạn Vinholidays Fiesta, Grand World Phú Quốc",
     pricing: {
       type: "free",
       vndText: "包含於房費",
@@ -203,7 +203,7 @@ const ITINERARY_DATA = [
     category: "景點",
     nameZh: "Grand World 富國大世界 (竹林傳奇・威尼斯水上計程車・泰迪熊博物館・當代藝術公園)",
     nameVn: "Grand World Phú Quốc",
-    taxiVoice: "Grand World Phú Quốc",
+    taxiVoice: "Khu du lịch Grand World Phú Quốc",
     pricing: {
       type: "free",
       vndText: "街區參觀免費",
@@ -223,7 +223,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "大世界晚餐 (Bún Quậy Kiến Xây 小卷米粉)",
     nameVn: "Bún Quậy Kiến Xây (Grand World)",
-    taxiVoice: "Quán Bún Quậy Kiến Xây, Grand World",
+    taxiVoice: "Quán Bún Quậy Kiến Xây, Grand World Phú Quốc",
     pricing: {
       type: "vnd_range",
       min: 65000,
@@ -245,7 +245,7 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "當代藝術公園 - 越南國粹秀 (The Quintessence of Vietnam)",
     nameVn: "Tinh Hoa Việt Nam (The Quintessence of Vietnam)",
-    taxiVoice: "Tinh Hoa Việt Nam, Grand World Phú Quốc",
+    taxiVoice: "Sân khấu Tinh Hoa Việt Nam, Grand World Phú Quốc",
     pricing: {
       type: "free",
       vndText: "套票/大世界實景演出",
@@ -287,7 +287,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "飯店早餐 ➔ 前往 VinWonders 珍珠島水陸主題樂園",
     nameVn: "VinWonders Phú Quốc",
-    taxiVoice: "VinWonders Phú Quốc",
+    taxiVoice: "Công viên VinWonders Phú Quốc, Gành Dầu",
     pricing: {
       type: "free",
       vndText: "包含於房費",
@@ -307,7 +307,7 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "VinWonders 珍珠島水陸主題樂園 (海龜水族館・美人魚秀・餵食秀・閉幕煙火秀)",
     nameVn: "VinWonders Phú Quốc (The Sea Shell)",
-    taxiVoice: "VinWonders Phú Quốc",
+    taxiVoice: "Công viên VinWonders Phú Quốc, Gành Dầu",
     pricing: {
       type: "custom",
       vndText: "包含於 Safari + VinWonders 2日套票",
@@ -327,7 +327,7 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "Grand World 富國大世界、晚餐 (逛街・按摩)",
     nameVn: "Grand World Phú Quốc & Massage",
-    taxiVoice: "Grand World Phú Quốc",
+    taxiVoice: "Khu du lịch Grand World Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "60分鐘全身按摩約 250,000 ~ 380,000 ₫；晚餐約 280,000 ₫",
@@ -341,7 +341,6 @@ const ITINERARY_DATA = [
     tips: "💡 推薦大世界商圈正規 SPA 按摩館，入店前可先確認價目表規範。",
     mapsQuery: "Grand World Phu Quoc"
   },
-
   // ---------- DAY 4: 10/16 (五) 南部 ----------
   {
     day: 4,
@@ -349,7 +348,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "早餐、Check-out ➔ 搭車前往南部日落小鎮 (Sunset Town)",
     nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
-    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town, An Thới",
+    taxiVoice: "Thị trấn Hoàng Hôn, Phường An Thới, Phú Quốc",
     pricing: {
       type: "vnd_range",
       min: 480000,
@@ -371,7 +370,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "富國日落小鎮諾沃斯索爾飯店公寓 Check-in 寄放行李 (連住 2 晚)",
     nameVn: "Khách sạn Novus Sol Sunset Town",
-    taxiVoice: "Khách sạn Novus Sol, Sunset Town, An Thới",
+    taxiVoice: "Khách sạn Novus Sol, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "custom",
       vndText: "2晚 VN 2,660,869 ₫ (10/12 前免費取消)",
@@ -391,7 +390,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "午餐 - 日落小鎮 Sunset Town (逛街漫步)",
     nameVn: "Thị trấn Hoàng Hôn (Sunset Town)",
-    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
+    taxiVoice: "Thị trấn Hoàng Hôn, Phường An Thới",
     pricing: {
       type: "vnd_range",
       min: 180000,
@@ -413,7 +412,7 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "返回飯店休息小憩・吹冷氣充電",
     nameVn: "Khách sạn Novus Sol Sunset Town",
-    taxiVoice: "Khách sạn Novus Sol, Sunset Town",
+    taxiVoice: "Khách sạn Novus Sol, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "free",
       vndText: "包含於房費",
@@ -455,7 +454,7 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "Kiss of the Sea 海之吻光影秀 (20:00 須先進場卡位・壓軸高空煙火)",
     nameVn: "Sân khấu Kiss of the Sea",
-    taxiVoice: "Sân khấu Kiss of the Sea, Sunset Town",
+    taxiVoice: "Sân khấu Kiss of the Sea, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "custom",
       vndText: "纜車 + Kiss Of The Sea 雙人套票",
@@ -477,7 +476,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "悠閒早餐 ➔ 前往安泰纜車站",
     nameVn: "Ga Cáp treo Hòn Thơm (Sun World)",
-    taxiVoice: "Ga Cáp treo Hòn Thơm, An Thới",
+    taxiVoice: "Ga Cáp treo Hòn Thơm, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "free",
       vndText: "包含於套票 / 贈送纜車票",
@@ -497,7 +496,7 @@ const ITINERARY_DATA = [
     category: "樂園",
     nameZh: "Hon Thom 香島跨海纜車 - 去 ➔ 太陽世界香島自然公園 (水陸設施)",
     nameVn: "Ga Cáp treo Hòn Thơm & Sun World Hon Thom",
-    taxiVoice: "Ga Cáp treo Hòn Thơm, An Thới",
+    taxiVoice: "Ga Cáp treo Hòn Thơm, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "custom",
       vndText: "包含於纜車套票",
@@ -517,7 +516,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "午餐 - 香島園內用餐",
     nameVn: "Nhà hàng Sun World Hòn Thơm",
-    taxiVoice: "Nhà hàng Hòn Thơm, An Thới",
+    taxiVoice: "Nhà hàng Hòn Thơm, Đảo Hòn Thơm, An Thới",
     pricing: {
       type: "vnd_range",
       min: 150000,
@@ -539,7 +538,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "Hon Thom 香島跨海纜車 - 回 ➔ 返回日落小鎮本島",
     nameVn: "Ga Cáp treo Hòn Thơm (Về)",
-    taxiVoice: "Ga Cáp treo Hòn Thơm, An Thới",
+    taxiVoice: "Ga Cáp treo Hòn Thơm, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "free",
       vndText: "包含於來回套票",
@@ -559,7 +558,7 @@ const ITINERARY_DATA = [
     category: "景點",
     nameZh: "購票上 Kiss Bridge 親吻橋 (看夕陽・拍照・水上活動表演)",
     nameVn: "Cầu Hôn (Kiss Bridge Sunset Town)",
-    taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn",
+    taxiVoice: "Cầu Hôn, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "custom",
       vndText: "現場購票或套票憑證",
@@ -601,7 +600,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "晚餐 (景觀餐廳優先)",
     nameVn: "Nhà hàng Sunset Town",
-    taxiVoice: "Thị trấn Hoàng Hôn, Sunset Town",
+    taxiVoice: "Thị trấn Hoàng Hôn, Phường An Thới",
     pricing: {
       type: "vnd_range",
       min: 250000,
@@ -623,7 +622,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "VUI-Fest Bazaar 海濱夜市、日落小鎮夜市 (逛街漫遊)",
     nameVn: "Chợ đêm Vui-Fest Bazaar",
-    taxiVoice: "Chợ đêm Vui-Fest, Sunset Town",
+    taxiVoice: "Chợ đêm Vui-Fest Bazaar, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "vnd_range",
       min: 150000,
@@ -647,7 +646,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "早餐、Check-out ➔ 搭車前往中部渡假區",
     nameVn: "Dương Tơ / Dương Đông",
-    taxiVoice: "Khách sạn Mường Thanh Luxury Phú Quốc, Dương Tơ",
+    taxiVoice: "Khách sạn Mường Thanh Luxury, Bãi Trường, Dương Tơ",
     pricing: {
       type: "vnd_range",
       min: 240000,
@@ -669,7 +668,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "富國島奢華孟青飯店 Check-in 寄放行李",
     nameVn: "Muong Thanh Luxury Phu Quoc Hotel",
-    taxiVoice: "Khách sạn Mường Thanh Luxury Phú Quốc, Dương Tơ",
+    taxiVoice: "Khách sạn Mường Thanh Luxury, Bãi Trường, Dương Tơ",
     pricing: {
       type: "custom",
       vndText: "1晚 VN 2,274,896 ₫ (10/11 前免費取消)",
@@ -689,7 +688,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "午餐 - Sonasea 夜市 / 商圈美食",
     nameVn: "Khu phố Sonasea Shopping Center",
-    taxiVoice: "Sonasea Shopping Center, Dương Tơ",
+    taxiVoice: "Khu phố Sonasea, Bãi Trường, Dương Tơ",
     pricing: {
       type: "vnd_range",
       min: 100000,
@@ -711,7 +710,7 @@ const ITINERARY_DATA = [
     category: "放鬆",
     nameZh: "桑奈托日落海灘 (Sunset Sanato Beach Club) 日落沙灘下午茶",
     nameVn: "Sunset Sanato Beach Club",
-    taxiVoice: "Sunset Sanato Beach, Dương Tơ",
+    taxiVoice: "Sunset Sanato Beach Club, Bãi Trường, Dương Tơ",
     pricing: {
       type: "custom",
       vndText: "門票約 100,000 ₫；飲品約 70,000 ~ 120,000 ₫",
@@ -731,7 +730,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "晚餐 (海鮮餐廳)",
     nameVn: "Nhà hàng Hải sản Bãi Trường / Dương Đông",
-    taxiVoice: "Nhà hàng Hải sản, Dương Đông",
+    taxiVoice: "Nhà hàng Hải sản, Bãi Trường, Dương Tơ",
     pricing: {
       type: "vnd_range",
       min: 300000,
@@ -751,9 +750,9 @@ const ITINERARY_DATA = [
     day: 6,
     time: "20:00 - 22:30",
     category: "購物",
-    nameZh: "Sonasea 夜市 or 陽東夜市 (金剛超市伴手禮採買) ➔ Như Ý 越式洗頭 ➔ ZEN SPA 按摩",
+    nameZh: "Sonasea 夜市 or 陽東夜市 (金剛超市伴手禮採買) ➔ 如意 越式洗頭 ➔ ZEN SPA 按摩",
     nameVn: "Chợ Đêm & Siêu thị Kingkong Mart & Như Ý Hair Spa & ZEN SPA",
-    taxiVoice: "Như Ý Hair Spa, Dương Đông",
+    taxiVoice: "Như Ý Hair Spa, Đường Trần Hưng Đạo, Dương Đông",
     pricing: {
       type: "custom",
       vndText: "採買腰果胡椒約 400,000 ₫；越式洗頭按摩約 250,000 ₫",
@@ -775,7 +774,7 @@ const ITINERARY_DATA = [
     category: "美食",
     nameZh: "早餐、Check-out (搭車前往機場・須提前 2.5 小時 09:00 抵達機場)",
     nameVn: "Khách sạn Mường Thanh Luxury Phú Quốc",
-    taxiVoice: "Khách sạn Mường Thanh Luxury Phú Quốc",
+    taxiVoice: "Khách sạn Mường Thanh Luxury, Dương Tơ",
     pricing: {
       type: "free",
       vndText: "包含於房費",
@@ -795,7 +794,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "PQC 富國島 → 桃園 TPE (Sun PhuQuoc Airways 9G 510)",
     nameVn: "Sân bay Quốc tế Phú Quốc ✈ Sân bay Đào Viên",
-    taxiVoice: "Sân bay Phú Quốc (Ga đi)",
+    taxiVoice: "Sân bay Quốc tế Phú Quốc, Ga đi",
     pricing: {
       type: "custom",
       vndText: "Grab 車資約 80,000 ₫",
@@ -815,7 +814,7 @@ const ITINERARY_DATA = [
     category: "交通",
     nameZh: "抵達桃園機場 T1 ➔ 18:00 回溫暖的家",
     nameVn: "Sân bay Quốc tế Đào Viên (TPE)",
-    taxiVoice: "Sân bay Đào Viên",
+    taxiVoice: "Sân bay Quốc tế Đào Viên",
     pricing: {
       type: "custom",
       vndText: "機捷 / 接送約 160 NT$",
@@ -955,7 +954,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東",
     nameZh: "58 CAFÉ 復古法式文青咖啡館",
     nameVn: "58 CAFÉ Phú Quốc",
-    taxiVoice: "58 CAFÉ, Dương Đông",
+    taxiVoice: "Quán 58 CAFÉ, Dương Đông",
     pricing: {
       type: "vnd_range",
       min: 45000,
@@ -977,7 +976,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東",
     nameZh: "Island Phu Quoc 熱帶綠植庭園咖啡",
     nameVn: "Island Coffee Phú Quốc",
-    taxiVoice: "Island Coffee, Dương Đông",
+    taxiVoice: "Quán Island Coffee, Dương Đông",
     pricing: {
       type: "vnd_range",
       min: 50000,
@@ -1043,7 +1042,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東夜市",
     nameZh: "夜市原粒椰子手工冰淇淋 (Coconut Ice Cream)",
     nameVn: "Kem Dừa Phú Quốc",
-    taxiVoice: "Chợ Đêm Phú Quốc",
+    taxiVoice: "Chợ Đêm Phú Quốc, Đường Nguyễn Trãi, Dương Đông",
     pricing: {
       type: "vnd_range",
       min: 40000,
@@ -1088,7 +1087,7 @@ const BACKUP_PLACES_DATA = [
     area: "東南部安泰",
     nameZh: "星星海灘 (Bãi Sao / Starfish Beach) — 白沙如奶粉",
     nameVn: "Bãi Sao Phú Quốc",
-    taxiVoice: "Bãi Sao, Phường An Thới, TP. Phú Quốc",
+    taxiVoice: "Bãi Sao, Phường An Thới, Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "沙灘免費 (租躺椅約 50,000~100,000 ₫)",
@@ -1109,7 +1108,7 @@ const BACKUP_PLACES_DATA = [
     area: "東部海岸",
     nameZh: "涵寧古漁村 (Làng Chài Hàm Ninh) — 百年木棧道與海鮮產地",
     nameVn: "Làng Chài Hàm Ninh",
-    taxiVoice: "Làng Chài Hàm Ninh, Rạch Hàm, Phú Quốc",
+    taxiVoice: "Làng Chài Hàm Ninh, Xã Hàm Ninh, Phú Quốc",
     pricing: {
       type: "free",
       vndText: "參觀免費 (海鮮現點現秤自費)",
@@ -1130,7 +1129,7 @@ const BACKUP_PLACES_DATA = [
     area: "南部安泰",
     nameZh: "富國島監獄歷史古蹟 (Nhà tù Phú Quốc / Coconut Tree Prison)",
     nameVn: "Nhà tù Phú Quốc (Nhà lao Cây Dừa)",
-    taxiVoice: "Nhà tù Phú Quốc, 350 Nguyễn Văn Cừ, An Thới",
+    taxiVoice: "Di tích Nhà tù Phú Quốc, 350 Nguyễn Văn Cừ, An Thới",
     pricing: {
       type: "free",
       vndText: "免費參觀 (自由捐獻)",
@@ -1153,7 +1152,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東",
     nameZh: "Robinson Pearl 羅賓森珍珠珠寶門市 (換匯首選)",
     nameVn: "Robinson Pearl Phú Quốc",
-    taxiVoice: "Robinson Pearl, Dương Đông",
+    taxiVoice: "Cửa hàng Robinson Pearl, Dương Đông, Phú Quốc",
     pricing: {
       type: "custom",
       vndText: "換匯免手續費；飾品數萬至數百萬盾不等",
@@ -1215,7 +1214,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東",
     nameZh: "Như Ý Hair Spa 專業養生越式洗頭門市",
     nameVn: "Như Ý Hair Spa Phú Quốc",
-    taxiVoice: "Như Ý Hair Spa, Dương Đông",
+    taxiVoice: "Như Ý Hair Spa, Đường Trần Hưng Đạo, Dương Đông",
     pricing: {
       type: "vnd_range",
       min: 180000,
@@ -1237,7 +1236,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部陽東",
     nameZh: "ZEN SPA 專業泰越精油熱石按摩館",
     nameVn: "ZEN SPA Phú Quốc",
-    taxiVoice: "ZEN SPA, Dương Đông",
+    taxiVoice: "ZEN SPA, Dương Đông, Phú Quốc",
     pricing: {
       type: "vnd_range",
       min: 250000,
@@ -1281,7 +1280,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部 Long Beach",
     nameZh: "Galina 熱帶花園天然礦物泥漿溫泉 (Mud Bath & Spa)",
     nameVn: "Galina Mud Bath & Spa Phú Quốc",
-    taxiVoice: "Galina Mud Bath & Spa, Trần Hưng Đạo, Dương Tơ",
+    taxiVoice: "Khu bùn khoáng Galina, Trần Hưng Đạo, Dương Tơ",
     pricing: {
       type: "vnd_range",
       min: 300000,
@@ -1305,7 +1304,7 @@ const BACKUP_PLACES_DATA = [
     area: "中部 Long Beach",
     nameZh: "杜斯特公主月出海灘度假村 (Dusit Princess Moonrise)",
     nameVn: "Dusit Princess Moonrise Beach Resort",
-    taxiVoice: "Dusit Princess Moonrise Beach Resort, Trần Hưng Đạo",
+    taxiVoice: "Khách sạn Dusit Princess Moonrise, Trần Hưng Đạo, Dương Tơ",
     pricing: {
       type: "vnd_range",
       min: 2800000,
@@ -1327,7 +1326,7 @@ const BACKUP_PLACES_DATA = [
     area: "南部日落小鎮",
     nameZh: "富國島希爾頓格芮精選 La Festa (La Festa Phu Quoc, Curio Collection)",
     nameVn: "La Festa Phu Quoc, Curio Collection by Hilton",
-    taxiVoice: "Khách sạn La Festa Phu Quoc, Sunset Town, An Thới",
+    taxiVoice: "Khách sạn La Festa Phu Quoc, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "vnd_range",
       min: 3500000,
@@ -1349,7 +1348,7 @@ const BACKUP_PLACES_DATA = [
     area: "南部日落小鎮",
     nameZh: "蔚藍尊貴海景公寓 (Azure Premium Apartment)",
     nameVn: "Azure Premium Apartment Sunset Town",
-    taxiVoice: "Azure Premium Apartment, Sunset Town, An Thới",
+    taxiVoice: "Căn hộ Azure Premium, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "vnd_range",
       min: 1200000,
@@ -1371,7 +1370,7 @@ const BACKUP_PLACES_DATA = [
     area: "北部星灣",
     nameZh: "富國島星灣假日皇冠五星酒店 (Crowne Plaza Phu Quoc Starbay)",
     nameVn: "Crowne Plaza Phu Quoc Starbay",
-    taxiVoice: "Crowne Plaza Phu Quoc Starbay, Khu Bãi Dài, Gành Dầu",
+    taxiVoice: "Khách sạn Crowne Plaza Phu Quoc Starbay, Gành Dầu",
     pricing: {
       type: "vnd_range",
       min: 2600000,
@@ -1447,26 +1446,26 @@ const QUICK_MATRIX_DATA = [
 const PHRASES_DATA = [
   // Taxi & Location (Short & Pure Destination for Driver)
   { category: "taxi", vn: "Cho tôi đến đây", pinyin: "對問地登代", zh: "請載我到這裡 (出示手機)" },
-  { category: "taxi", vn: "Khách sạn Rosetta Phú Quốc", pinyin: "卡傘羅塞塔", zh: "羅塞塔酒店 (ROSETTA HOTEL)" },
-  { category: "taxi", vn: "Vinholidays Fiesta Phú Quốc", pinyin: "溫佩假期一號", zh: "溫佩假期1號飯店 (Grand World)" },
-  { category: "taxi", vn: "Novus Sol Hotel Sunset Town", pinyin: "諾沃斯索爾飯店", zh: "諾沃斯索爾飯店公寓 (Sunset Town)" },
-  { category: "taxi", vn: "Muong Thanh Luxury Phu Quoc", pinyin: "孟青奢華飯店", zh: "富國島奢華孟青飯店 (Long Beach)" },
-  { category: "taxi", vn: "Nhà hàng Hải Sản 369", pinyin: "三六九海鮮", zh: "369 海鮮餐廳 (Nguyễn Văn Cừ)" },
-  { category: "taxi", vn: "LUMI SPA Sunset Town", pinyin: "露米水療", zh: "LUMI SPA (日落小鎮)" },
-  { category: "taxi", vn: "Vinpearl Safari", pinyin: "珍珠野生動物園", zh: "野生動物園" },
-  { category: "taxi", vn: "VinWonders Phú Quốc", pinyin: "珍珠奇幻樂園", zh: "珍珠水陸主題樂園" },
-  { category: "taxi", vn: "Grand World Phú Quốc", pinyin: "富國大世界", zh: "富國大世界 (不夜城)" },
-  { category: "taxi", vn: "Thị trấn Hoàng Hôn, Sunset Town", pinyin: "日落小鎮", zh: "日落小鎮 Sunset Town" },
-  { category: "taxi", vn: "Ga Cáp treo Hòn Thơm", pinyin: "香島跨海纜車", zh: "香島跨海纜車站" },
-  { category: "taxi", vn: "Cầu Hôn", pinyin: "親吻橋", zh: "吻橋 Kiss Bridge" },
-  { category: "taxi", vn: "Sunset Sanato Beach Club", pinyin: "桑奈托日落海灘", zh: "桑奈托日落海灘 (長腿大象)" },
-  { category: "taxi", vn: "Chợ Đêm Phú Quốc", pinyin: "陽東夜市", zh: "陽東夜市" },
-  { category: "taxi", vn: "Chợ Đêm Sonasea", pinyin: "索納西夜市", zh: "Sonasea 夜市商圈" },
-  { category: "taxi", vn: "Siêu thị Kingkong Mart", pinyin: "金剛超市", zh: "金剛超市 Kingkong Mart" },
-  { category: "taxi", vn: "Robinson Pearl", pinyin: "羅賓森珍珠換匯", zh: "Robinson Pearl 珠寶換匯門市" },
-  { category: "taxi", vn: "Như Ý Hair Spa", pinyin: "如意美髮水療", zh: "如意越式洗頭 Hair Spa" },
-  { category: "taxi", vn: "ZEN SPA Phú Quốc", pinyin: "禪水療", zh: "ZEN SPA 按摩館" },
-  { category: "taxi", vn: "Sân bay Phú Quốc", pinyin: "富國島機場", zh: "富國國際機場" },
+  { category: "taxi", vn: "Khách sạn Rosetta, Dương Đông", pinyin: "卡傘羅塞塔", zh: "羅塞塔酒店 (ROSETTA HOTEL)" },
+  { category: "taxi", vn: "Khách sạn Vinholidays Fiesta, Grand World", pinyin: "溫佩假期一號", zh: "溫佩假期1號飯店 (Grand World)" },
+  { category: "taxi", vn: "Khách sạn Novus Sol, Thị trấn Hoàng Hôn", pinyin: "諾沃斯索爾飯店", zh: "諾沃斯索爾飯店公寓 (Sunset Town)" },
+  { category: "taxi", vn: "Khách sạn Mường Thanh Luxury, Dương Tơ", pinyin: "孟青奢華飯店", zh: "富國島奢華孟青飯店 (Long Beach)" },
+  { category: "taxi", vn: "Nhà hàng Hải Sản 369, An Thới", pinyin: "三六九海鮮", zh: "369 海鮮餐廳 (Nguyễn Văn Cừ)" },
+  { category: "taxi", vn: "LUMI SPA, Thị trấn Hoàng Hôn", pinyin: "露米水療", zh: "LUMI SPA (日落小鎮)" },
+  { category: "taxi", vn: "Vinpearl Safari Phú Quốc", pinyin: "珍珠野生動物園", zh: "野生動物園" },
+  { category: "taxi", vn: "Công viên VinWonders Phú Quốc", pinyin: "珍珠奇幻樂園", zh: "珍珠水陸主題樂園" },
+  { category: "taxi", vn: "Khu du lịch Grand World Phú Quốc", pinyin: "富國大世界", zh: "富國大世界 (不夜城)" },
+  { category: "taxi", vn: "Thị trấn Hoàng Hôn, An Thới", pinyin: "日落小鎮", zh: "日落小鎮 Sunset Town" },
+  { category: "taxi", vn: "Ga Cáp treo Hòn Thơm, An Thới", pinyin: "香島跨海纜車", zh: "香島跨海纜車站" },
+  { category: "taxi", vn: "Cầu Hôn, Thị trấn Hoàng Hôn", pinyin: "親吻橋", zh: "吻橋 Kiss Bridge" },
+  { category: "taxi", vn: "Sunset Sanato Beach Club, Dương Tơ", pinyin: "桑奈托日落海灘", zh: "桑奈托日落海灘 (長腿大象)" },
+  { category: "taxi", vn: "Chợ Đêm Phú Quốc, Dương Đông", pinyin: "陽東夜市", zh: "陽東夜市" },
+  { category: "taxi", vn: "Chợ Đêm Sonasea, Dương Tơ", pinyin: "索納西夜市", zh: "Sonasea 夜市商圈" },
+  { category: "taxi", vn: "Siêu thị Kingkong Mart, Dương Đông", pinyin: "金剛超市", zh: "金剛超市 Kingkong Mart" },
+  { category: "taxi", vn: "Cửa hàng Robinson Pearl, Dương Đông", pinyin: "羅賓森珍珠換匯", zh: "Robinson Pearl 珠寶換匯門市" },
+  { category: "taxi", vn: "Như Ý Hair Spa, Dương Đông", pinyin: "如意美髮水療", zh: "如意越式洗頭 Hair Spa" },
+  { category: "taxi", vn: "ZEN SPA, Dương Đông", pinyin: "禪水療", zh: "ZEN SPA 按摩館" },
+  { category: "taxi", vn: "Sân bay Quốc tế Phú Quốc", pinyin: "富國島機場", zh: "富國國際機場" },
   { category: "taxi", vn: "Dừng lại ở đây, cảm ơn", pinyin: "榮來鵝代，感恩", zh: "請停在這裡，謝謝" },
   { category: "taxi", vn: "Bật đồng hồ tính tiền giúp tôi", pinyin: "博同火頂頂友對", zh: "請按跳表計費" },
 
