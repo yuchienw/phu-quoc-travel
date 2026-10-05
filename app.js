@@ -1632,24 +1632,63 @@ function fallbackCopy(text, label) {
   document.body.removeChild(textArea);
 }
 
-// Crisp, direct Vietnamese speech for Grab/Taxi drivers (No toast popup)
+// Crisp, authentic native Vietnamese speech for Grab/Taxi drivers & phrases
+window._currentAudio = null;
+
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    window.speechSynthesis.getVoices();
+  };
+}
+
 window.speakVietnamese = function(text) {
-  const cleanDestination = text.replace(/\(.*?\)/g, '').trim();
+  if (!text) return;
+  const cleanDestination = text.replace(/\(.*?\)/g, '').replace(/（.*?）/g, '').trim();
+  if (!cleanDestination) return;
   
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(cleanDestination);
-    utterance.lang = 'vi-VN';
-    utterance.rate = 0.8;
-    utterance.pitch = 1.0;
+  // 1. First priority: High-quality, 100% pure native Vietnamese Google TTS voice
+  try {
+    if (window._currentAudio) {
+      window._currentAudio.pause();
+      window._currentAudio.currentTime = 0;
+    }
     
-    const voices = window.speechSynthesis.getVoices();
-    const viVoice = voices.find(v => v.lang.includes('vi') || v.lang.includes('VN'));
-    if (viVoice) utterance.voice = viVoice;
+    const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(cleanDestination)}`;
+    const audio = new Audio(ttsUrl);
+    window._currentAudio = audio;
     
-    window.speechSynthesis.speak(utterance);
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        fallbackSpeechSynthesis(cleanDestination);
+      });
+    }
+  } catch (err) {
+    fallbackSpeechSynthesis(cleanDestination);
   }
 };
+
+function fallbackSpeechSynthesis(cleanText) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.lang = 'vi-VN';
+  utterance.rate = 0.85;
+  utterance.pitch = 1.0;
+
+  const voices = window.speechSynthesis.getVoices();
+  const viVoice = voices.find(v => 
+    (v.lang && (v.lang.toLowerCase().startsWith('vi') || v.lang.toLowerCase().includes('vn'))) ||
+    (v.name && v.name.toLowerCase().includes('vietnam'))
+  );
+
+  if (viVoice) {
+    utterance.voice = viVoice;
+  }
+  
+  window.speechSynthesis.speak(utterance);
+}
 
 const ACTIVE_TAB_KEY = "phu_quoc_active_tab_v3";
 const ACTIVE_DAY_KEY = "phu_quoc_selected_day_v3";
