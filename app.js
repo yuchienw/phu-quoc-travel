@@ -1637,34 +1637,64 @@ window._currentAudio = null;
 
 if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {
-    window.speechSynthesis.getVoices();
+    try { window.speechSynthesis.getVoices(); } catch (e) {}
   };
 }
 
 window.speakVietnamese = function(text) {
   if (!text) return;
-  const cleanDestination = text.replace(/\(.*?\)/g, '').replace(/（.*?）/g, '').trim();
+  // Clean text: strip brackets, parens, and any non-Vietnamese characters
+  const cleanDestination = text
+    .replace(/\(.*?\)/g, '')
+    .replace(/（.*?）/g, '')
+    .replace(/\[.*?\]/g, '')
+    .replace(/【.*?】/g, '')
+    .replace(/[\u4e00-\u9fa5]/g, '') // strip Chinese characters
+    .replace(/\s+/g, ' ')
+    .trim();
+    
   if (!cleanDestination) return;
-  
-  // 1. First priority: High-quality, 100% pure native Vietnamese Google TTS voice
-  try {
-    if (window._currentAudio) {
+
+  // Stop any currently playing audio or speech
+  if (window._currentAudio) {
+    try {
       window._currentAudio.pause();
       window._currentAudio.currentTime = 0;
-    }
-    
-    const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(cleanDestination)}`;
-    const audio = new Audio(ttsUrl);
-    window._currentAudio = audio;
-    
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        fallbackSpeechSynthesis(cleanDestination);
-      });
-    }
-  } catch (err) {
-    fallbackSpeechSynthesis(cleanDestination);
+    } catch (e) {}
+    window._currentAudio = null;
+  }
+  if ('speechSynthesis' in window) {
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  showToast(`🔊 播放越南語發音：${cleanDestination}`, "🇻🇳");
+
+  // 1. Primary: 100% Pure Native Google Translate Vietnamese TTS (MP3 stream)
+  const encodedText = encodeURIComponent(cleanDestination);
+  const primaryUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodedText}`;
+  
+  const audio = new Audio();
+  audio.referrerPolicy = "no-referrer";
+  audio.src = primaryUrl;
+  window._currentAudio = audio;
+  
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch((err) => {
+      // 2. Secondary backup: Googleapis TTS endpoint
+      const backupUrl = `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=vi&client=gtx&q=${encodedText}`;
+      const backupAudio = new Audio();
+      backupAudio.referrerPolicy = "no-referrer";
+      backupAudio.src = backupUrl;
+      window._currentAudio = backupAudio;
+
+      const backupPromise = backupAudio.play();
+      if (backupPromise !== undefined) {
+        backupPromise.catch(() => {
+          fallbackSpeechSynthesis(cleanDestination);
+        });
+      }
+    });
   }
 };
 
@@ -1683,11 +1713,12 @@ function fallbackSpeechSynthesis(cleanText) {
     (v.name && v.name.toLowerCase().includes('vietnam'))
   );
 
+  // Safeguard: ONLY speak with browser TTS if an actual Vietnamese voice exists on this device!
+  // Prevents default English/Chinese TTS engines from mispronouncing Vietnamese text awkwardly.
   if (viVoice) {
     utterance.voice = viVoice;
+    window.speechSynthesis.speak(utterance);
   }
-  
-  window.speechSynthesis.speak(utterance);
 }
 
 const ACTIVE_TAB_KEY = "phu_quoc_active_tab_v3";
