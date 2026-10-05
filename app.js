@@ -78,8 +78,8 @@ const ITINERARY_DATA = [
     time: "21:30 - 22:00",
     category: "交通",
     nameZh: "富國島羅塞塔酒店 Check-in 放行李",
-    nameVn: "Khách sạn Rosetta (ROSETTA HOTEL PHU QUOC)",
-    taxiVoice: "ROSETTA HOTEL PHU QUOC, Dương Đông",
+    nameVn: "Khách sạn Rosetta Phú Quốc",
+    taxiVoice: "Khách sạn Rosetta, Dương Đông",
     pricing: {
       type: "custom",
       vndText: "1晚 VN 1,328,562 ₫ (10/8 前免費取消)",
@@ -370,8 +370,8 @@ const ITINERARY_DATA = [
     time: "12:00 - 12:30",
     category: "交通",
     nameZh: "富國日落小鎮諾沃斯索爾飯店公寓 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Novus Sol Hotel & Apartment Sunset Town Phu Quoc",
-    taxiVoice: "Novus Sol Hotel & Apartment, Sunset Town, An Thới",
+    nameVn: "Khách sạn Novus Sol Sunset Town",
+    taxiVoice: "Khách sạn Novus Sol, Sunset Town, An Thới",
     pricing: {
       type: "custom",
       vndText: "2晚 VN 2,660,869 ₫ (10/12 前免費取消)",
@@ -412,8 +412,8 @@ const ITINERARY_DATA = [
     time: "15:00 - 17:00",
     category: "放鬆",
     nameZh: "返回飯店休息小憩・吹冷氣充電",
-    nameVn: "Novus Sol Hotel & Apartment",
-    taxiVoice: "Novus Sol Hotel & Apartment",
+    nameVn: "Khách sạn Novus Sol Sunset Town",
+    taxiVoice: "Khách sạn Novus Sol, Sunset Town",
     pricing: {
       type: "free",
       vndText: "包含於房費",
