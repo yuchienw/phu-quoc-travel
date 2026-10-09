@@ -76,8 +76,8 @@ const ITINERARY_DATA = [
     day: 1,
     time: "21:30 - 22:00",
     category: "交通",
-    nameZh: "富國島羅塞塔酒店 Check-in 放行李",
-    nameVn: "Khách sạn Rosetta Phú Quốc",
+    nameZh: "富國島羅塞塔酒店 Check-in 放行李 (豪華雙人房 Deluxe Double)",
+    nameVn: "Khách sạn Rosetta Phú Quốc (Deluxe Double)",
     taxiVoice: "Khách sạn Rosetta, Dương Đông, Phú Quốc",
     pricing: {
       type: "custom",
@@ -88,8 +88,8 @@ const ITINERARY_DATA = [
     address: "Dương Đông, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3988 989",
     openingHours: "24 小時前台服務",
-    description: "第一晚入住中部陽東鎮核心區域的「富國島羅塞塔酒店 (ROSETTA HOTEL PHU QUOC)」，離機場僅 15 分鐘車程，性價比高。辦理入住並放妥行李後，即可出發前往夜市吃宵夜與換匯。",
-    tips: "💡 飯店離市區商圈近，隔天一早往北部移動非常順路！",
+    description: "第一晚入住中部陽東鎮核心區域的「富國島羅塞塔酒店 (ROSETTA HOTEL PHU QUOC) - 豪華雙人房 (Deluxe Double)」，離機場僅 15 分鐘車程，性價比高。辦理入住並放妥行李後，即可出發前往夜市吃宵夜與換匯。",
+    tips: "💡 房型：豪華雙人房 (Deluxe Double)；飯店離市區商圈近，隔天一早往北部移動非常順路！",
     mapsQuery: "Rosetta Hotel Phu Quoc Duong Dong"
   },
   {
@@ -140,8 +140,8 @@ const ITINERARY_DATA = [
     day: 2,
     time: "10:00 - 10:30",
     category: "交通",
-    nameZh: "富國島溫佩假期1號 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Vinholidays Fiesta Phú Quốc",
+    nameZh: "富國島溫佩假期1號 Check-in 寄放行李 (連住 2 晚・泳池景標準雙人房)",
+    nameVn: "Vinholidays Fiesta Phú Quốc (Standard Pool View Double)",
     taxiVoice: "Khách sạn Vinholidays Fiesta, Grand World Phú Quốc",
     pricing: {
       type: "custom",
@@ -152,8 +152,8 @@ const ITINERARY_DATA = [
     address: "Khu Bãi Dài, Xã Gành Dầu, TP. Phú Quốc, Kiên Giang",
     phone: "+84 297 3550 550",
     openingHours: "24 小時前台服務",
-    description: "入住座落於富國大世界核心園區內的「富國島溫佩假期1號 (Vinholidays Fiesta Phú Quốc)」，連住 2 晚免除每天整理換飯店的奔波。步行即達大世界運河商圈，前往 Safari 動物園與 VinWonders 樂園車程僅需 5 分鐘。",
-    tips: "💡 先在櫃檯寄放大件行李，輕裝出發前往 Safari 動物園！",
+    description: "入住座落於富國大世界核心園區內的「富國島溫佩假期1號 (Vinholidays Fiesta Phú Quốc) - 泳池景標準雙人房 (Standard Pool View Double Room)」，連住 2 晚免除每天整理換飯店的奔波。步行即達大世界運河商圈，前往 Safari 動物園與 VinWonders 樂園車程僅需 5 分鐘。",
+    tips: "💡 房型：泳池景標準雙人房 (Standard Pool View Double Room)；先在櫃檯寄放大件行李，輕裝出發前往 Safari 動物園！",
     mapsQuery: "Vinholidays Fiesta Phu Quoc"
   },
   {
@@ -367,8 +367,8 @@ const ITINERARY_DATA = [
     day: 4,
     time: "12:00 - 12:30",
     category: "交通",
-    nameZh: "富國日落小鎮諾沃斯索爾飯店公寓 Check-in 寄放行李 (連住 2 晚)",
-    nameVn: "Khách sạn Novus Sol Sunset Town",
+    nameZh: "富國日落小鎮諾沃斯索爾飯店公寓 Check-in 寄放行李 (連住 2 晚・海景頂級套房)",
+    nameVn: "Khách sạn Novus Sol Sunset Town (Premium Suite Ocean View)",
     taxiVoice: "Khách sạn Novus Sol, Thị trấn Hoàng Hôn, An Thới",
     pricing: {
       type: "custom",
@@ -379,8 +379,8 @@ const ITINERARY_DATA = [
     address: "Thị trấn Hoàng Hôn (Sunset Town), An Thới, TP. Phú Quốc",
     phone: "+84 297 3999 777",
     openingHours: "24 小時前台",
-    description: "入住座落於日落小鎮核心的「富國日落小鎮諾沃斯索爾飯店公寓 (Novus Sol Hotel & Apartment Sunset Town Phu Quoc)」，連住南部 2 晚。緊鄰地中海小鎮廣場、親吻橋與纜車站，看完全球頂級大秀與煙火後，可直接步行回到飯店休息！",
-    tips: "💡 寄放行李後即可漫步出門探索地中海風情街道並享用午餐。",
+    description: "入住座落於日落小鎮核心的「富國日落小鎮諾沃斯索爾飯店公寓 (Novus Sol Hotel & Apartment Sunset Town Phu Quoc) - 海景頂級套房 (Premium Suite Ocean View)」，連住南部 2 晚。緊鄰地中海小鎮廣場、親吻橋與纜車站，看完全球頂級大秀與煙火後，可直接步行回到飯店休息！",
+    tips: "💡 房型：海景頂級套房 (Premium Suite Ocean View)；寄放行李後即可漫步出門探索地中海風情街道並享用午餐。",
     mapsQuery: "Novus Sol Hotel Sunset Town Phu Quoc"
   },
   {
@@ -685,8 +685,8 @@ const ITINERARY_DATA = [
     day: 6,
     time: "12:00 - 13:00",
     category: "交通",
-    nameZh: "富國島奢華孟青飯店 Check-in 寄放行李",
-    nameVn: "Muong Thanh Luxury Phu Quoc Hotel",
+    nameZh: "富國島奢華孟青飯店 Check-in 寄放行李 (行政套房 1張大床)",
+    nameVn: "Muong Thanh Luxury Phu Quoc Hotel (Executive Suite)",
     taxiVoice: "Khách sạn Mường Thanh Luxury, Bãi Trường, Dương Tơ",
     pricing: {
       type: "custom",
@@ -697,8 +697,8 @@ const ITINERARY_DATA = [
     address: "Khu phức hợp Bãi Trường, Ấp Đường Bào, Xã Dương Tơ, TP. Phú Quốc",
     phone: "+84 297 3645 555",
     openingHours: "24 小時服務",
-    description: "入住座落於中部 Long Beach 渡假區的五星規格「富國島奢華孟青飯店 (Muong Thanh Luxury Phu Quoc Hotel)」。飯店設施豪華齊全，緊鄰沙灘與 Sonasea 街區，離機場僅 10 分鐘車程。",
-    tips: "💡 辦理登記並寄放大件行李，即可輕鬆出發享用在地午餐。",
+    description: "入住座落於中部 Long Beach 渡假區的五星規格「富國島奢華孟青飯店 (Muong Thanh Luxury Phu Quoc Hotel) - 行政套房(1張床) (Executive 1 Bed Room Suite)」。飯店設施豪華齊全，緊鄰沙灘與 Sonasea 街區，離機場僅 10 分鐘車程。",
+    tips: "💡 房型：行政套房(1張床) (Executive 1 Bed Room Suite)；辦理登記並寄放大件行李，即可輕鬆出發享用在地午餐。",
     mapsQuery: "Muong Thanh Luxury Phu Quoc Hotel"
   },
   {
@@ -1450,7 +1450,7 @@ function renderPhone(phone) {
 // ==========================================
 const BUDGET_ITEMS_DATA = [
   { icon: "✈️", name: "直飛來回機票", desc: "Sun PhuQuoc 直飛特惠 (2人含20kg托運行李/稅金/贈送香島纜車門票)", twd2p: 12824, ratio: "22.6%" },
-  { icon: "🏨", name: "6 晚精選住宿", desc: "1 間雙人房：羅塞塔(1晚 1,629) + 溫佩假期1號(2晚 5,997) + 諾沃斯索爾(2晚 3,262) + 孟青奢華(1晚 2,789)", twd2p: 13677, ratio: "24.1%" },
+  { icon: "🏨", name: "6 晚精選住宿", desc: "羅塞塔(豪華雙人房 1晚 1,629) + 溫佩假期1號(泳池景標準雙人房 2晚 5,997) + 諾沃斯索爾(海景頂級套房 2晚 3,262) + 孟青奢華(行政套房 1晚 2,789)", twd2p: 13677, ratio: "24.1%" },
   { icon: "🎟️", name: "樂園與大秀門票", desc: "雙人2日套票 Safari+VinWonders(4,646) + 雙人套票 纜車+海之吻(3,410)", twd2p: 8056, ratio: "14.2%" },
   { icon: "🍲", name: "7 日餐飲與海鮮", desc: "每日三餐、小卷米粉、369海鮮餐廳、海景日落餐廳、夜市美食等", twd2p: 12000, ratio: "21.1%" },
   { icon: "🚗", name: "全島 Grab 交通", desc: "機場來回接送、北中南跨區專車 (搭配北部免費 VinBus)", twd2p: 3000, ratio: "5.3%" },
