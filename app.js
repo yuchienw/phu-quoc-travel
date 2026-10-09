@@ -1418,6 +1418,14 @@ function computeSpotCost(spot, rate) {
   return { vnd: "即時行情", twd: "以匯率換算" };
 }
 
+function renderPhone(phone) {
+  if (!phone) return "現場洽詢";
+
+  const phoneText = String(phone);
+  const phoneHref = phoneText.replace(/[^0-9+]/g, "");
+  return `<a href="tel:${phoneHref}" style="color: #0f766e; font-weight:600; text-decoration:none;">${phoneText}</a>`;
+}
+
 // ==========================================
 // 3. DATA: BUDGET TABLE & QUICK MATRIX
 // ==========================================
@@ -2035,7 +2043,7 @@ function renderSpots() {
             </div>
             <div class="spot-detail-row">
               <span class="detail-label">📞 聯絡電話</span>
-              <span class="detail-val"><a href="tel:${spot.phone.replace(/[^0-9+]/g, '')}" style="color: #0f766e; font-weight:600; text-decoration:none;">${spot.phone}</a></span>
+              <span class="detail-val">${renderPhone(spot.phone)}</span>
             </div>
           </div>
 
@@ -2151,7 +2159,7 @@ function renderPlaces() {
             </div>
             <div class="spot-detail-row">
               <span class="detail-label">📞 聯絡電話</span>
-              <span class="detail-val"><a href="tel:${place.phone.replace(/[^0-9+]/g, '')}" style="color: #0f766e; font-weight:600; text-decoration:none;">${place.phone}</a></span>
+              <span class="detail-val">${renderPhone(place.phone)}</span>
             </div>
           </div>
 
