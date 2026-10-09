@@ -55,22 +55,21 @@ const ITINERARY_DATA = [
     day: 1,
     time: "21:00 - 21:30",
     category: "放鬆",
-    nameZh: "機場少量換匯 & 購買 SIM 卡 / 啟用 eSIM",
+    nameZh: "機場少量換匯 & 啟用 KKday eSIM",
     nameVn: "Sân bay Quốc tế Phú Quốc",
     taxiVoice: "Sân bay Quốc tế Phú Quốc, Ga đến",
     pricing: {
-      type: "vnd_range",
-      min: 150000,
-      max: 250000,
-      unit: " / 張",
-      labelPrefix: "SIM卡約"
+      type: "fixed_twd",
+      twd: 471,
+      vndLabel: "KKday eSIM（2 人份）",
+      twdLabel: "NT$ 471（已購入）"
     },
-    transport: "機場入境大廳專櫃",
+    transport: "機場入境大廳啟用 eSIM，並少量換匯",
     address: "Ga đến, Sân bay Quốc tế Phú Quốc",
     phone: "+84 297 3848 078",
     openingHours: "配合航班抵達時間營運",
-    description: "出關後於機場大廳領取或購買當地高速上網 SIM 卡（推薦 Viettel 或 Vinaphone），並可先換取少許越南盾以支付今晚車資與夜市消費（大筆換匯留至市區銀樓或 Robinson Pearl 更划算）。",
-    tips: "💡 若已在台灣安裝好 eSIM，開機直接開啟數據漫遊即可無縫上網！",
+    description: "出關後啟用已於 KKday 購買的 Vinaphone eSIM（原生 5G/4G、不降速、含語音通話、支援 ChatGPT），並先換取少許越南盾支付今晚車資與夜市消費；大筆換匯留至 Robinson Pearl 更划算。",
+    tips: "💡 eSIM 總費用 NT$ 471（2 人份）；請於起飛前完成安裝，抵達後開啟數據漫遊即可上網。",
     mapsQuery: "Phu Quoc International Airport"
   },
   {
@@ -445,8 +444,27 @@ const ITINERARY_DATA = [
     phone: "+84 918 369 369",
     openingHours: "10:00 - 22:30",
     description: "安泰在地高口碑海鮮餐廳「369 Đ. Nguyễn Văn Cừ」！各式生猛活體海鮮現點現秤現煮，招牌烤大蝦、清蒸花蟹、蒜蓉烤生蠔與越式海鮮火鍋鮮美無比，價格實惠公道。",
-    tips: "💡 用餐後返回日落小鎮，準備 20:00 提前進場卡位 Kiss of the Sea！",
+    tips: "💡 用餐後返回日落小鎮，準備 19:45 觀賞 Symphony Of The Sea 表演！",
     mapsQuery: "369 Nguyen Van Cu An Thoi Phu Quoc"
+  },
+  {
+    day: 4,
+    time: "19:45 - 20:00",
+    category: "樂園",
+    nameZh: "Symphony Of The Sea 表演",
+    nameVn: "Symphony Of The Sea",
+    taxiVoice: "Sân khấu Kiss of the Sea, Thị trấn Hoàng Hôn",
+    pricing: {
+      type: "custom",
+      vndText: "已含在園區或套票內",
+      calcTwd: () => "免費或包含於套票"
+    },
+    transport: "日落小鎮海濱",
+    address: "Sunset Town, An Thới",
+    openingHours: "19:45 準時開演",
+    description: "結合極限運動與水上特技的炫酷表演，為接下來的海之吻大秀暖身！",
+    tips: "💡 觀賞完可直接步行至 Kiss of the Sea 劇場，準備 20:00 提前進場卡位！",
+    mapsQuery: "Sunset Town Phu Quoc"
   },
   {
     day: 4,
@@ -1422,13 +1440,14 @@ function computeSpotCost(spot, rate) {
 // 3. DATA: BUDGET TABLE & QUICK MATRIX
 // ==========================================
 const BUDGET_ITEMS_DATA = [
-  { icon: "✈️", name: "直飛來回機票", desc: "Sun PhuQuoc 直飛特惠 (2人含20kg托運行李/稅金/贈送香島纜車門票)", twd2p: 12824, ratio: "22.8%" },
-  { icon: "🏨", name: "6 晚精選住宿", desc: "1 間雙人房：羅塞塔(1晚 1,629) + 溫佩假期1號(2晚 5,997) + 諾沃斯索爾(2晚 3,262) + 孟青奢華(1晚 2,789)", twd2p: 13677, ratio: "24.3%" },
-  { icon: "🎟️", name: "樂園與大秀門票", desc: "雙人2日套票 Safari+VinWonders(4,646) + 雙人套票 纜車+海之吻(3,410)", twd2p: 8056, ratio: "14.3%" },
-  { icon: "🍲", name: "7 日餐飲與海鮮", desc: "每日三餐、小卷米粉、369海鮮餐廳、海景日落餐廳、夜市美食等", twd2p: 12000, ratio: "21.3%" },
+  { icon: "✈️", name: "直飛來回機票", desc: "Sun PhuQuoc 直飛特惠 (2人含20kg托運行李/稅金/贈送香島纜車門票)", twd2p: 12824, ratio: "22.6%" },
+  { icon: "🏨", name: "6 晚精選住宿", desc: "1 間雙人房：羅塞塔(1晚 1,629) + 溫佩假期1號(2晚 5,997) + 諾沃斯索爾(2晚 3,262) + 孟青奢華(1晚 2,789)", twd2p: 13677, ratio: "24.1%" },
+  { icon: "🎟️", name: "樂園與大秀門票", desc: "雙人2日套票 Safari+VinWonders(4,646) + 雙人套票 纜車+海之吻(3,410)", twd2p: 8056, ratio: "14.2%" },
+  { icon: "🍲", name: "7 日餐飲與海鮮", desc: "每日三餐、小卷米粉、369海鮮餐廳、海景日落餐廳、夜市美食等", twd2p: 12000, ratio: "21.1%" },
   { icon: "🚗", name: "全島 Grab 交通", desc: "機場來回接送、北中南跨區專車 (搭配北部免費 VinBus)", twd2p: 3000, ratio: "5.3%" },
   { icon: "🛡️", name: "旅遊平安保險", desc: "2人全程海外旅遊平安險與不便險保障", twd2p: 1737, ratio: "3.1%" },
-  { icon: "🛍️", name: "其他消費與舒壓", desc: "金剛超市伴手禮、Như Ý 越式洗頭、ZEN/LUMI 按摩等", twd2p: 5000, ratio: "8.9%" }
+  { icon: "📱", name: "越南 eSIM 網卡", desc: "KKday 原生 Vinaphone 5G/4G 不降速、含語音通話（每日 6GB，2 人份）", twd2p: 471, ratio: "0.8%" },
+  { icon: "🛍️", name: "其他消費與舒壓", desc: "金剛超市伴手禮、Như Ý 越式洗頭、ZEN/LUMI 按摩等", twd2p: 5000, ratio: "8.8%" }
 ];
 
 const QUICK_MATRIX_DATA = [
@@ -1875,7 +1894,7 @@ function renderSpots() {
     1: "Day 1 (10/13 二) : 桃園出發 ✈ 富國島 ➔ 宿羅塞塔酒店 ➔ 陽東夜市晚餐與 Robinson Pearl 換匯",
     2: "Day 2 (10/14 三) : 往北移動 ➔ 宿溫佩假期1號 ➔ Safari 動物園 ➔ 小卷米粉 ➔ 越南國粹秀 ➔ 威尼斯水秀",
     3: "Day 3 (10/15 四) : VinWonders 珍珠水陸樂園 (海龜水族館・美人魚秀) ➔ 閉幕煙火 ➔ 大世界晚餐按摩",
-    4: "Day 4 (10/16 五) : 一路往南 ➔ 宿諾沃斯索爾 ➔ 369海鮮晚餐 ➔ 21:00海洋之吻大秀與高空煙火",
+    4: "Day 4 (10/16 五) : 一路往南 ➔ 宿諾沃斯索爾 ➔ 369海鮮晚餐 ➔ 19:45 Symphony Of The Sea ➔ 21:00海洋之吻大秀",
     5: "Day 5 (10/17 六) : 免費香島跨海纜車 ➔ 親吻橋夕陽 ➔ LUMI SPA 按摩 ➔ VUI-Fest 夜市",
     6: "Day 6 (10/18 日) : 往中部移動 ➔ 宿孟青奢華飯店 ➔ 桑奈托日落沙灘 ➔ 伴手禮採買 ➔ 如意洗頭/ZEN SPA",
     7: "Day 7 (10/19 一) : 飯店早餐退房 ➔ 富國國際機場 (PQC) ✈ 搭乘 9G 510 平安返抵桃園 (TPE)"
@@ -1910,8 +1929,8 @@ function renderSpots() {
       day: 4,
       date: "10/16 (五)",
       area: "南部日落小鎮",
-      title: "Day 4 (10/16 五) : 一路往南 ➔ 宿諾沃斯索爾 ➔ 369海鮮晚餐 ➔ 21:00海洋之吻大秀與高空煙火",
-      summary: "退房往南 ➔ 宿日落小鎮諾沃斯索爾飯店公寓 ➔ 日落小鎮漫步 ➔ 17:00 369海鮮晚餐 ➔ 21:00 海洋之吻大秀與璀璨高空煙火 (20:00卡位)",
+      title: "Day 4 (10/16 五) : 一路往南 ➔ 宿諾沃斯索爾 ➔ 369海鮮晚餐 ➔ 19:45 Symphony Of The Sea ➔ 21:00海洋之吻大秀",
+      summary: "退房往南 ➔ 宿日落小鎮諾沃斯索爾飯店公寓 ➔ 日落小鎮漫步 ➔ 17:00 369海鮮晚餐 ➔ 19:45 Symphony Of The Sea ➔ 21:00 海洋之吻大秀與璀璨高空煙火（20:00 提前入場）",
       color: "#ea580c"
     },
     {
